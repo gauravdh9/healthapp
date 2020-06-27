@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet, Image, View } from "react-native";
+
 import themes from "../components/themes";
+
 export default function Listheader({ img }) {
   return (
     <View style={styles.view}>

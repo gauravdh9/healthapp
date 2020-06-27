@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+
 import Theme from "./themes";
 export default function Listitem({ title, address, number }) {
   return (
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "flex-start",
-    backgroundColor: Theme.colors.background,
+    backgroundColor: Theme.colors.Card,
     padding: 15,
     margin: 15,
     borderRadius: 20,

@@ -7,10 +7,12 @@ import {
   ScrollView,
   Image,
 } from "react-native";
+
 import Screen from "../components/Screen";
 import Listitem from "../components/listitem";
 import themes from "../components/themes";
 import Listheader from "../components/listheader";
+
 export default function Hospitallist() {
   const [data, setdata] = useState([]);
   const fetchdata = () => {
