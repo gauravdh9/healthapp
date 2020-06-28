@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     position: "relative",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "tomato",
-    marginBottom: 80,
+    backgroundColor: themes.colors.light.accent,
+    marginBottom: 50,
   },
 });

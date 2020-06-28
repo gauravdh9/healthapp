@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  ScrollView,
-  Image,
-} from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 
 import Screen from "../components/Screen";
 import Listitem from "../components/listitem";
-import themes from "../components/themes";
 import Listheader from "../components/listheader";
+import themes from "../components/themes";
 
 export default function Hospitallist() {
   const [data, setdata] = useState([]);
   const fetchdata = () => {
-    fetch("https://d71eeab23322.ngrok.io/hospitaldata")
+    fetch("https://b2cd41ee970e.ngrok.io/hospitaldata")
       .then((res) => res.json())
       .then((result) => setdata(result))
       .catch((err) => {
@@ -29,6 +22,7 @@ export default function Hospitallist() {
 
   return (
     <Screen style={styles.container}>
+      <View></View>
       <FlatList
         style={styles.list}
         disableVirtualization
@@ -53,6 +47,6 @@ const styles = StyleSheet.create({
   list: {
     flex: 1,
     position: "relative",
-    backgroundColor: themes.colors.main,
+    backgroundColor: themes.colors.cream,
   },
 });
