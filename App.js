@@ -6,12 +6,3 @@ import Hospitallist from "./screens/hospitallist";
 export default function App() {
   return <Hospitallist />;
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });

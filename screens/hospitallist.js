@@ -5,13 +5,20 @@ import Screen from "../components/Screen";
 import Listitem from "../components/listitem";
 import Listheader from "../components/listheader";
 import themes from "../components/themes";
+import Toggle from "../components/Toggle";
 
 export default function Hospitallist() {
   const [data, setdata] = useState([]);
+  const [loading, setloading] = useState(true);
+  const [swit, setswit] = useState(false);
+
   const fetchdata = () => {
-    fetch("https://b2cd41ee970e.ngrok.io/hospitaldata")
+    fetch("https://893c8ef63b23.ngrok.io/hospitaldata")
       .then((res) => res.json())
-      .then((result) => setdata(result))
+      .then((result) => {
+        setdata(result);
+        setloading(false);
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -22,7 +29,9 @@ export default function Hospitallist() {
 
   return (
     <Screen style={styles.container}>
-      <View></View>
+      <View style={{ position: "relative" }}>
+        <Toggle swit={swit} setswit={setswit} />
+      </View>
       <FlatList
         style={styles.list}
         disableVirtualization
@@ -33,6 +42,10 @@ export default function Hospitallist() {
           <Listheader img={require("../assets/hospitalpng.png")} />
         }
         ListHeaderComponentStyle={{ height: 100, marginBottom: 100 }}
+        refreshing={loading}
+        onRefresh={() => {
+          fetchdata();
+        }}
       />
     </Screen>
   );
@@ -48,5 +61,9 @@ const styles = StyleSheet.create({
     flex: 1,
     position: "relative",
     backgroundColor: themes.colors.cream,
+  },
+  toggle: {
+    position: "absolute",
+    top: 50,
   },
 });
