@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, SliderComponent } from "react-native";
 import SvgUri from "expo-svg-uri";
-import Theme from "./themes";
+import themes from "./themes";
 import themes from "./themes";
 export default function Listitem(props) {
   return (

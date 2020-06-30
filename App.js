@@ -1,8 +1,6 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Hospitallist from "./screens/hospitallist";
+import Covidscreen from "./screens/Covidscreen";
 
 export default function App() {
-  return <Hospitallist />;
+  return <Covidscreen />;
 }

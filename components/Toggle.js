@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ToggleButton from "react-native-toggle-element";
 import SvgUri from "expo-svg-uri";
 
