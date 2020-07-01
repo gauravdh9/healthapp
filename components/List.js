@@ -3,14 +3,15 @@ import { StyleSheet, Text, View } from "react-native";
 import SvgUri from "expo-svg-uri";
 
 import themes from "./themes";
+import Lottie from "./Lottie";
 
 export default function List({ title, number, location }) {
   return (
     <View style={styles.container}>
       <View style={styles.view}>
         <Text style={styles.name}>{title}</Text>
-        <Text style={styles.add}>{number}</Text>
-        <SvgUri style={styles.svg} width="60" height="60" source={location} />
+        {number ? <Text style={styles.add}>{number}</Text> : <Lottie />}
+        <SvgUri style={styles.svg} width="55" height="55" source={location} />
       </View>
     </View>
   );
@@ -51,6 +52,6 @@ const styles = StyleSheet.create({
   svg: {
     position: "relative",
     left: 90,
-    top: -10,
+    top: -20,
   },
 });

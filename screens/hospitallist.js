@@ -13,7 +13,7 @@ export default function Hospitallist() {
   const [swit, setswit] = useState(false);
 
   const fetchdata = () => {
-    fetch("https://01f457cee0af.ngrok.io/hospitaldata")
+    fetch("https://6dff261af2c1.ngrok.io/hospitaldata")
       .then((res) => res.json())
       .then((result) => {
         setdata(result);

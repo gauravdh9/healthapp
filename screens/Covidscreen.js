@@ -12,7 +12,11 @@ export default function Covidscreen() {
   return (
     <Screen>
       <View style={styles.vector}>
-        <SvgUri width="120" height="120" source={require("../assets/3.svg")} />
+        <SvgUri
+          width="120"
+          height="120"
+          source={require("../assets/virus.svg")}
+        />
       </View>
       <View style={styles.info}>
         <FlatList
