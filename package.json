@@ -15,15 +15,20 @@
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.0.tar.gz",
-    "react-native-svg": "12.1.0",
+    "react-native-animated-number": "^1.1.1",
+    "react-native-responsive-linechart": "^2.2.0",
+    "react-native-svg": "^12.1.0",
+    "react-native-svg-charts": "^5.4.0",
     "react-native-switch-pro": "^1.0.4",
     "react-native-switches": "^1.2.5",
     "react-native-toggle-element": "^1.0.0",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "use-count-up": "^2.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
-    "babel-preset-expo": "~8.1.0"
+    "babel-preset-expo": "~8.1.0",
+    "react-native-svg-transformer": "^0.14.3"
   },
   "private": true
 }

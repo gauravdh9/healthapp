@@ -1,15 +1,17 @@
 import { useApi } from "../hooks/useApi";
 
+import { Confirmed, Rec, Active, Death } from "./Svg";
+
 export const Data = () => {
   const { result } = useApi();
-
   if (result) {
     return [
       {
         id: "1",
         title: "Confirmed",
         number: result.total.confirmed,
-        location: require("../assets/patient.svg"),
+        Location: Confirmed,
+        color: "#6c757d",
       },
       {
         id: "2",
@@ -17,19 +19,22 @@ export const Data = () => {
         number:
           result.total.confirmed -
           (result.total.recovered + result.total.deceased),
-        location: require("../assets/patient.svg"),
+        Location: Active,
+        color: "#007bff",
       },
       {
         id: "3",
         title: "Recovered",
         number: result.total.recovered,
-        location: require("../assets/patient.svg"),
+        Location: Rec,
+        color: "#28a745",
       },
       {
         id: "4",
-        title: "Death",
+        title: "Deceased",
         number: result.total.deceased,
-        location: require("../assets/patient.svg"),
+        Location: Death,
+        color: "#ff073a",
       },
     ];
   } else {
@@ -38,25 +43,29 @@ export const Data = () => {
         id: "1",
         title: "Confirmed",
         number: 0,
-        location: require("../assets/patient.svg"),
+        Location: Confirmed,
+        color: "#6c757d",
       },
       {
         id: "2",
         title: "Active",
         number: 0,
-        location: require("../assets/patient.svg"),
+        Location: Active,
+        color: "#007bff",
       },
       {
         id: "3",
-        title: 0,
-        number: "300",
-        location: require("../assets/patient.svg"),
+        title: "Recovered",
+        number: 0,
+        Location: Rec,
+        color: "#28a745",
       },
       {
         id: "4",
-        title: "Death",
+        title: "Deceased",
         number: 0,
-        location: require("../assets/patient.svg"),
+        Location: Death,
+        color: "#ff073a",
       },
     ];
   }
