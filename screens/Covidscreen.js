@@ -1,22 +1,18 @@
 import React, { useEffect } from "react";
-import SvgUri from "expo-svg-uri";
 
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import themes from "../components/themes";
 import Screen from "../components/Screen";
 import List from "../components/List";
 import { Data } from "../components/Data";
+import Virus from "../assets/virus.svg";
 
 export default function Covidscreen() {
   const data = Data();
   return (
     <Screen>
       <View style={styles.vector}>
-        <SvgUri
-          width="120"
-          height="120"
-          source={require("../assets/virus.svg")}
-        />
+        <Virus width="120" height="120" />
       </View>
       <View style={styles.info}>
         <FlatList
