@@ -1,17 +1,26 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import SvgUri from "expo-svg-uri";
+import { CountUp } from "use-count-up";
 
 import themes from "./themes";
 import Lottie from "./Lottie";
+import Minigraph from "./minigraph";
 
-export default function List({ title, number, location }) {
+export default function List({ title, number, Location, color }) {
   return (
     <View style={styles.container}>
       <View style={styles.view}>
         <Text style={styles.name}>{title}</Text>
-        {number ? <Text style={styles.add}>{number}</Text> : <Lottie />}
-        <SvgUri style={styles.svg} width="55" height="55" source={location} />
+        {number ? (
+          <Text style={{ color }}>
+            <CountUp isCounting end={number} duration={2} />
+          </Text>
+        ) : (
+          <Lottie />
+        )}
+        <Minigraph type={title} color={color}></Minigraph>
+
+        <Location style={styles.svg} width={55} height={55} />
       </View>
     </View>
   );
@@ -32,7 +41,7 @@ const styles = StyleSheet.create({
   },
   container: {
     alignItems: "flex-start",
-    height: 100,
+    height: 200,
     width: "40%",
     backgroundColor: themes.colors.primary,
     color: themes.colors.primary,
@@ -51,7 +60,7 @@ const styles = StyleSheet.create({
   },
   svg: {
     position: "relative",
-    left: 90,
-    top: -20,
+    left: 80,
+    top: -15,
   },
 });
