@@ -11,7 +11,7 @@ export const Data = () => {
         title: "Confirmed",
         number: result.total.confirmed,
         Location: Confirmed,
-        color: "#6c757d",
+        color: "#ff073a",
       },
       {
         id: "2",
@@ -34,7 +34,7 @@ export const Data = () => {
         title: "Deceased",
         number: result.total.deceased,
         Location: Death,
-        color: "#ff073a",
+        color: "#6c757d",
       },
     ];
   } else {
@@ -44,7 +44,7 @@ export const Data = () => {
         title: "Confirmed",
         number: 0,
         Location: Confirmed,
-        color: "#6c757d",
+        color: "#ff073a",
       },
       {
         id: "2",
@@ -65,7 +65,7 @@ export const Data = () => {
         title: "Deceased",
         number: 0,
         Location: Death,
-        color: "#ff073a",
+        color: "#6c757d",
       },
     ];
   }

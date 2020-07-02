@@ -1,22 +1,24 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import ToggleButton from "react-native-toggle-element";
-import SvgUri from "expo-svg-uri";
 
-export default function Toggle(props) {
+import Sun from "../assets/sun.svg";
+import Moon from "../assets/moon.svg";
+import { Themecontext } from "./themecontext";
+import Theme from "./themes";
+
+export default function Toggle() {
+  const [swit, setSwit] = useState(false);
+  const { setThemep } = useContext(Themecontext);
+
   return (
     <ToggleButton
-      value={props.swit}
-      onToggle={(newState) => props.setswit(newState)}
-      thumbActiveComponent={
-        <SvgUri width="16" height="16" source={require("../assets/sun.svg")} />
-      }
-      thumbInActiveComponent={
-        <SvgUri
-          width="15.5"
-          height="15.5"
-          source={require("../assets/moon.svg")}
-        />
-      }
+      value={swit}
+      onToggle={(newState) => {
+        setSwit(newState);
+        swit ? setThemep(Theme.color.light) : setThemep(Theme.color.dark);
+      }}
+      thumbActiveComponent={<Sun width="16" height="16" />}
+      thumbInActiveComponent={<Moon width="15.5" height="15.5" />}
       thumbButton={{
         height: 25,
         width: 25,

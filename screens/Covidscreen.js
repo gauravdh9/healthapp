@@ -1,6 +1,14 @@
 import React, { useEffect } from "react";
 
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  ScrollView,
+  ScrollViewComponent,
+} from "react-native";
+
 import themes from "../components/themes";
 import Screen from "../components/Screen";
 import List from "../components/List";
@@ -16,6 +24,7 @@ export default function Covidscreen() {
       </View>
       <View style={styles.info}>
         <FlatList
+          contentContainerStyle={{ flexGrow: 0.1 }}
           disableVirtualization
           data={data}
           keyExtractor={(item) => item.id.toString()}
@@ -30,6 +39,7 @@ export default function Covidscreen() {
 const styles = StyleSheet.create({
   vector: {
     height: "30%",
+
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: themes.colors.accent,

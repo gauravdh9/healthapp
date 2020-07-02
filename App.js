@@ -5,5 +5,9 @@ import * as shape from "d3-shape";
 import Covidscreen from "./screens/Covidscreen";
 
 export default function App() {
-  return <Covidscreen />;
+  return (
+    <>
+      <Covidscreen />
+    </>
+  );
 }

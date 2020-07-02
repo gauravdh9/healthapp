@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   container: {
     alignItems: "flex-start",
-    height: 200,
+    height: 170,
     width: "40%",
     backgroundColor: themes.colors.primary,
     color: themes.colors.primary,
