@@ -1,4 +1,4 @@
-export default Theme = {
+export default Themes = {
   colors: {
     light: {
       infocard: {

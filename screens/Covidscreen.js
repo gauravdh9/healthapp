@@ -1,25 +1,23 @@
-import React, { useEffect } from "react";
-
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  ScrollView,
-  ScrollViewComponent,
-} from "react-native";
+import React, { useContext } from "react";
+import { StyleSheet, View, FlatList } from "react-native";
 
 import themes from "../components/themes";
 import Screen from "../components/Screen";
 import List from "../components/List";
 import { Data } from "../components/Data";
 import Virus from "../assets/virus.svg";
+import Toggle from "../components/Toggle";
+import { ThemeContext } from "../components/Themecontext";
 
 export default function Covidscreen() {
+  const { Theme } = useContext(ThemeContext);
   const data = Data();
   return (
     <Screen>
       <View style={styles.vector}>
+        <View style={{ position: "relative", margin: 20, right: 160 }}>
+          <Toggle />
+        </View>
         <Virus width="120" height="120" />
       </View>
       <View style={styles.info}>
@@ -39,11 +37,10 @@ export default function Covidscreen() {
 const styles = StyleSheet.create({
   vector: {
     height: "30%",
-
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
-    backgroundColor: themes.colors.accent,
     position: "relative",
+    backgroundColor: "white",
   },
   info: {
     height: "80%",

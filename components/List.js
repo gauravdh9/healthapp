@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 import { CountUp } from "use-count-up";
 
 import themes from "./themes";
-import Lottie from "./Lottie";
 import Minigraph from "./minigraph";
 
 export default function List({ title, number, Location, color }) {
@@ -11,15 +10,10 @@ export default function List({ title, number, Location, color }) {
     <View style={styles.container}>
       <View style={styles.view}>
         <Text style={styles.name}>{title}</Text>
-        {number ? (
-          <Text style={{ color }}>
-            <CountUp isCounting end={number} duration={2} />
-          </Text>
-        ) : (
-          <Lottie />
-        )}
-        <Minigraph type={title} color={color}></Minigraph>
-
+        <Text style={{ color, position: "relative", top: 10 }}>
+          <CountUp isCounting end={number} duration={2} />
+        </Text>
+        <Minigraph type={title} color={color} />
         <Location style={styles.svg} width={55} height={55} />
       </View>
     </View>
@@ -60,7 +54,7 @@ const styles = StyleSheet.create({
   },
   svg: {
     position: "relative",
-    left: 80,
+    left: 90,
     top: -15,
   },
 });
