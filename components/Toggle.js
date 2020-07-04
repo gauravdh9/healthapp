@@ -3,13 +3,12 @@ import ToggleButton from "react-native-toggle-element";
 
 import Sun from "../assets/sun.svg";
 import Moon from "../assets/moon.svg";
-import { ThemeContext } from "./Themecontext";
+import { useTheme, ThemeProvider } from "styled-components";
 import Themes from "./Themecopy";
 
 export default function Toggle() {
+  const { setTheme } = useTheme(ThemeProvider);
   const [swit, setSwit] = useState(false);
-  const { setTheme } = useContext(ThemeContext);
-
   return (
     <ToggleButton
       value={swit}
@@ -27,7 +26,7 @@ export default function Toggle() {
         activeBackgroundColor: "#9ee3fb",
         inActiveBackgroundColor: "#3c4145",
         borderActiveColor: "#86c3d7",
-        borderInActiveColor: "white",
+        borderInActiveColor: "#333",
         borderWidth: 3,
         width: 50,
         height: 25,

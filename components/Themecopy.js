@@ -3,12 +3,12 @@ export default Themes = {
     light: {
       infocard: {
         Cbackground: "white",
-        text: "black",
+        text: "#0038",
         shadow: "black",
       },
 
       covidscreen: {
-        vector: "#0b212f",
+        vector: "#f2eaec",
         info: "#f6f6f6",
       },
 
@@ -28,7 +28,7 @@ export default Themes = {
       },
 
       covidscreen: {
-        vector: "#0b212f",
+        vector: "#1e1e30",
         info: "#161625",
       },
       primary: "",
