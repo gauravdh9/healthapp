@@ -17,6 +17,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.0.tar.gz",
     "react-native-animated-number": "^1.1.1",
     "react-native-appearance": "^0.3.4",
+    "react-native-chart-kit": "^6.2.2",
     "react-native-responsive-linechart": "^2.2.0",
     "react-native-svg": "^12.1.0",
     "react-native-svg-charts": "^5.4.0",

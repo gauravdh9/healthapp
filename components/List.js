@@ -4,6 +4,7 @@ import { CountUp } from "use-count-up";
 import styled from "styled-components";
 import themes from "./themes";
 import Themes from "./Themecopy";
+
 import Minigraph from "./minigraph";
 
 const Title = styled.Text`
@@ -26,7 +27,7 @@ export default function List({ title, number, Location, color }) {
     <Container style={styles.shadow}>
       <View style={styles.view}>
         <Title color={color}>{title}</Title>
-        <Text style={{ color, position: "relative", top: 10 }}>
+        <Text style={{ color, position: "relative", top: 10, width: 100 }}>
           <CountUp isCounting end={number} duration={2} />
         </Text>
         <Minigraph type={title} color={color} />

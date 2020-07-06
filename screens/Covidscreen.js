@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
-import { ScrollView, View, FlatList } from "react-native";
+import { View, FlatList } from "react-native";
 
-import themes from "../components/themes";
 import Screen from "../components/Screen";
 import List from "../components/List";
 import { Data } from "../components/Data";
@@ -17,7 +16,7 @@ const Styledview = styled.View`
   background-color: white;
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
 `;
-const Info = styled.ScrollView`
+const Info = styled.View`
   height: 80%;
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
   border-radius: 25px;
@@ -35,13 +34,6 @@ export default function Covidscreen() {
         <Virus width="120" height="120" />
       </Styledview>
       <Info>
-        <FlatList
-          contentContainerStyle={{ flexGrow: 1 }}
-          data={data}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => <List {...item} />}
-          numColumns={2}
-        />
         <FlatList
           contentContainerStyle={{ flexGrow: 1 }}
           data={data}

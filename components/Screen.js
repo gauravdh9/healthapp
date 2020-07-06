@@ -1,22 +1,22 @@
 import React from "react";
 import Constants from "expo-constants";
 import { StyleSheet, SafeAreaView, View, StatusBar } from "react-native";
+import styled from "styled-components";
+
+const Safe = styled.SafeAreaView`
+  padding-top: ${Constants.statusBarHeight}px;
+  flex: 1;
+  background: ${({ theme }) => theme.Theme.covidscreen.vector};
+`;
 
 function Screen({ children, style }) {
   return (
     <>
-      <SafeAreaView style={[styles.screen, style]}>
+      <Safe style={style}>
         <View style={style}>{children}</View>
-      </SafeAreaView>
+      </Safe>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  screen: {
-    paddingTop: Constants.statusBarHeight,
-    flex: 1,
-  },
-});
 
 export default Screen;

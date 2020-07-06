@@ -17,36 +17,21 @@ export const useApi = () => {
   };
 
   const getgraph = () => {
-    var Confirmed = [];
-    var Recovered = [];
-    var Deceased = [];
-    var Active = [];
-    fetch("https://api.covid19india.org/states_daily.json")
+    fetch("https://healthx-api.herokuapp.com/getgraph")
       .then((res) => res.json())
       .then((data) => {
-        data.states_daily.map((item, index) => {
-          if (item.status === "Confirmed") {
-            Confirmed.push(item.dl / 100);
-          } else if (item.status === "Recovered") {
-            Recovered.push(item.dl / 100);
-          } else if (item.status === "Deceased") {
-            Deceased.push(item.dl / 100);
-          }
+        setDailylist({
+          Confirmed: data.Confirmed,
+          Recovered: data.Recovered,
+          Deceased: data.Deceased,
+          Active: data.Active,
         });
-        for (let i = 0; i < Confirmed.length; i++) {
-          Active.push(
-            (Confirmed[i] * 100 - (Recovered[i] * 100 + Deceased[i] * 100)) /
-              100
-          );
-        }
-
-        setDailylist({ Confirmed, Recovered, Deceased, Active });
       });
   };
 
   useEffect(() => {
-    getdata();
     getgraph();
+    getdata();
   }, []);
   return { result, dailylist };
 };
