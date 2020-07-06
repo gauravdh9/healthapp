@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { View, FlatList } from "react-native";
+import Graph from "../components/Graph";
 
 import Screen from "../components/Screen";
 import List from "../components/List";
-import { Data } from "../components/Data";
+import { Data } from "../components/Data copy";
 import Virus from "../assets/virus.svg";
 import Toggle from "../components/Toggle";
 import styled from "styled-components/native";
@@ -40,7 +41,13 @@ export default function Covidscreen() {
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => <List {...item} />}
           numColumns={2}
+          getItemLayout={(data, index) => ({
+            length: 170,
+            offset: 170 * index,
+            index,
+          })}
         />
+        {/* <Graph /> */}
       </Info>
     </Screen>
   );

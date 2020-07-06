@@ -4,6 +4,7 @@ import { CountUp } from "use-count-up";
 import styled from "styled-components";
 import themes from "./themes";
 import Themes from "./Themecopy";
+import Graph from "./Graph";
 
 import Minigraph from "./minigraph";
 
@@ -22,15 +23,24 @@ const Container = styled.View`
   overflow: hidden;
   position: relative;
 `;
-export default function List({ title, number, Location, color }) {
+export default function List({ title, number, Location, color, list }) {
   return (
     <Container style={styles.shadow}>
       <View style={styles.view}>
         <Title color={color}>{title}</Title>
-        <Text style={{ color, position: "relative", top: 10, width: 100 }}>
-          <CountUp isCounting end={number} duration={2} />
+        <Text
+          style={{
+            color,
+            position: "relative",
+            width: 100,
+            marginTop: 10,
+          }}
+        >
+          <CountUp isCounting end={number} duration={3} />
         </Text>
-        <Minigraph type={title} color={color} />
+        <Graph data={list} color={color} />
+        {/* <Minigraph type={title} color={color} /> */}
+
         <Location style={styles.svg} width={55} height={55} />
       </View>
     </Container>
@@ -50,7 +60,7 @@ const styles = StyleSheet.create({
   svg: {
     position: "relative",
     left: 90,
-    top: -15,
+    top: 0,
   },
   shadow: {
     shadowColor: "#000",

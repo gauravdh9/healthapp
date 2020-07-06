@@ -2,12 +2,7 @@ const { useState, useEffect } = require("react");
 
 export const useApi = () => {
   const [result, setResult] = useState();
-  const [dailylist, setDailylist] = useState({
-    Confirmed: [0, 0, 0, 10, 10, 10],
-    Recovered: [0, 0, 0, 10, 10, 10],
-    Deceased: [0, 0, 0, 10, 10, 10],
-    Active: [0, 0, 0, 10, 10, 10],
-  });
+  const [dailylist, setDailylist] = useState();
   const getdata = () => {
     fetch("https://api.covid19india.org/v3/data.json")
       .then((res) => res.json())
