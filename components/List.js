@@ -1,11 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { CountUp } from "use-count-up";
 import styled from "styled-components";
-import Minigraph from "./minigraph";
 // import Graph from "./Graph";
-import { useApi } from "../hooks/useApi";
-
+import Info from "./Info";
 const Title = styled.Text`
   flex-grow: 1;
   font-size: 20px;
@@ -25,25 +22,11 @@ const Container = styled.View`
   padding: 4%;
 `;
 export default function List({ title, Location, color }) {
-  const { result } = useApi();
   return (
     <Container style={styles.shadow}>
       <Title>{title}</Title>
 
-      <Text
-        style={{
-          position: "relative",
-
-          color: color,
-          marginTop: 10,
-        }}
-      >
-        <CountUp isCounting end={result ? result[0][title] : 0} duration={3} />
-      </Text>
-      <Minigraph
-        data={result ? result[1][title] : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
-        color={color}
-      />
+      <Info title={title} color={color} />
 
       <Location style={styles.svg} width={50} height={50} />
     </Container>

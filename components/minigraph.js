@@ -5,6 +5,7 @@ import * as shape from "d3-shape";
 export default function Minigraph({ data, color }) {
   return (
     <AreaChart
+      animated={{ usenativedriver: true }}
       style={{ height: 50, width: "100%" }}
       data={data}
       svg={{ fill: `${color}20` }}
@@ -14,6 +15,7 @@ export default function Minigraph({ data, color }) {
       contentInset={{ top: 5, bottom: 1, right: -1 }}
     >
       <LineChart
+        animated={{ usenativedriver: true }}
         style={{ height: 50, width: "100%" }}
         data={data}
         svg={{ stroke: color }}
