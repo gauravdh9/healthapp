@@ -1,25 +1,23 @@
-import { LineChart, Grid } from "react-native-svg-charts";
-import React, { useState } from "react";
+import { AreaChart, Path } from "react-native-svg-charts";
+import React from "react";
 import * as shape from "d3-shape";
-import { useApi } from "../hooks/useApi";
 
-export default function Minigraph({ type, color }) {
-  const { dailylist } = useApi();
-  const every_nth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
+export default function Minigraph({ data, color }) {
+  const Line = ({ line }) => <Path d={line} stroke={color} fill={"none"} />;
 
-  if (dailylist) {
-    return (
-      <LineChart
-        style={{ height: 70 }}
-        data={every_nth(dailylist[type], 3)}
-        svg={{ stroke: color }}
-        animate={true}
-        animationDuration={650}
-        curve={shape.linear}
-        contentInset={{ top: 20, bottom: 20 }}
-      />
-    );
-  } else {
-    return null;
-  }
+  return (
+    <AreaChart
+      style={{ height: 50 }}
+      data={Array.from(data, (item) => {
+        return item.y;
+      })}
+      svg={{ fill: `${color}20` }}
+      animate={true}
+      animationDuration={2000}
+      curve={shape.curveLinear}
+      contentInset={{ top: 5, bottom: 1, right: -1 }}
+    >
+      <Line />
+    </AreaChart>
+  );
 }

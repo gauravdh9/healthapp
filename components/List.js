@@ -2,11 +2,9 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { CountUp } from "use-count-up";
 import styled from "styled-components";
-import themes from "./themes";
-import Themes from "./Themecopy";
-import Graph from "./Graph";
-
 import Minigraph from "./minigraph";
+// import Graph from "./Graph";
+import { useApi } from "../hooks/useApi";
 
 const Title = styled.Text`
   font-size: 20px;
@@ -23,7 +21,8 @@ const Container = styled.View`
   overflow: hidden;
   position: relative;
 `;
-export default function List({ title, number, Location, color, list }) {
+export default function List({ title, Location, color }) {
+  const { result } = useApi();
   return (
     <Container style={styles.shadow}>
       <View style={styles.view}>
@@ -36,10 +35,26 @@ export default function List({ title, number, Location, color, list }) {
             marginTop: 10,
           }}
         >
-          <CountUp isCounting end={number} duration={3} />
+          <CountUp
+            isCounting
+            end={result ? result[0][title] : 0}
+            duration={3}
+          />
         </Text>
-        <Graph data={list} color={color} />
-        {/* <Minigraph type={title} color={color} /> */}
+        <Minigraph
+          data={
+            result
+              ? result[1][title]
+              : [
+                  { x: 0, y: 0 },
+                  { x: 0, y: 0 },
+                  { x: 0, y: 0 },
+                  { x: 0, y: 0 },
+                  { x: 0, y: 0 },
+                ]
+          }
+          color={color}
+        />
 
         <Location style={styles.svg} width={55} height={55} />
       </View>
@@ -48,10 +63,6 @@ export default function List({ title, number, Location, color, list }) {
 }
 
 const styles = StyleSheet.create({
-  add: {
-    color: themes.colors.fill,
-    fontSize: 15,
-  },
   view: {
     flex: 3,
     flexDirection: "column",
@@ -63,14 +74,6 @@ const styles = StyleSheet.create({
     top: 0,
   },
   shadow: {
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.29,
-    shadowRadius: 4.65,
-
     elevation: 10,
   },
 });
