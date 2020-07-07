@@ -7,6 +7,7 @@ import Minigraph from "./minigraph";
 import { useApi } from "../hooks/useApi";
 
 const Title = styled.Text`
+  flex-grow: 1;
   font-size: 20px;
   color: ${({ theme }) => theme.Theme.infocard.text};
   font-weight: bold;
@@ -20,58 +21,42 @@ const Container = styled.View`
   border-radius: 20px;
   overflow: hidden;
   position: relative;
+  flex-direction: column;
+  padding: 4%;
 `;
 export default function List({ title, Location, color }) {
   const { result } = useApi();
   return (
     <Container style={styles.shadow}>
-      <View style={styles.view}>
-        <Title color={color}>{title}</Title>
-        <Text
-          style={{
-            color,
-            position: "relative",
-            width: 100,
-            marginTop: 10,
-          }}
-        >
-          <CountUp
-            isCounting
-            end={result ? result[0][title] : 0}
-            duration={3}
-          />
-        </Text>
-        <Minigraph
-          data={
-            result
-              ? result[1][title]
-              : [
-                  { x: 0, y: 0 },
-                  { x: 0, y: 0 },
-                  { x: 0, y: 0 },
-                  { x: 0, y: 0 },
-                  { x: 0, y: 0 },
-                ]
-          }
-          color={color}
-        />
+      <Title>{title}</Title>
 
-        <Location style={styles.svg} width={55} height={55} />
-      </View>
+      <Text
+        style={{
+          position: "relative",
+
+          color: color,
+          marginTop: 10,
+        }}
+      >
+        <CountUp isCounting end={result ? result[0][title] : 0} duration={3} />
+      </Text>
+      <Minigraph
+        data={result ? result[1][title] : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
+        color={color}
+      />
+
+      <Location style={styles.svg} width={50} height={50} />
     </Container>
   );
 }
 
 const styles = StyleSheet.create({
   view: {
-    flex: 3,
     flexDirection: "column",
-    margin: 15,
   },
   svg: {
-    position: "relative",
-    left: 90,
     top: 0,
+    left: "75%",
   },
   shadow: {
     elevation: 10,

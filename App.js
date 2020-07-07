@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components";
 
 import Graph from "./components/Graph";
 export default function App() {
-  const [Theme, setTheme] = useState(Themes.colors.light);
+  const [Theme, setTheme] = useState(Themes.colors.dark);
   return (
     <ThemeProvider theme={{ Theme, setTheme }}>
       <Covidscreen />
