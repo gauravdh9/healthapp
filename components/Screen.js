@@ -1,6 +1,6 @@
 import React from "react";
 import Constants from "expo-constants";
-import { StyleSheet, SafeAreaView, View, StatusBar } from "react-native";
+import { View } from "react-native";
 import styled from "styled-components";
 
 const Safe = styled.SafeAreaView`
