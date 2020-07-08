@@ -6,7 +6,7 @@ import Info from "./Info";
 const Title = styled.Text`
   flex-grow: 1;
   font-size: 20px;
-  color: ${({ theme }) => theme.Theme.infocard.text};
+  color: ${({ theme }) => theme.Theme.text.subheading};
   font-weight: bold;
 `;
 const Container = styled.View`
@@ -21,7 +21,7 @@ const Container = styled.View`
   flex-direction: column;
   padding: 4%;
 `;
-export default function List({ title, Location, color }) {
+export default function InfoGraphics({ title, Location, color }) {
   return (
     <Container style={styles.shadow}>
       <Title>{title}</Title>

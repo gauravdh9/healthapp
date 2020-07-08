@@ -5,6 +5,7 @@ import { useTheme, ThemeProvider } from "styled-components";
 import Sun from "../assets/sun.svg";
 import Moon from "../assets/moon.svg";
 import Themes from "./Themecopy";
+import { LinearGradient } from "react-native-svg";
 
 export default function Toggle() {
   const { setTheme } = useTheme(ThemeProvider);

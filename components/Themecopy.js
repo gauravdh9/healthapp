@@ -2,8 +2,7 @@ export default Themes = {
   colors: {
     light: {
       infocard: {
-        Cbackground: "white",
-        text: "#0038",
+        Cbackground: "#f0f0f0",
         shadow: "black",
       },
 
@@ -11,33 +10,25 @@ export default Themes = {
         vector: "#f2eaec",
         info: "#f6f6f6",
       },
-
-      primary: "white",
-      secondary: "black",
-      fill: "#88aabd",
-      arrow: "#334d5c",
-      cream: "#f6f6f6",
-      Card: "#EDF2F7",
-      accent: "#0b212f",
+      text: {
+        heading: "#222831",
+        subheading: "#494949",
+      },
     },
     dark: {
       infocard: {
         Cbackground: "#1e1e30",
-        text: "white",
         shadow: "black",
       },
 
       covidscreen: {
-        vector: "#1e1e30",
-        info: "#161625",
+        vector: "#313250",
+        info: "#12121d",
       },
-      primary: "",
-      secondary: "black",
-      fill: "#88aabd",
-      arrow: "#334d5c",
-      cream: "#f6f6f6",
-      Card: "#EDF2F7",
-      accent: "#0b212f",
+      text: {
+        heading: "white",
+        subheading: "#f7f7f7",
+      },
     },
   },
 };
