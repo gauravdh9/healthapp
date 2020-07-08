@@ -1,4 +1,4 @@
-import { Confirmed, Rec, Active, Death } from "./Svg";
+import { Confirmed, Recovered, Deceased, Active } from "./Svg";
 
 export const Data = [
   {
@@ -16,13 +16,13 @@ export const Data = [
   {
     id: "3",
     title: "Recovered",
-    Location: Rec,
+    Location: Recovered,
     color: "#28a745",
   },
   {
     id: "4",
     title: "Deceased",
-    Location: Death,
+    Location: Deceased,
     color: "#6c757d",
   },
 ];

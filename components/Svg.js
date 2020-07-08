@@ -1,6 +1,6 @@
 import Confirmed from "../assets/confirmed.svg";
-import Rec from "../assets/recovered.svg";
+import Recovered from "../assets/recovered.svg";
 import Active from "../assets/active.svg";
-import Death from "../assets/deceased.svg";
+import Deceased from "../assets/deceased.svg";
 
-export { Confirmed, Rec, Active, Death };
+export default { Confirmed, Recovered, Active, Deceased };

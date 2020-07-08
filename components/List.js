@@ -1,7 +1,7 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import styled from "styled-components";
-// import Graph from "./Graph";
+
 import Info from "./Info";
 const Title = styled.Text`
   flex-grow: 1;

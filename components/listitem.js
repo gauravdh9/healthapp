@@ -1,9 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, SliderComponent } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import SvgUri from "expo-svg-uri";
-import themes from "./themes";
-import themes from "./themes";
-export default function Listitem(props) {
+
+
+function Listitem(props) {
   return (
     <>
       <View style={styles.container}>
@@ -77,3 +77,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+export default Listitem;

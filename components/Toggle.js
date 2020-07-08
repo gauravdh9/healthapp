@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import ToggleButton from "react-native-toggle-element";
+import { useTheme, ThemeProvider } from "styled-components";
 
 import Sun from "../assets/sun.svg";
 import Moon from "../assets/moon.svg";
-import { useTheme, ThemeProvider } from "styled-components";
 import Themes from "./Themecopy";
 
 export default function Toggle() {

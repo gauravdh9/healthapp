@@ -4,7 +4,7 @@ import { StyleSheet, View, FlatList } from "react-native";
 import Screen from "../components/Screen";
 import Listitem from "../components/listitem";
 import Listheader from "../components/listheader";
-import themes from "../components/themes";
+import themes from "../components/Themecopy";
 import Toggle from "../components/Toggle";
 
 export default function Hospitallist() {

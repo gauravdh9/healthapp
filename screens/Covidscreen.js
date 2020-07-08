@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import { View, FlatList } from "react-native";
-import Graph from "../components/Graph";
 
 import Screen from "../components/Screen";
 import List from "../components/List";
@@ -10,6 +9,7 @@ import Toggle from "../components/Toggle";
 import styled from "styled-components/native";
 
 const Styledview = styled.View`
+  position: relative;
   height: 30%;
   justify-content: flex-start;
   align-items: center;
@@ -18,6 +18,7 @@ const Styledview = styled.View`
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
 `;
 const Info = styled.View`
+  position: relative;
   height: 80%;
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
   border-radius: 25px;
