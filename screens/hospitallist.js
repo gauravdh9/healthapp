@@ -1,69 +1,41 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, FlatList } from "react-native";
-
+import { StyleSheet, Text, View, FlatList } from "react-native";
+import styled from "styled-components";
 import Screen from "../components/Screen";
 import Listitem from "../components/listitem";
 import Listheader from "../components/listheader";
-import themes from "../components/Themecopy";
+import { useApi } from "../hooks/useApi";
 import Toggle from "../components/Toggle";
 
-export default function Hospitallist() {
-  const [data, setdata] = useState([]);
-  const [loading, setloading] = useState(true);
-  const [swit, setswit] = useState(false);
+const Container = styled(Screen)`
+  flex: 1;
+  background-color: #313250;
+  font-size: 200px;
+`;
+const List = styled(FlatList)`
+  flex: 1;
+  position: relative;
+  padding-top: 20px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  background-color: ${({ theme }) => theme.Theme.covidscreen.info};
+`;
 
-  const fetchdata = () => {
-    fetch("https://6dff261af2c1.ngrok.io/hospitaldata")
-      .then((res) => res.json())
-      .then((result) => {
-        setdata(result);
-        setloading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+export default function Hospitallist() {
+  const { hospital, hospitaldata } = useApi();
   useEffect(() => {
-    fetchdata();
+    hospitaldata();
   }, []);
 
   return (
-    <Screen style={styles.container}>
-      <View style={{ position: "relative" }}>
-        <Toggle swit={swit} setswit={setswit} />
-      </View>
-      <FlatList
-        style={styles.list}
+    <Container>
+      <Listheader />
+      <List
         disableVirtualization
-        data={data}
+        data={hospital}
         keyExtractor={(item) => item._id.toString()}
         renderItem={({ item }) => <Listitem {...item} />}
-        ListHeaderComponent={
-          <Listheader img={require("../assets/hospitalpng.png")} />
-        }
-        ListHeaderComponentStyle={{ height: 100, marginBottom: 100 }}
-        refreshing={loading}
-        onRefresh={() => {
-          fetchdata();
-        }}
       />
-    </Screen>
+    </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: themes.colors.primary,
-    fontSize: 200,
-  },
-  list: {
-    flex: 1,
-    position: "relative",
-    backgroundColor: themes.colors.cream,
-  },
-  toggle: {
-    position: "absolute",
-    top: 50,
-  },
-});

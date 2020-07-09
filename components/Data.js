@@ -37,9 +37,9 @@ export const Data = [
     },
   ],
   [
-    { id: "1", title: "Hospital", Location: Hospital },
-    { id: "2", title: "Testing", Location: Testing },
-    { id: "3", title: "Symptom", Location: Symptom },
-    { id: "4", title: "Prevention", Location: Prevention },
+    { id: "1", title: "Hospitals", Location: Hospital, color: "#ec5e5f" },
+    { id: "2", title: "Testing Labs", Location: Testing, color: "#007bff" },
+    { id: "3", title: "Symptoms", Location: Symptom, color: "#28a745" },
+    { id: "4", title: "Preventions", Location: Prevention, color: "#6c757d" },
   ],
 ];

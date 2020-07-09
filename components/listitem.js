@@ -1,49 +1,79 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import SvgUri from "expo-svg-uri";
+import { Hospitals, Next } from "./Svg";
+import styled from "styled-components";
 
+const Arrow = styled.View`
+  flex: 1;
+  height: 100%;
+  align-items: center;
+  background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
+  position: relative;
+  justify-content: center;
+`;
+const Container = styled.View`
+  position: relative;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  height: 90px;
+  background-color: ${({ theme }) => theme.Theme.infocard.Cbackground};
+  color: blue;
+  margin: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+`;
+const Details = styled.View`
+  flex: 3;
+  flex-direction: column;
+  margin: 15px;
+`;
+const Address = styled.Text`
+  color: ${({ theme }) => theme.Theme.text.heading};
+  font-weight: 400;
+  font-size: 15px;
+`;
 
-function Listitem(props) {
+const Name = styled.Text`
+  color: ${({ theme }) => theme.Theme.text.subheading};
+  font-weight: bold;
+  font-size: 20px;
+`;
+const Nex = styled(Next).attrs(({ theme }) => ({
+  fill: theme.Theme.text.heading,
+}))``;
+
+const Pinto = styled(Hospitals).attrs(({ theme }) => ({
+  fill: theme.Theme.text.heading,
+  width: 60,
+  height: 60,
+}))`
+  flex: 1;
+  margin-left: 15px;
+`;
+
+function Listitem({ number, title }) {
   return (
     <>
-      <View style={styles.container}>
-        <SvgUri
-          width="60"
-          height="60"
-          style={{ flex: 1, marginLeft: 15 }}
-          source={require("../assets/pin2.svg")}
-          fill="#88aabd"
-        />
-
-        <View style={styles.view}>
-          <Text style={styles.name}>
-            {props.title.replace(/ *\([^)]*\) */g, " ")}
-          </Text>
-          <Text style={styles.add}>{props.number}</Text>
-        </View>
-        <View style={styles.arrow}>
-          <SvgUri
-            width="20"
-            height="20"
-            source={require("../assets/next.svg")}
-          />
-        </View>
-      </View>
+      <Container style={styles.container}>
+        <Pinto />
+        <Details>
+          <Name style={styles.name}>
+            {title.replace(/ *\([^)]*\) */g, " ")}
+          </Name>
+          <Address style={styles.add}>{number}</Address>
+        </Details>
+        <Arrow>
+          <Nex width="20" height="20" />
+        </Arrow>
+      </Container>
     </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "flex-start",
-    flexDirection: "row",
-    alignItems: "center",
-    height: 90,
-    backgroundColor: themes.colors.primary,
-    color: themes.colors.primary,
-    margin: 20,
-    borderRadius: 20,
-    shadowColor: themes.colors.secondary,
+    shadowColor: "black",
     shadowOffset: {
       width: 0,
       height: 8,
@@ -51,30 +81,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.44,
     shadowRadius: 10.32,
     elevation: 16,
-    overflow: "hidden",
-    position: "relative",
-  },
-  name: {
-    fontSize: 20,
-  },
-  add: {
-    color: themes.colors.fill,
-    fontSize: 15,
-  },
-  view: {
-    flex: 3,
-    flexDirection: "column",
-    margin: 15,
-  },
-  arrow: {
-    borderLeftWidth: 1,
-    flex: 1,
-    borderColor: themes.colors.fill,
-    height: "100%",
-    alignItems: "center",
-    backgroundColor: themes.colors.arrow,
-    position: "relative",
-    justifyContent: "center",
   },
 });
 

@@ -1,28 +1,22 @@
 import React from "react";
 import { StyleSheet, Image, View } from "react-native";
+import { Hospitalheader } from "./Svg";
+// import themes from "../components/themes";
 
-import themes from "../components/themes";
-
-export default function Listheader({ img }) {
+export default function Listheader() {
   return (
     <View style={styles.view}>
-      <Image style={styles.image} source={img} />
+      <Hospitalheader fill="white" width={150} height={150} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  image: {
-    position: "relative",
-    top: 60,
-    height: 160,
-    width: 160,
-  },
   view: {
     position: "relative",
     justifyContent: "center",
+    backgroundColor: "#313250",
     alignItems: "center",
-    backgroundColor: themes.colors.light.accent,
-    marginBottom: 50,
+    height: "25%",
   },
 });
