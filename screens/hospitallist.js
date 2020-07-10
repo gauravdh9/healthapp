@@ -6,6 +6,7 @@ import Listitem from "../components/listitem";
 import Listheader from "../components/listheader";
 import { useApi } from "../hooks/useApi";
 import Toggle from "../components/Toggle";
+import { AfterInteractions } from "react-native-interactions";
 
 const Container = styled(Screen)`
   flex: 1;
@@ -26,16 +27,24 @@ export default function Hospitallist() {
   useEffect(() => {
     hospitaldata();
   }, []);
-
+  var ITEM_HEIGHT = 90;
   return (
-    <Container>
-      <Listheader />
-      <List
-        disableVirtualization
-        data={hospital}
-        keyExtractor={(item) => item._id.toString()}
-        renderItem={({ item }) => <Listitem {...item} />}
-      />
-    </Container>
+    <AfterInteractions>
+      <Container>
+        <Listheader />
+        <List
+          disableVirtualization
+          data={hospital}
+          keyExtractor={(item) => item._id.toString()}
+          renderItem={({ item }) => <Listitem {...item} />}
+          initialNumToRender={5}
+          getItemLayout={(data, index) => ({
+            length: ITEM_HEIGHT,
+            offset: ITEM_HEIGHT * index,
+            index,
+          })}
+        />
+      </Container>
+    </AfterInteractions>
   );
 }

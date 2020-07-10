@@ -1,6 +1,7 @@
 import React from "react";
 import { View, FlatList, Text } from "react-native";
-
+import { AfterInteractions } from "react-native-interactions";
+import ContentLoader from "react-native-easy-content-loader";
 import Screen from "../components/Screen";
 import InfoGraphics from "../components/InfoGraphics";
 import ListButton from "../components/ListButton";
@@ -40,52 +41,56 @@ const HeadingText2 = styled.Text`
 `;
 export default function Covidscreen({ navigation }) {
   return (
-    <Screen>
-      <Styledview>
-        <View style={{ position: "relative", margin: 20 }}>
-          <Toggle />
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            width: "100%",
-            justifyContent: "space-between",
-            alignItems: "center",
-            paddingRight: 20,
-            paddingLeft: 20,
-          }}
-        >
-          <View>
-            <HeadingText>Stay Home</HeadingText>
-            <HeadingText2>Stay Safe</HeadingText2>
+    <AfterInteractions
+      placeholder={<ContentLoader animationDuration={5000} loading={true} />}
+    >
+      <Screen>
+        <Styledview>
+          <View style={{ position: "relative", margin: 20 }}>
+            <Toggle />
           </View>
+          <View
+            style={{
+              flexDirection: "row",
+              width: "100%",
+              justifyContent: "space-between",
+              alignItems: "center",
+              paddingRight: 20,
+              paddingLeft: 20,
+            }}
+          >
+            <View>
+              <HeadingText>Stay Home</HeadingText>
+              <HeadingText2>Stay Safe</HeadingText2>
+            </View>
 
-          <Virus height="150" width="150" />
-        </View>
-      </Styledview>
-      <Info>
-        <View style={{ top: -75 }}>
-          <FlatList
-            contentContainerStyle={{ flexGrow: 1 }}
-            data={Data[0]}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => <InfoGraphics {...item} />}
-            numColumns={2}
-          />
-          <FlatList
-            contentContainerStyle={{ flexGrow: 1 }}
-            data={Data[1]}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-              <ListButton
-                {...item}
-                onpress={() => navigation.navigate("hospital")}
-              />
-            )}
-            numColumns={2}
-          />
-        </View>
-      </Info>
-    </Screen>
+            <Virus height="150" width="150" />
+          </View>
+        </Styledview>
+        <Info>
+          <View style={{ top: -75 }}>
+            <FlatList
+              contentContainerStyle={{ flexGrow: 1 }}
+              data={Data[0]}
+              keyExtractor={(item) => item.id.toString()}
+              renderItem={({ item }) => <InfoGraphics {...item} />}
+              numColumns={2}
+            />
+            <FlatList
+              contentContainerStyle={{ flexGrow: 1 }}
+              data={Data[1]}
+              keyExtractor={(item) => item.id.toString()}
+              renderItem={({ item }) => (
+                <ListButton
+                  {...item}
+                  onpress={() => navigation.navigate("hospital")}
+                />
+              )}
+              numColumns={2}
+            />
+          </View>
+        </Info>
+      </Screen>
+    </AfterInteractions>
   );
 }
