@@ -7,7 +7,7 @@ export default Themes = {
       },
 
       covidscreen: {
-        vector: "#f2eaec",
+        vector: "#f3e1e1",
         info: "#f6f6f6",
       },
       text: {

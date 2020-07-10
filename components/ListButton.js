@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import styled from "styled-components";
 
 const Title = styled.Text`
@@ -7,7 +7,7 @@ const Title = styled.Text`
   color: ${({ theme }) => theme.Theme.text.subheading};
   font-weight: bold;
 `;
-const Container = styled.View`
+const Container = styled.TouchableOpacity`
   align-items: center;
   justify-content: flex-start;
   height: 50px;
@@ -25,7 +25,7 @@ const SvgView = styled.View`
   justify-content: center;
 `;
 
-export default function ListButton({ Location, title, color }) {
+export default function ListButton({ Location, title, color, onpress }) {
   const Locat = styled(Location).attrs(({ theme }) => ({
     fill: color,
     height: 25,
@@ -35,7 +35,7 @@ export default function ListButton({ Location, title, color }) {
   `;
 
   return (
-    <Container style={{ elevation: 3 }}>
+    <Container onPress={onpress} style={{ elevation: 3 }}>
       <SvgView>
         <Locat />
       </SvgView>

@@ -38,7 +38,7 @@ const HeadingText2 = styled.Text`
   font-weight: bold;
   color: ${({ theme }) => theme.Theme.text.heading};
 `;
-export default function Covidscreen() {
+export default function Covidscreen({ navigation }) {
   return (
     <Screen>
       <Styledview>
@@ -76,7 +76,12 @@ export default function Covidscreen() {
             contentContainerStyle={{ flexGrow: 1 }}
             data={Data[1]}
             keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => <ListButton {...item} />}
+            renderItem={({ item }) => (
+              <ListButton
+                {...item}
+                onpress={() => navigation.navigate("hospital")}
+              />
+            )}
             numColumns={2}
           />
         </View>
