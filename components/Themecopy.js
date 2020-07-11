@@ -14,6 +14,10 @@ export default Themes = {
         heading: "#222831",
         subheading: "#494949",
       },
+      tabBar: {
+        active: "#222831",
+        inactive: "#808080",
+      },
     },
     dark: {
       infocard: {
@@ -28,6 +32,10 @@ export default Themes = {
       text: {
         heading: "white",
         subheading: "#f7f7f7",
+      },
+      tabBar: {
+        active: "white",
+        inactive: "#808080",
       },
     },
   },

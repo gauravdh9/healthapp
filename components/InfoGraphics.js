@@ -20,6 +20,7 @@ const Container = styled.View`
   position: relative;
   flex-direction: column;
   padding: 4%;
+  border: 3px solid ${({ theme }) => theme.Theme.covidscreen.vector};
 `;
 export default function InfoGraphics({ title, Location, color }) {
   return (

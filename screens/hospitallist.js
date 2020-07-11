@@ -5,12 +5,11 @@ import Screen from "../components/Screen";
 import Listitem from "../components/listitem";
 import Listheader from "../components/listheader";
 import { useApi } from "../hooks/useApi";
-import Toggle from "../components/Toggle";
 import { AfterInteractions } from "react-native-interactions";
 
 const Container = styled(Screen)`
   flex: 1;
-  background-color: #313250;
+  background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
   font-size: 200px;
 `;
 const List = styled(FlatList)`

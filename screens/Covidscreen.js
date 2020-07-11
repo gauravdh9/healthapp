@@ -6,15 +6,15 @@ import Screen from "../components/Screen";
 import InfoGraphics from "../components/InfoGraphics";
 import ListButton from "../components/ListButton";
 import { Data } from "../components/Data";
-import Toggle from "../components/Toggle";
 import styled from "styled-components/native";
 import Virus from "../assets/virus2.svg";
 
 const Styledview = styled.View`
   position: relative;
-  height: 35%;
+  height: 40%;
   flex-grow: 1;
   justify-content: flex-start;
+  top: 20px;
   align-items: flex-start;
   position: relative;
   background-color: white;
@@ -22,7 +22,7 @@ const Styledview = styled.View`
 `;
 const Info = styled.View`
   position: relative;
-  height: 65%;
+  height: 60%;
   flex-grow: 1;
   justify-content: space-evenly;
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
@@ -46,9 +46,6 @@ export default function Covidscreen({ navigation }) {
     >
       <Screen>
         <Styledview>
-          <View style={{ position: "relative", margin: 20 }}>
-            <Toggle />
-          </View>
           <View
             style={{
               flexDirection: "row",
@@ -64,11 +61,11 @@ export default function Covidscreen({ navigation }) {
               <HeadingText2>Stay Safe</HeadingText2>
             </View>
 
-            <Virus height="150" width="150" />
+            <Virus height="170" width="170" />
           </View>
         </Styledview>
         <Info>
-          <View style={{ top: -75 }}>
+          <View style={{ top: -60 }}>
             <FlatList
               contentContainerStyle={{ flexGrow: 1 }}
               data={Data[0]}
