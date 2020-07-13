@@ -1,5 +1,13 @@
-import React from "react";
-import { View, FlatList, Text } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  FlatList,
+  Text,
+  TouchableWithoutFeedback,
+  Alert,
+  Button,
+  Modal,
+} from "react-native";
 import { AfterInteractions } from "react-native-interactions";
 import ContentLoader from "react-native-easy-content-loader";
 import Screen from "../components/Screen";
@@ -8,7 +16,8 @@ import ListButton from "../components/ListButton";
 import { Data } from "../components/Data";
 import styled from "styled-components/native";
 import Virus from "../assets/virus2.svg";
-
+import Hospitallist from "./Hospitallist";
+import Modaldata from "../components/Modaldata";
 const Styledview = styled.View`
   position: relative;
   height: 40%;
@@ -39,7 +48,9 @@ const HeadingText2 = styled.Text`
   font-weight: bold;
   color: ${({ theme }) => theme.Theme.text.heading};
 `;
+
 export default function Covidscreen({ navigation }) {
+  const [modalVisible, setmodalVisible] = useState(false);
   return (
     <AfterInteractions
       placeholder={<ContentLoader animationDuration={5000} loading={true} />}
@@ -78,10 +89,27 @@ export default function Covidscreen({ navigation }) {
               data={Data[1]}
               keyExtractor={(item) => item.id.toString()}
               renderItem={({ item }) => (
-                <ListButton
-                  {...item}
-                  onpress={() => navigation.navigate("hospital")}
-                />
+                <>
+                  <ListButton {...item} onpress={() => setmodalVisible(true)} />
+                  <Modal
+                    visible={modalVisible}
+                    animationType="slide"
+                    transparent={true}
+                  >
+                    <View
+                      style={{
+                        flex: 1,
+                        justifyContent: "flex-end",
+                        backgroundColor: "#00000011",
+                      }}
+                    >
+                      <Modaldata
+                        onpress={() => setmodalVisible(false)}
+                        style={{ justifyContent: "flex-end", margin: 0 }}
+                      />
+                    </View>
+                  </Modal>
+                </>
               )}
               numColumns={2}
             />

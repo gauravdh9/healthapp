@@ -18,11 +18,13 @@ const Container = styled.TouchableOpacity`
   position: relative;
   flex-direction: row;
   border-radius: 10px;
+  border: 3px solid ${({ theme }) => theme.Theme.covidscreen.vector};
 `;
 const SvgView = styled.View`
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
   height: 100%;
   justify-content: center;
+  border-radius: 10px;
 `;
 
 export default function ListButton({ Location, title, color, onpress }) {

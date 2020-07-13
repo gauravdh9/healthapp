@@ -12,6 +12,7 @@ import Hospitallist from "./screens/Hospitallist";
 import Hospital from "./screens/Hospital";
 import Add from "./screens/Add";
 import Hos from "./screens/Hos";
+import Screenstack from "./components/Screenstack";
 import MyTabBar from "./components/MyTabBar";
 enableScreens();
 
