@@ -16,6 +16,7 @@ export default function Info({ title, color }) {
           position: "relative",
           color: color,
           marginTop: 10,
+          fontFamily: "MyText",
         }}
       >
         <CountUp

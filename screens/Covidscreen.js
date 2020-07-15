@@ -16,10 +16,10 @@ import ListButton from "../components/ListButton";
 import { Data } from "../components/Data";
 import styled from "styled-components/native";
 import Virus from "../assets/virus2.svg";
-import Hospitallist from "./Hospitallist";
-import Modaldata from "../components/Modaldata";
+import ModalView from "../components/Modaldata";
 const Styledview = styled.View`
   position: relative;
+  font-family: Comfortaa-VariableFont_wght;
   height: 40%;
   flex-grow: 1;
   justify-content: flex-start;
@@ -39,14 +39,16 @@ const Info = styled.View`
   border-top-right-radius: 25px;
 `;
 const HeadingText = styled.Text`
-  font-size: 45px;
-  font-weight: bold;
+  font-size: 56px;
+
   color: ${({ theme }) => theme.Theme.text.heading};
+  font-family: MyText;
 `;
 const HeadingText2 = styled.Text`
   font-size: 30px;
-  font-weight: bold;
+  font-weight: 100;
   color: ${({ theme }) => theme.Theme.text.heading};
+  font-family: MyText;
 `;
 
 export default function Covidscreen({ navigation }) {
@@ -89,33 +91,17 @@ export default function Covidscreen({ navigation }) {
               data={Data[1]}
               keyExtractor={(item) => item.id.toString()}
               renderItem={({ item }) => (
-                <>
-                  <ListButton {...item} onpress={() => setmodalVisible(true)} />
-                  <Modal
-                    visible={modalVisible}
-                    animationType="slide"
-                    transparent={true}
-                  >
-                    <View
-                      style={{
-                        flex: 1,
-                        justifyContent: "flex-end",
-                        backgroundColor: "#00000011",
-                      }}
-                    >
-                      <Modaldata
-                        onpress={() => setmodalVisible(false)}
-                        style={{ justifyContent: "flex-end", margin: 0 }}
-                      />
-                    </View>
-                  </Modal>
-                </>
+                <ListButton {...item} onpress={() => setmodalVisible(true)} />
               )}
               numColumns={2}
             />
           </View>
         </Info>
       </Screen>
+      <ModalView
+        visible={modalVisible}
+        onpress={() => setmodalVisible(false)}
+      />
     </AfterInteractions>
   );
 }

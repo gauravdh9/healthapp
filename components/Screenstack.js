@@ -22,12 +22,3 @@ const Screenstack = () => {
 };
 
 export default Screenstack;
-
-// let list=[]
-// const add=(x,y)=>{
-//     list.push(x)
-//     list.push(y)
-//     return list
-// }
-
-// add(x,y)

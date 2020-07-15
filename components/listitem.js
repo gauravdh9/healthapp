@@ -30,14 +30,14 @@ const Details = styled.View`
 `;
 const Address = styled.Text`
   color: ${({ theme }) => theme.Theme.text.heading};
-  font-weight: 400;
-  font-size: 15px;
+  font-family: MyText;
+  font-size: 13px;
 `;
 
 const Name = styled.Text`
   color: ${({ theme }) => theme.Theme.text.subheading};
-  font-weight: bold;
-  font-size: 20px;
+  font-family: MyText;
+  font-size: 25px;
 `;
 const Nex = styled(Next).attrs(({ theme }) => ({
   fill: theme.Theme.text.heading,

@@ -5,7 +5,8 @@ import styled from "styled-components";
 const Title = styled.Text`
   font-size: 20px;
   color: ${({ theme }) => theme.Theme.text.subheading};
-  font-weight: bold;
+
+  font-family: MyText;
 `;
 const Container = styled.TouchableOpacity`
   align-items: center;

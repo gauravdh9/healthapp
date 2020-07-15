@@ -9,7 +9,7 @@ import { AfterInteractions } from "react-native-interactions";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const Container = styled(Screen)`
-  flex: 1;
+  /* flex: 1; */
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
   font-size: 200px;
   border-top-left-radius: 30px;
@@ -17,7 +17,7 @@ const Container = styled(Screen)`
   /* background-color: transparent; */
 `;
 const List = styled(FlatList)`
-  flex: 1;
+  height: 100%;
   position: relative;
   padding-top: 20px;
   border-top-right-radius: 20px;
@@ -29,6 +29,7 @@ export default function Hospitallist({ onpress }) {
   const { hospital, hospitaldata } = useApi();
   useEffect(() => {
     hospitaldata();
+    console.log("printed");
   }, []);
   var ITEM_HEIGHT = 90;
   return (

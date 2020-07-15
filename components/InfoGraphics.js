@@ -7,7 +7,7 @@ const Title = styled.Text`
   flex-grow: 1;
   font-size: 20px;
   color: ${({ theme }) => theme.Theme.text.subheading};
-  font-weight: bold;
+  font-family: MyText;
 `;
 const Container = styled.View`
   align-items: flex-start;
