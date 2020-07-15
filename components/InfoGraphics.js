@@ -12,11 +12,11 @@ const Title = styled.Text`
 `;
 const Container = styled.View`
   align-items: flex-start;
-  height: ${heightToDp("23%")}px;
+  height: auto;
   width: ${widthToDp("40%")}px;
   background-color: ${({ theme }) => theme.Theme.infocard.Cbackground};
   margin: ${heightToDp("1.5%")}px auto;
-
+  margin-bottom: ${heightToDp("3%")}px;
   border-radius: ${heightToDp("3%")}px;
   overflow: hidden;
   position: relative;
@@ -24,6 +24,7 @@ const Container = styled.View`
   padding: ${heightToDp("2%")}px;
   border: ${heightToDp("0.5")}px solid
     ${({ theme }) => theme.Theme.covidscreen.vector};
+  padding-bottom: 0px;
 `;
 export default function InfoGraphics({ title, Location, color }) {
   return (

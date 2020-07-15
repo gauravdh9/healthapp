@@ -6,13 +6,10 @@ import Listitem from "../components/listitem";
 import Listheader from "../components/listheader";
 import { useApi } from "../hooks/useApi";
 import { AfterInteractions } from "react-native-interactions";
-import Icon from "react-native-vector-icons/FontAwesome";
 
 const Container = styled(Screen)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
   font-size: 200px;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
 `;
 const List = styled(FlatList)`
   height: 100%;
@@ -32,12 +29,6 @@ export default function Hospitallist() {
   return (
     <AfterInteractions>
       <Container>
-        <Icon
-          name="times-circle-o"
-          size={45}
-          color="white"
-          style={{ position: "relative", left: 40 }}
-        />
         <Listheader />
         <List
           disableVirtualization

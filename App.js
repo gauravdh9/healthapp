@@ -6,12 +6,11 @@ import Themes from "./utils/Themecopy";
 import { ThemeProvider } from "styled-components";
 import { enableScreens } from "react-native-screens";
 import Covidscreen from "./screens/Covidscreen";
-import Hospital from "./screens/Hospital";
 import Add from "./screens/Add";
 import Hos from "./screens/Hos";
 import MyTabBar from "./components/MyTabBar";
 import { useFonts } from "expo-font";
-import Hospitallist from "./screens/Hospitallist";
+import Hospitallist from "./screens/hospitallist";
 enableScreens();
 
 const Tab = createBottomTabNavigator();
