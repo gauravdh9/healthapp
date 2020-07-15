@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import Toggle from "../components/Toggle";
 
 const Hospital = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Image, View } from "react-native";
-import { Hospitalheader } from "./Svg";
+import { Hospitalheader } from "../utils/Svg";
 
 export default function Listheader() {
   return (

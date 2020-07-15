@@ -1,29 +1,21 @@
 import React, { useState } from "react";
-import {
-  View,
-  FlatList,
-  Text,
-  TouchableWithoutFeedback,
-  Alert,
-  Button,
-  Modal,
-} from "react-native";
+import { View, FlatList } from "react-native";
 import { AfterInteractions } from "react-native-interactions";
-import ContentLoader from "react-native-easy-content-loader";
-import Screen from "../components/Screen";
+import Screen from "../utils/Screen";
 import InfoGraphics from "../components/InfoGraphics";
 import ListButton from "../components/ListButton";
-import { Data } from "../components/Data";
+import { Data } from "../utils/Data";
 import styled from "styled-components/native";
 import Virus from "../assets/virus2.svg";
 import ModalView from "../components/Modaldata";
+import { heightToDp } from "../utils/Size";
 const Styledview = styled.View`
   position: relative;
   font-family: Comfortaa-VariableFont_wght;
-  height: 40%;
+  height: ${heightToDp("31.6%")}px;
   flex-grow: 1;
   justify-content: flex-start;
-  top: 20px;
+  top: ${heightToDp("1%")}px;
   align-items: flex-start;
   position: relative;
   background-color: white;
@@ -31,22 +23,20 @@ const Styledview = styled.View`
 `;
 const Info = styled.View`
   position: relative;
-  height: 60%;
   flex-grow: 1;
   justify-content: space-evenly;
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
+  border-top-left-radius: ${heightToDp("3%")}px;
+  border-top-right-radius: ${heightToDp("3%")}px;
 `;
 const HeadingText = styled.Text`
-  font-size: 56px;
+  font-size: ${heightToDp("6")}px;
 
   color: ${({ theme }) => theme.Theme.text.heading};
   font-family: MyText;
 `;
 const HeadingText2 = styled.Text`
-  font-size: 30px;
-  font-weight: 100;
+  font-size: ${heightToDp("4")}px;
   color: ${({ theme }) => theme.Theme.text.heading};
   font-family: MyText;
 `;
@@ -54,9 +44,7 @@ const HeadingText2 = styled.Text`
 export default function Covidscreen({ navigation }) {
   const [modalVisible, setmodalVisible] = useState(false);
   return (
-    <AfterInteractions
-      placeholder={<ContentLoader animationDuration={5000} loading={true} />}
-    >
+    <AfterInteractions>
       <Screen>
         <Styledview>
           <View
@@ -74,12 +62,13 @@ export default function Covidscreen({ navigation }) {
               <HeadingText2>Stay Safe</HeadingText2>
             </View>
 
-            <Virus height="170" width="170" />
+            <Virus height={heightToDp("19")} width={heightToDp("19")} />
           </View>
         </Styledview>
         <Info>
-          <View style={{ top: -60 }}>
+          <View style={{ top: heightToDp("-4%") }}>
             <FlatList
+              style={{ top: heightToDp("-8%") }}
               contentContainerStyle={{ flexGrow: 1 }}
               data={Data[0]}
               keyExtractor={(item) => item.id.toString()}
@@ -88,6 +77,7 @@ export default function Covidscreen({ navigation }) {
             />
             <FlatList
               contentContainerStyle={{ flexGrow: 1 }}
+              style={{ top: heightToDp("-8%") }}
               data={Data[1]}
               keyExtractor={(item) => item.id.toString()}
               renderItem={({ item }) => (

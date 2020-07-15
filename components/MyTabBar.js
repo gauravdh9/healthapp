@@ -2,6 +2,7 @@ import React from "react";
 import { View, TouchableOpacity } from "react-native";
 import { useTheme } from "styled-components";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { heightToDp, widthToDp } from "../utils/Size";
 
 export default function MyTabBar({ state, descriptors, navigation, iconname }) {
   const { Theme } = useTheme();
@@ -15,7 +16,7 @@ export default function MyTabBar({ state, descriptors, navigation, iconname }) {
       style={{
         backgroundColor: Theme.covidscreen.info,
         elevation: 5,
-        height: "6%",
+        height: heightToDp("6%"),
       }}
     >
       <View
@@ -63,7 +64,7 @@ export default function MyTabBar({ state, descriptors, navigation, iconname }) {
                 flex: 1,
                 justifyContent: "center",
                 alignItems: "center",
-                height: 50,
+                height: heightToDp("6%"),
                 backgroundColor: isFocused
                   ? Theme.covidscreen.vector
                   : Theme.infocard.Cbackground,
@@ -74,9 +75,8 @@ export default function MyTabBar({ state, descriptors, navigation, iconname }) {
               <Icon
                 name={icon}
                 raised
-                size={25}
+                size={widthToDp("7%")}
                 color={isFocused ? Theme.tabBar.active : Theme.tabBar.inactive}
-                style={{ marginRight: 10 }}
               />
             </TouchableOpacity>
           );

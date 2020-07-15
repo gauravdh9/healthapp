@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-// import NavigationScreens from "./components/NavigationScreens";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Themes from "./components/Themecopy";
+import Themes from "./utils/Themecopy";
 import { ThemeProvider } from "styled-components";
 import { enableScreens } from "react-native-screens";
 import Covidscreen from "./screens/Covidscreen";
@@ -12,6 +11,7 @@ import Add from "./screens/Add";
 import Hos from "./screens/Hos";
 import MyTabBar from "./components/MyTabBar";
 import { useFonts } from "expo-font";
+import Hospitallist from "./screens/Hospitallist";
 enableScreens();
 
 const Tab = createBottomTabNavigator();
@@ -31,7 +31,7 @@ export default function App() {
         <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
           <Tab.Screen name="home" component={Covidscreen} />
           <Tab.Screen name="plus-circle" component={Add} />
-          <Tab.Screen name="heartbeat" component={Hospital} />
+          <Tab.Screen name="heartbeat" component={Hospitallist} />
           <Tab.Screen name="cogs" component={Hos} />
         </Tab.Navigator>
       </NavigationContainer>

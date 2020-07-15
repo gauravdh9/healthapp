@@ -1,26 +1,29 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import styled from "styled-components";
+import { heightToDp, widthToDp } from "../utils/Size";
 
 import Info from "./Info";
 const Title = styled.Text`
   flex-grow: 1;
-  font-size: 20px;
+  font-size: ${heightToDp("3")}px;
   color: ${({ theme }) => theme.Theme.text.subheading};
   font-family: MyText;
 `;
 const Container = styled.View`
   align-items: flex-start;
-  height: 170px;
-  width: 40%;
+  height: ${heightToDp("23%")}px;
+  width: ${widthToDp("40%")}px;
   background-color: ${({ theme }) => theme.Theme.infocard.Cbackground};
-  margin: 20px;
-  border-radius: 20px;
+  margin: ${heightToDp("1.5%")}px auto;
+
+  border-radius: ${heightToDp("3%")}px;
   overflow: hidden;
   position: relative;
   flex-direction: column;
-  padding: 4%;
-  border: 3px solid ${({ theme }) => theme.Theme.covidscreen.vector};
+  padding: ${heightToDp("2%")}px;
+  border: ${heightToDp("0.5")}px solid
+    ${({ theme }) => theme.Theme.covidscreen.vector};
 `;
 export default function InfoGraphics({ title, Location, color }) {
   return (
@@ -29,7 +32,11 @@ export default function InfoGraphics({ title, Location, color }) {
 
       <Info title={title} color={color} />
 
-      <Location style={styles.svg} width={50} height={50} />
+      <Location
+        style={styles.svg}
+        width={widthToDp("12%")}
+        height={heightToDp("6%")}
+      />
     </Container>
   );
 }
@@ -40,7 +47,7 @@ const styles = StyleSheet.create({
   },
   svg: {
     top: 0,
-    left: "75%",
+    left: widthToDp("23%"),
   },
   shadow: {
     elevation: 10,

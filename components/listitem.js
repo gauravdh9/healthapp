@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Hospitals, Next } from "./Svg";
+import { Hospitals, Next } from "../utils/Svg";
 import styled from "styled-components";
 
 const Arrow = styled.View`

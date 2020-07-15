@@ -1,24 +1,24 @@
 import React from "react";
 import { View } from "react-native";
 import Modal from "react-native-modal";
-import Hospitallist from "../screens/Hospitallist";
+import Hospital from "../screens/Hospital";
 export default function ModalView({ visible, onpress }) {
   return (
     <Modal
       visible={visible}
       animationType="slide"
-      style={{ backgroundColor: "red", margin: 0 }}
+      style={{ backgroundColor: "#000000dd", margin: 0 }}
       swipeDirection="down"
-      onSwipeStart={onpress}
+      onSwipeComplete={onpress}
     >
       <View
         style={{
           justifyContent: "flex-start",
-          top: "30%",
+          top: "2%",
           height: "70%",
         }}
       >
-        <Hospitallist style={{ top: "30%" }} onpress={onpress} />
+        <Hospital style={{ top: "30%" }} onpress={onpress} />
       </View>
     </Modal>
   );

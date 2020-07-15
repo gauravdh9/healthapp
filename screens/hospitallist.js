@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import React, { useEffect } from "react";
+import { FlatList } from "react-native";
 import styled from "styled-components";
-import Screen from "../components/Screen";
+import Screen from "../utils/Screen";
 import Listitem from "../components/listitem";
 import Listheader from "../components/listheader";
 import { useApi } from "../hooks/useApi";
@@ -9,12 +9,10 @@ import { AfterInteractions } from "react-native-interactions";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const Container = styled(Screen)`
-  /* flex: 1; */
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
   font-size: 200px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  /* background-color: transparent; */
 `;
 const List = styled(FlatList)`
   height: 100%;
@@ -25,11 +23,10 @@ const List = styled(FlatList)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
 `;
 
-export default function Hospitallist({ onpress }) {
+export default function Hospitallist() {
   const { hospital, hospitaldata } = useApi();
   useEffect(() => {
     hospitaldata();
-    console.log("printed");
   }, []);
   var ITEM_HEIGHT = 90;
   return (
@@ -38,7 +35,6 @@ export default function Hospitallist({ onpress }) {
         <Icon
           name="times-circle-o"
           size={45}
-          onPress={onpress}
           color="white"
           style={{ position: "relative", left: 40 }}
         />
