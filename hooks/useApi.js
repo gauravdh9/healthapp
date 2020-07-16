@@ -26,7 +26,7 @@ export const useApi = () => {
       });
   };
   const covidhospitaldata = () => {
-    fetch("https://healthx-api.herokuapp.com/getcovidhospital")
+    fetch("https://healthx-api.herokuapp.com/getbeds")
       .then((res) => res.json())
       .then((response) => {
         setCovidhos(response);

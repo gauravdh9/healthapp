@@ -11,6 +11,7 @@ import Hos from "./screens/Hos";
 import MyTabBar from "./components/MyTabBar";
 import { useFonts } from "expo-font";
 import Hospitallist from "./screens/hospitallist";
+import Screenstack from "./components/Screenstack";
 enableScreens();
 
 const Tab = createBottomTabNavigator();
@@ -28,9 +29,8 @@ export default function App() {
     <ThemeProvider theme={{ Theme, setTheme }}>
       <NavigationContainer>
         <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
-          <Tab.Screen name="home" component={Covidscreen} />
+          <Tab.Screen name="home" component={Screenstack} />
           <Tab.Screen name="plus-circle" component={Add} />
-          <Tab.Screen name="heartbeat" component={Hospitallist} />
           <Tab.Screen name="cogs" component={Hos} />
         </Tab.Navigator>
       </NavigationContainer>

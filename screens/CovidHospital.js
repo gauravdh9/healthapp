@@ -1,18 +1,15 @@
 import React, { useEffect } from "react";
-import { FlatList } from "react-native";
+import { FlatList, View, Text } from "react-native";
 import styled from "styled-components";
 import Screen from "../utils/Screen";
 import Listitem from "../components/listitem";
 import Listheader from "../components/listheader";
 import { useApi } from "../hooks/useApi";
 import { AfterInteractions } from "react-native-interactions";
-import Icon from "react-native-vector-icons/FontAwesome";
-
+import { widthToDp } from "../utils/Size";
 const Container = styled(Screen)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
   font-size: 200px;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
 `;
 const List = styled(FlatList)`
   height: 100%;
@@ -22,9 +19,19 @@ const List = styled(FlatList)`
   border-top-left-radius: 20px;
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
 `;
-
-export default function Hospital({ onpress }) {
-  const { covidhospitaldata, covidhos } = useApi();
+const Category = styled.View`
+  height: 10%;
+  top: 2%;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  background-color: ${({ theme }) => theme.Theme.infocard.Cbackground};
+`;
+const Heading = styled.Text`
+  font-family: MyText;
+  color: ${({ theme }) => theme.Theme.text.heading};
+`;
+export default function CovidHospital() {
+  const { covidhos, covidhospitaldata } = useApi();
   useEffect(() => {
     covidhospitaldata();
   }, []);
@@ -32,14 +39,10 @@ export default function Hospital({ onpress }) {
   return (
     <AfterInteractions>
       <Container>
-        <Icon
-          name="times-circle-o"
-          size={45}
-          onPress={onpress}
-          color="white"
-          style={{ position: "relative", left: 40 }}
-        />
         <Listheader />
+        <Category>
+          <Heading>hello wolrd</Heading>
+        </Category>
         <List
           disableVirtualization
           data={covidhos}

@@ -7,11 +7,9 @@ import ListButton from "../components/ListButton";
 import { Data } from "../utils/Data";
 import styled from "styled-components/native";
 import Virus from "../assets/virus2.svg";
-import ModalView from "../components/Modaldata";
 import { heightToDp } from "../utils/Size";
 const Styledview = styled.View`
   position: relative;
-  font-family: Comfortaa-VariableFont_wght;
   height: ${heightToDp("31.6%")}px;
   flex-grow: 1;
   justify-content: flex-start;
@@ -42,7 +40,6 @@ const HeadingText2 = styled.Text`
 `;
 
 export default function Covidscreen({ navigation }) {
-  const [modalVisible, setmodalVisible] = useState(false);
   return (
     <AfterInteractions>
       <Screen>
@@ -81,17 +78,16 @@ export default function Covidscreen({ navigation }) {
               data={Data[1]}
               keyExtractor={(item) => item.id.toString()}
               renderItem={({ item }) => (
-                <ListButton {...item} onpress={() => setmodalVisible(true)} />
+                <ListButton
+                  {...item}
+                  onpress={() => navigation.navigate("hospital")}
+                />
               )}
               numColumns={2}
             />
           </View>
         </Info>
       </Screen>
-      <ModalView
-        visible={modalVisible}
-        onpress={() => setmodalVisible(false)}
-      />
     </AfterInteractions>
   );
 }
