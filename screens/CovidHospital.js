@@ -39,10 +39,6 @@ export default function CovidHospital() {
   return (
     <AfterInteractions>
       <Container>
-        <Listheader />
-        <Category>
-          <Heading>hello wolrd</Heading>
-        </Category>
         <List
           disableVirtualization
           data={covidhos}

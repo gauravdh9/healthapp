@@ -11,7 +11,7 @@ const Container = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: ${heightToDp("15%")}px;
+  height: ${heightToDp("12%")}px;
   padding: 0px ${heightToDp("2%")}px;
 `;
 const Heading = styled.Text`

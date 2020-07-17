@@ -2,9 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import { createStackNavigator, TransitionSpecs } from "@react-navigation/stack";
 import Covidscreen from "../screens/Covidscreen";
-import CovidHospital from "../screens/CovidHospital";
-import Hospitallist from "../screens/hospitallist";
-
+import Tabstack from "./Tabstack";
 const Stack = createStackNavigator();
 
 const Screenstack = () => {
@@ -34,7 +32,7 @@ const Screenstack = () => {
       mode="modal"
     >
       <Stack.Screen name="home" component={Covidscreen} />
-      <Stack.Screen name="hospital" component={CovidHospital} />
+      <Stack.Screen name="hospital" component={Tabstack} />
     </Stack.Navigator>
   );
 };
