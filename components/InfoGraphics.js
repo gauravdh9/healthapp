@@ -7,7 +7,7 @@ import Info from "./Info";
 const Title = styled.Text`
   flex-grow: 1;
   font-size: ${heightToDp("3")}px;
-  color: ${({ theme }) => theme.Theme.text.subheading};
+  color: ${({ theme }) => theme.Theme.text.heading};
   font-family: MyText;
 `;
 const Container = styled.View`

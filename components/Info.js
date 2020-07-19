@@ -4,7 +4,7 @@ import { CountUp } from "use-count-up";
 import Minigraph from "./minigraph";
 import { useApi } from "../hooks/useApi";
 
-export default function Info({ title, color }) {
+export default React.memo(function Info({ title, color }) {
   const { result, getdata } = useApi();
   useEffect(() => {
     getdata();
@@ -32,4 +32,4 @@ export default function Info({ title, color }) {
       />
     </>
   );
-}
+});

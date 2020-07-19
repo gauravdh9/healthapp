@@ -1,14 +1,13 @@
 import React from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 import { useTheme } from "styled-components";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { heightToDp, widthToDp } from "../utils/Size";
 import styled from "styled-components";
 const Heading = styled.Text`
   color: ${({ theme }) => theme.Theme.text.heading};
-  margin-left: 10px;
+  margin-left: ${widthToDp("2%")}px;
   font-family: MyText;
-  font-size: 15px;
+  font-size: ${heightToDp("2%")}px;
 `;
 
 export default function MyTabBar({ state, descriptors, navigation, iconname }) {
@@ -22,18 +21,17 @@ export default function MyTabBar({ state, descriptors, navigation, iconname }) {
     <View
       style={{
         backgroundColor: Theme.covidscreen.info,
-        borderRadius: heightToDp("5%"),
+        borderRadius: heightToDp("2%"),
         borderColor: "#12121d",
-        padding: 5,
-        marginLeft: 25,
-        marginRight: 25,
+        padding: heightToDp("1%"),
+        marginLeft: widthToDp("6%"),
+        marginRight: widthToDp("6%"),
       }}
     >
       <View
         style={{
           flexDirection: "row",
           overflow: "hidden",
-          borderRadius: 50,
         }}
       >
         {state.routes.map((route, index) => {
@@ -78,9 +76,9 @@ export default function MyTabBar({ state, descriptors, navigation, iconname }) {
                   ? Theme.covidscreen.vector
                   : Theme.infocard.Cbackground,
                 flexDirection: "row",
-                borderRadius: 50,
-                marginLeft: 5,
-                marginRight: 5,
+                borderRadius: heightToDp("2%"),
+                marginLeft: heightToDp("0.5%"),
+                marginRight: heightToDp("0.5%"),
               }}
             >
               <Heading>{name}</Heading>

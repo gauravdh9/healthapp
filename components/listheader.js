@@ -31,7 +31,7 @@ const Home = styled.Text`
   color: ${({ theme }) => theme.Theme.text.heading};
 `;
 export default function Listheader() {
-  const { navigate, goBack } = useNavigation();
+  const { goBack } = useNavigation();
   return (
     <Container>
       <IconView

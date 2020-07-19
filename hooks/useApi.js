@@ -3,7 +3,11 @@ const { useState, useEffect } = require("react");
 export const useApi = () => {
   const [result, setResult] = useState();
   const [hospital, setHospital] = useState();
-  const [covidhos, setCovidhos] = useState();
+  const [covidhos, setCovidhos] = useState({
+    total: [],
+    withVentilators: [],
+    withoutVentilators: [],
+  });
 
   const getdata = () => {
     fetch("http://healthx-api.herokuapp.com/getcoviddata")
@@ -29,7 +33,7 @@ export const useApi = () => {
     fetch("https://healthx-api.herokuapp.com/getbeds")
       .then((res) => res.json())
       .then((response) => {
-        setCovidhos(response);
+        setCovidhos(response[0]);
       })
       .catch((err) => {
         console.log(err);

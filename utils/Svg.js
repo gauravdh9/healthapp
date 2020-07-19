@@ -10,6 +10,8 @@ import Symptom from "../assets/Symptom.svg";
 import Prevention from "../assets/Prevention.svg";
 import Pin from "../assets/pin2.svg";
 import Next from "../assets/next.svg";
+import Phone from "../assets/phone.svg";
+import Location from "../assets/location.svg";
 export {
   Confirmed,
   Recovered,
@@ -23,4 +25,6 @@ export {
   Next,
   Hospitalheader,
   Hospitals,
+  Phone,
+  Location,
 };

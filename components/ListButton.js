@@ -5,7 +5,7 @@ import { heightToDp, widthToDp } from "../utils/Size";
 
 const Title = styled.Text`
   font-size: ${heightToDp("2.6%")}px;
-  color: ${({ theme }) => theme.Theme.text.subheading};
+  color: ${({ theme }) => theme.Theme.text.heading};
 
   font-family: MyText;
 `;
@@ -30,7 +30,12 @@ const SvgView = styled.View`
   border-radius: ${heightToDp("1.5%")}px;
 `;
 
-export default function ListButton({ Location, title, color, onpress }) {
+export default React.memo(function ListButton({
+  Location,
+  title,
+  color,
+  onpress,
+}) {
   const Locat = styled(Location).attrs(({ theme }) => ({
     fill: color,
     height: heightToDp("6%"),
@@ -47,4 +52,4 @@ export default function ListButton({ Location, title, color, onpress }) {
       <Title style={{ marginLeft: widthToDp("3%") }}>{title}</Title>
     </Container>
   );
-}
+});
