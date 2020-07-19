@@ -7,19 +7,16 @@ import styled from "styled-components";
 const Line = styled.View`
   height: 100%;
   width: ${heightToDp("0.3%")}px;
-  background-color: ${({ theme }) => theme.Theme.text.subheading};
+  background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
 `;
-
+const Separate = styled.View`
+  background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
+  height: ${heightToDp("0.5%")}px;
+`;
 const Separator = () => {
   return (
     <>
-      <View
-        style={{
-          position: "relative",
-          backgroundColor: "lightgray",
-          height: heightToDp("0.5%"),
-        }}
-      />
+      <Separate />
       <View>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
           <View
@@ -41,6 +38,7 @@ const Separator = () => {
               justifyContent: "center",
               alignItems: "center",
               flex: 1,
+              backgroundColor: "#deecfc",
               paddingTop: heightToDp("0.5%"),
               paddingBottom: heightToDp("0.5%"),
             }}

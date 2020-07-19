@@ -3,12 +3,6 @@ import { View, TouchableOpacity, Text } from "react-native";
 import { useTheme } from "styled-components";
 import { heightToDp, widthToDp } from "../utils/Size";
 import styled from "styled-components";
-const Heading = styled.Text`
-  color: ${({ theme }) => theme.Theme.text.heading};
-  margin-left: ${widthToDp("2%")}px;
-  font-family: MyText;
-  font-size: ${heightToDp("2%")}px;
-`;
 
 export default function MyTabBar({ state, descriptors, navigation, iconname }) {
   const { Theme } = useTheme();
@@ -57,7 +51,12 @@ export default function MyTabBar({ state, descriptors, navigation, iconname }) {
               target: route.key,
             });
           };
-
+          const Heading = styled.Text`
+            color: ${isFocused ? Theme.text.heading : Theme.text.subheading};
+            margin-left: ${widthToDp("2%")}px;
+            font-family: MyText;
+            font-size: ${heightToDp("2%")}px;
+          `;
           return (
             <TouchableOpacity
               key={index}
@@ -76,6 +75,7 @@ export default function MyTabBar({ state, descriptors, navigation, iconname }) {
                   ? Theme.covidscreen.vector
                   : Theme.infocard.Cbackground,
                 flexDirection: "row",
+
                 borderRadius: heightToDp("2%"),
                 marginLeft: heightToDp("0.5%"),
                 marginRight: heightToDp("0.5%"),

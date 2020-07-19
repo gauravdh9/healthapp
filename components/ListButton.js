@@ -25,7 +25,7 @@ const Container = styled.TouchableOpacity`
 `;
 const SvgView = styled.View`
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
-  height: 100%;
+  height: ${heightToDp("100%")}px;
   justify-content: center;
   border-radius: ${heightToDp("1.5%")}px;
 `;

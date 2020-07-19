@@ -11,6 +11,7 @@ const Container = styled.View`
   margin: ${heightToDp("3%")}px;
   border-radius: ${heightToDp("2%")}px;
   overflow: hidden;
+  border: 5px solid ${({ theme }) => theme.Theme.covidscreen.vector};
 `;
 const Details = styled.View`
   flex: 2;
@@ -20,11 +21,15 @@ const Details = styled.View`
 const Address = styled.Text`
   color: ${({ theme }) => theme.Theme.text.heading};
   font-family: MyText;
-  font-size: ${heightToDp("1.5%")}px;
+  font-size: ${heightToDp("1.8%")}px;
 `;
-
-const Name = styled.Text`
+const Beds = styled.Text`
   color: ${({ theme }) => theme.Theme.text.subheading};
+  font-family: MyText;
+  font-size: ${heightToDp("1.8%")}px;
+`;
+const Name = styled.Text`
+  color: ${({ theme }) => theme.Theme.text.heading};
   font-family: MyText;
   font-size: ${heightToDp("3.5%")}px;
 `;
@@ -49,14 +54,14 @@ function Listitem({
           <View
             style={{
               flexDirection: "row",
-              justifyContent: "flex-start",
+              justifyContent: "space-between",
               marginTop: heightToDp("1%"),
               marginBottom: heightToDp("1%"),
             }}
           >
-            <Address>Total:-{total}</Address>
-            <Address>Vacant:-{vacant}</Address>
-            <Address>Occupied:-{occupied}</Address>
+            <Beds>Total:-{total} </Beds>
+            <Beds>Vacant:-{vacant}</Beds>
+            <Beds>Occupied:-{occupied}</Beds>
           </View>
         </Details>
         <Separator />

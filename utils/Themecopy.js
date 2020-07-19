@@ -12,7 +12,7 @@ export default Themes = {
       },
       text: {
         heading: "#222831",
-        subheading: "#cccccc",
+        subheading: "#929aab",
       },
       tabBar: {
         active: "#222831",
@@ -31,7 +31,7 @@ export default Themes = {
       },
       text: {
         heading: "white",
-        subheading: "#f7f7f7",
+        subheading: "#929aab",
       },
       tabBar: {
         active: "white",
