@@ -7,11 +7,10 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
 
 const Container = styled.View`
-  position: relative;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  height: ${heightToDp("12%")}px;
+  height: ${heightToDp("10%")}px;
   padding: 0px ${heightToDp("2%")}px;
 `;
 const Heading = styled.Text`
@@ -19,29 +18,25 @@ const Heading = styled.Text`
   font-size: ${heightToDp("3%")}px;
   color: ${({ theme }) => theme.Theme.text.heading};
 `;
-const IconView = styled.TouchableWithoutFeedback`
-  flex-direction: row;
+const HeadView = styled.View`
+  flex: 2;
   justify-content: center;
-  background-color: red;
+  align-items: center;
 `;
-const Home = styled.Text`
-  font-family: MyText;
-  font-size: ${heightToDp("2%")}px;
-  margin-left: ${heightToDp("0.5%")}px;
-  color: ${({ theme }) => theme.Theme.text.heading};
-`;
-export default function Listheader() {
+export default function Listheader({ title }) {
   const { goBack } = useNavigation();
   return (
     <Container>
-      <IconView
+      <TouchableWithoutFeedback
         onPress={() => {
           goBack();
         }}
       >
         <Icon name="chevron-left" size={widthToDp("5%")} color="white" />
-      </IconView>
-      <Heading>Covid Hospitals</Heading>
+      </TouchableWithoutFeedback>
+      <HeadView>
+        <Heading>{title}</Heading>
+      </HeadView>
     </Container>
   );
 }

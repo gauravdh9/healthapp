@@ -8,6 +8,7 @@ export const useApi = () => {
     withVentilators: [],
     withoutVentilators: [],
   });
+  const [lab, setLab] = useState();
 
   const getdata = () => {
     fetch("http://healthx-api.herokuapp.com/getcoviddata")
@@ -39,7 +40,16 @@ export const useApi = () => {
         console.log(err);
       });
   };
-
+  const TestingData = () => {
+    fetch("https://healthx-api.herokuapp.com/gettestlabs")
+      .then((res) => res.json())
+      .then((response) => {
+        setLab(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return {
     result,
     getdata,
@@ -47,5 +57,7 @@ export const useApi = () => {
     hospitaldata,
     covidhos,
     covidhospitaldata,
+    lab,
+    TestingData,
   };
 };

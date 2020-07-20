@@ -23,17 +23,7 @@ const Address = styled.Text`
   font-family: MyText;
   font-size: ${heightToDp("1.8%")}px;
 `;
-const Total = styled.Text`
-  color: #007bff;
-  font-family: MyText;
-  font-size: ${heightToDp("1.8%")}px;
-`;
-const Vacant = styled.Text`
-  color: #28a745;
-  font-family: MyText;
-  font-size: ${heightToDp("1.8%")}px;
-`;
-const Occupied = styled.Text`
+const Type = styled.Text`
   color: #6c757d;
   font-family: MyText;
   font-size: ${heightToDp("1.8%")}px;
@@ -44,22 +34,12 @@ const Name = styled.Text`
   font-size: ${heightToDp("2.8%")}px;
 `;
 
-function Listitem({
-  total,
-  title,
-  vacant,
-  occupied,
-  address,
-  location,
-  contact_numbers,
-}) {
+function Listitem({ address, location, number, title, type }) {
   return (
     <>
       <Container style={styles.container}>
         <Details>
-          <Name style={styles.name}>
-            {title.replace(/ *\([^)]*\) */g, " ")?.slice(0, 30)}...
-          </Name>
+          <Name style={styles.name}>{title?.slice(0, 30)}...</Name>
           <Address>{address?.slice(0, 50)}...</Address>
           <View
             style={{
@@ -69,12 +49,10 @@ function Listitem({
               marginBottom: heightToDp("1%"),
             }}
           >
-            <Total>Total:-{total} </Total>
-            <Vacant>Vacant:-{vacant}</Vacant>
-            <Occupied>Occupied:-{occupied}</Occupied>
+            <Type>Type:-{type}</Type>
           </View>
         </Details>
-        <Separator location={location} number={contact_numbers} />
+        <Separator location={location} number={number} />
       </Container>
     </>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, TouchableOpacity, Linking } from "react-native";
 import { Phone, Location } from "../utils/Svg";
 import { heightToDp, widthToDp } from "../utils/Size";
 import styled from "styled-components";
@@ -13,13 +13,14 @@ const Separate = styled.View`
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
   height: ${heightToDp("0.5%")}px;
 `;
-const Separator = () => {
+const Separator = ({ location, number }) => {
   return (
     <>
       <Separate />
       <View>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <View
+          <TouchableOpacity
+            onPress={() => Linking.openURL(`tel:${number}`)}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -30,10 +31,11 @@ const Separator = () => {
             }}
           >
             <Phone height="30" width="30" />
-          </View>
+          </TouchableOpacity>
 
           <Line />
-          <View
+          <TouchableOpacity
+            onPress={() => Linking.openURL(`${location}`)}
             style={{
               justifyContent: "center",
               alignItems: "center",
@@ -44,7 +46,7 @@ const Separator = () => {
             }}
           >
             <Location height="30" width="30" />
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     </>

@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
-import { FlatList, View, Text } from "react-native";
+import React, { useEffect, useState } from "react";
+import { FlatList, View, Text, TextInput, VirtualizedList } from "react-native";
 import styled from "styled-components";
 import Screen from "../utils/Screen";
 import Listitem from "../components/listitem";
-import Listheader from "../components/listheader";
-import { useApi } from "../hooks/useApi";
 import { AfterInteractions } from "react-native-interactions";
 import { widthToDp, heightToDp } from "../utils/Size";
-import Separator from "../components/Separator";
+import { Kohana } from "react-native-textinput-effects";
+import MaterialsIcon from "react-native-vector-icons/FontAwesome";
+
 const Container = styled(Screen)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
   font-size: 200px;
 `;
-const List = styled(FlatList)`
+const List = styled.VirtualizedList`
   height: ${heightToDp("100%")}px;
   position: relative;
   padding-top: ${heightToDp("2%")}px;
@@ -21,22 +21,38 @@ const List = styled(FlatList)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
 `;
 
-export default function CovidHospital({ data }) {
-  var ITEM_HEIGHT = 90;
+const Input = styled.TextInput`
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  line-height: 10px;
+`;
+export default function CovidHospital({ data, value }) {
+  var ITEM_HEIGHT = heightToDp("20%");
+  const change = () => {
+    return data.filter((item) => {
+      const itemData = item.title.toUpperCase();
+      const textData = value.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+  };
   return (
     <AfterInteractions>
       <Container>
         <List
-          disableVirtualization
           data={data}
           keyExtractor={(item) => item.title}
           renderItem={({ item }) => <Listitem {...item} />}
-          initialNumToRender={5}
+          initialNumToRender={3}
+          getItem={(data, index) => data[index]}
+          getItemCount={(data) => data.length}
           getItemLayout={(data, index) => ({
             length: ITEM_HEIGHT,
             offset: ITEM_HEIGHT * index,
             index,
           })}
+          removeClippedSubviews={true}
+          maxToRenderPerBatch={15}
         />
       </Container>
     </AfterInteractions>

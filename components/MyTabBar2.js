@@ -18,8 +18,8 @@ export default function MyTabBar({ state, descriptors, navigation, iconname }) {
         borderRadius: heightToDp("2%"),
         borderColor: "#12121d",
         padding: heightToDp("1%"),
-        marginLeft: widthToDp("6%"),
-        marginRight: widthToDp("6%"),
+        marginLeft: widthToDp("5%"),
+        marginRight: widthToDp("5%"),
       }}
     >
       <View
