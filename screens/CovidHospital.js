@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, View, Text, TextInput, VirtualizedList } from "react-native";
+import { FlatList, View, Text } from "react-native";
 import styled from "styled-components";
 import Screen from "../utils/Screen";
 import Listitem from "../components/listitem";
@@ -12,7 +12,7 @@ const Container = styled(Screen)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
   font-size: 200px;
 `;
-const List = styled.VirtualizedList`
+const List = styled.FlatList`
   height: ${heightToDp("100%")}px;
   position: relative;
   padding-top: ${heightToDp("2%")}px;
@@ -40,19 +40,15 @@ export default function CovidHospital({ data, value }) {
     <AfterInteractions>
       <Container>
         <List
-          data={data}
+          data={change()}
           keyExtractor={(item) => item.title}
           renderItem={({ item }) => <Listitem {...item} />}
           initialNumToRender={3}
-          getItem={(data, index) => data[index]}
-          getItemCount={(data) => data.length}
           getItemLayout={(data, index) => ({
             length: ITEM_HEIGHT,
             offset: ITEM_HEIGHT * index,
             index,
           })}
-          removeClippedSubviews={true}
-          maxToRenderPerBatch={15}
         />
       </Container>
     </AfterInteractions>
