@@ -10,6 +10,7 @@ import Lab from "./screens/Lab";
 import MyTabBar from "./components/MyTabBar";
 import { useFonts } from "expo-font";
 import Screenstack from "./components/Screenstack";
+import Lottie from "./screens/Lottie";
 enableScreens();
 
 const Tab = createBottomTabNavigator();
@@ -30,6 +31,7 @@ export default function App() {
           <Tab.Screen name="home" component={Screenstack} />
           <Tab.Screen name="cogs" component={Hos} />
           <Tab.Screen name="music" component={Lab} />
+          <Tab.Screen name="linux" component={Lottie} />
         </Tab.Navigator>
       </NavigationContainer>
     </ThemeProvider>

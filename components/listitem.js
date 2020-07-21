@@ -58,7 +58,10 @@ function Listitem({
       <Container style={styles.container}>
         <Details>
           <Name style={styles.name}>
-            {title.replace(/ *\([^)]*\) */g, " ")?.slice(0, 30)}...
+            {title
+              .replace(/ *\([^)]*\) */g, " ")
+              ?.split(",")
+              .slice(0)}
           </Name>
           <Address>{address?.slice(0, 50)}...</Address>
           <View

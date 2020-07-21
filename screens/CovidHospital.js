@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { FlatList, View, Text } from "react-native";
+import React from "react";
 import styled from "styled-components";
 import Screen from "../utils/Screen";
 import Listitem from "../components/listitem";
 import { AfterInteractions } from "react-native-interactions";
 import { widthToDp, heightToDp } from "../utils/Size";
-import { Kohana } from "react-native-textinput-effects";
-import MaterialsIcon from "react-native-vector-icons/FontAwesome";
 
 const Container = styled(Screen)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
@@ -43,7 +40,7 @@ export default function CovidHospital({ data, value }) {
           data={change()}
           keyExtractor={(item) => item.title}
           renderItem={({ item }) => <Listitem {...item} />}
-          initialNumToRender={3}
+          initialNumToRender={5}
           getItemLayout={(data, index) => ({
             length: ITEM_HEIGHT,
             offset: ITEM_HEIGHT * index,
