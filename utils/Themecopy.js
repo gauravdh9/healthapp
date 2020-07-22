@@ -19,6 +19,12 @@ export default Themes = {
         inactive: "#808080",
       },
       status: "dark-content",
+      gif: {
+        mask: require("../assets/maskLight.gif"),
+        distance: require("../assets/distancelight.gif"),
+        home: require("../assets/homeLight.gif"),
+        sanitizer: require("../assets/sani.gif"),
+      },
     },
     dark: {
       infocard: {
@@ -39,6 +45,12 @@ export default Themes = {
         inactive: "#808080",
       },
       status: "light-content",
+      gif: {
+        mask: require("../assets/mask.gif"),
+        distance: require("../assets/distance.gif"),
+        home: require("../assets/home.gif"),
+        sanitizer: require("../assets/animation.gif"),
+      },
     },
   },
 };

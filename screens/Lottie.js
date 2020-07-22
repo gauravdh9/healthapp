@@ -4,7 +4,8 @@ import styled from "styled-components";
 import Screen from "../utils/Screen";
 import { heightToDp } from "../utils/Size";
 import AppIntroSlider from "react-native-app-intro-slider";
-// import { useTheme } from "styled-components";
+import { useTheme } from "styled-components";
+import { LottieData } from "../components/LottieData";
 const Container = styled(Screen)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
   flex: 1;
@@ -15,36 +16,6 @@ const Heading = styled.Text`
   font-size: ${heightToDp("3%")}px;
   color: ${({ theme }) => theme.Theme.text.heading};
 `;
-const slides = [
-  {
-    key: "one",
-    title: "Title 1",
-    text: "Description.\nSay something cool",
-    image: require("../assets/new.gif"),
-    backgroundColor: "#59b2ab",
-  },
-  {
-    key: "two",
-    title: "Title 2",
-    text: "Other cool stuff",
-    image: require("../assets/sanitizer.gif"),
-    backgroundColor: "#febe29",
-  },
-  {
-    key: "three",
-    title: "Rocket guy",
-    text: "I'm already out of descriptions\n\nLorem ipsum bla bla bla",
-    image: require("../assets/distance.gif"),
-    backgroundColor: "#22bcb5",
-  },
-  {
-    key: "four",
-    title: "Rocket guy",
-    text: "I'm already out of descriptions\n\nLorem ipsum bla bla bla",
-    image: require("../assets/new2.gif"),
-    backgroundColor: "#22bcb5",
-  },
-];
 
 const Render = ({ item }) => {
   return (
@@ -75,6 +46,8 @@ const styles = StyleSheet.create({
   },
 });
 export default function Lottie() {
+  const slides = LottieData();
+
   return (
     <Container>
       <AppIntroSlider renderItem={Render} data={slides} />
