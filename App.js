@@ -1,23 +1,14 @@
-import React, { useState } from "react";
-
+import React from "react";
+import { AppearanceProvider } from "react-native-appearance";
 import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Themes from "./utils/Themecopy";
-import { ThemeProvider } from "styled-components";
+
 import { enableScreens } from "react-native-screens";
-import Hos from "./screens/Hos";
-import Lab from "./screens/Lab";
-import MyTabBar from "./components/MyTabBar";
+
 import { useFonts } from "expo-font";
-import Screenstack from "./components/Screenstack";
-import Lottie from "./screens/Lottie";
+import Main from "./components/Main";
 enableScreens();
 
-const Tab = createBottomTabNavigator();
-
 export default function App() {
-  const [Theme, setTheme] = useState(Themes.colors.dark);
-
   const [loaded] = useFonts({
     MyText: require("./assets/fonts/Bariol-Regular.ttf"),
   });
@@ -25,15 +16,10 @@ export default function App() {
     return null;
   }
   return (
-    <ThemeProvider theme={{ Theme, setTheme }}>
+    <AppearanceProvider>
       <NavigationContainer>
-        <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
-          <Tab.Screen name="home" component={Screenstack} />
-          <Tab.Screen name="cogs" component={Hos} />
-          <Tab.Screen name="music" component={Lab} />
-          <Tab.Screen name="linux" component={Lottie} />
-        </Tab.Navigator>
+        <Main />
       </NavigationContainer>
-    </ThemeProvider>
+    </AppearanceProvider>
   );
 }

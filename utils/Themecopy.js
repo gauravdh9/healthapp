@@ -18,6 +18,7 @@ export default Themes = {
         active: "#222831",
         inactive: "#808080",
       },
+      status: "dark-content",
     },
     dark: {
       infocard: {
@@ -37,6 +38,7 @@ export default Themes = {
         active: "white",
         inactive: "#808080",
       },
+      status: "light-content",
     },
   },
 };
