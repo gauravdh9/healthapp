@@ -40,6 +40,7 @@ const HeadingText2 = styled.Text`
 `;
 
 export default function Covidscreen({ navigation }) {
+  const [data0, data1] = Data();
   return (
     <AfterInteractions>
       <Screen>
@@ -67,7 +68,7 @@ export default function Covidscreen({ navigation }) {
             <FlatList
               style={{ top: heightToDp("-8%") }}
               contentContainerStyle={{ flexGrow: 1 }}
-              data={Data[0]}
+              data={data0}
               keyExtractor={(item) => item.id.toString()}
               renderItem={({ item }) => <InfoGraphics {...item} />}
               numColumns={2}
@@ -75,14 +76,9 @@ export default function Covidscreen({ navigation }) {
             <FlatList
               contentContainerStyle={{ flexGrow: 1 }}
               style={{ top: heightToDp("-8%") }}
-              data={Data[1]}
+              data={data1}
               keyExtractor={(item) => item.id.toString()}
-              renderItem={({ item }) => (
-                <ListButton
-                  {...item}
-                  onpress={() => navigation.navigate("hospital")}
-                />
-              )}
+              renderItem={({ item }) => <ListButton {...item} />}
               numColumns={2}
             />
           </View>

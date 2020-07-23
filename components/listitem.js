@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { heightToDp, widthToDp } from "../utils/Size";
 import Separator from "../components/Separator";
 const Container = styled.View`
-  position: relative;
   justify-content: space-around;
   height: ${heightToDp("20%")}px;
   background-color: ${({ theme }) => theme.Theme.infocard.Cbackground};
@@ -61,7 +60,8 @@ function Listitem({
             {title
               .replace(/ *\([^)]*\) */g, " ")
               ?.split(",")
-              .slice(0)}
+              .slice(0, 30)}
+            ...
           </Name>
           <Address>{address?.slice(0, 50)}...</Address>
           <View

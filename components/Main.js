@@ -3,12 +3,11 @@ import Themes from "../utils/Themecopy";
 import { ThemeProvider } from "styled-components";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Screenstack from "./Screenstack";
-import Lottie from "../screens/Lottie";
 import Hos from "../screens/Hos";
-import Lab from "../screens/Lab";
 import MyTabBar from "./MyTabBar";
 import { useColorScheme } from "react-native-appearance";
 import { StatusBar } from "react-native";
+import Lab from "../screens/Lab";
 const Tab = createBottomTabNavigator();
 
 const Main = () => {
@@ -26,9 +25,8 @@ const Main = () => {
       />
       <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
         <Tab.Screen name="home" component={Screenstack} />
+        <Tab.Screen name="hospital-o" component={Lab} />
         <Tab.Screen name="cogs" component={Hos} />
-        <Tab.Screen name="music" component={Lab} />
-        <Tab.Screen name="linux" component={Lottie} />
       </Tab.Navigator>
     </ThemeProvider>
   );

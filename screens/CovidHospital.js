@@ -11,7 +11,7 @@ const Container = styled(Screen)`
 `;
 const List = styled.FlatList`
   height: ${heightToDp("100%")}px;
-  position: relative;
+  margin-top: ${heightToDp("2%")}px;
   padding-top: ${heightToDp("2%")}px;
   border-top-right-radius: ${heightToDp("3%")}px;
   border-top-left-radius: ${heightToDp("3%")}px;

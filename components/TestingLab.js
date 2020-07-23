@@ -8,7 +8,7 @@ const Container = styled.View`
   justify-content: space-around;
   height: ${heightToDp("20%")}px;
   background-color: ${({ theme }) => theme.Theme.infocard.Cbackground};
-  margin: ${heightToDp("3%")}px;
+  margin: ${heightToDp("2%")}px;
   border-radius: ${heightToDp("2%")}px;
   overflow: hidden;
   border: 5px solid ${({ theme }) => theme.Theme.covidscreen.vector};

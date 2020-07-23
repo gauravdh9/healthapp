@@ -32,7 +32,18 @@ export default function Listheader({ title }) {
           goBack();
         }}
       >
-        <Icon name="chevron-left" size={widthToDp("5%")} color="white" />
+        <Icon
+          name="chevron-left"
+          size={heightToDp("2.8%")}
+          style={{
+            backgroundColor: "#12121d",
+            padding: 11,
+            borderRadius: widthToDp("50%"),
+            height: widthToDp("11%"),
+            width: widthToDp("11%"),
+          }}
+          color="white"
+        />
       </TouchableWithoutFeedback>
       <HeadView>
         <Heading>{title}</Heading>

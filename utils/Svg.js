@@ -12,6 +12,11 @@ import Pin from "../assets/pin2.svg";
 import Next from "../assets/next.svg";
 import Phone from "../assets/phone.svg";
 import Location from "../assets/location.svg";
+import Congestion from "../assets/congestion.svg";
+import Headache from "../assets/headache.svg";
+import RunnyNose from "../assets/runnynose.svg";
+import Cough from "../assets/cough.svg";
+import Fever from "../assets/fever.svg";
 export {
   Confirmed,
   Recovered,
@@ -27,4 +32,9 @@ export {
   Hospitals,
   Phone,
   Location,
+  Congestion,
+  Headache,
+  RunnyNose,
+  Cough,
+  Fever,
 };

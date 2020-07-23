@@ -1,12 +1,15 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { createStackNavigator, TransitionSpecs } from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import Covidscreen from "../screens/Covidscreen";
 import Tabstack from "./Tabstack";
 import Lab from "../screens/Lab";
+import Symptom from "../screens/Symptom";
+import Preventions from "../screens/Preventions";
+import { useTheme } from "styled-components";
 const Stack = createStackNavigator();
 
 const Screenstack = () => {
+  const { Theme } = useTheme();
   const config = {
     animation: "spring",
     config: {
@@ -21,7 +24,6 @@ const Screenstack = () => {
   return (
     <Stack.Navigator
       initialRouteName="home"
-      headerMode="none"
       screenOptions={{
         gestureEnabled: true,
         gestureVelocityImpact: 0.1,
@@ -29,12 +31,35 @@ const Screenstack = () => {
           open: config,
           close: config,
         },
+        headerShown: false,
       }}
       mode="modal"
     >
-      <Stack.Screen name="home" component={Covidscreen} />
-      <Stack.Screen name="hospital" component={Tabstack} />
-      <Stack.Screen name="labs" component={Lab} />
+      <Stack.Screen name="Home" component={Covidscreen} />
+      <Stack.Screen name="Hospital" component={Tabstack} />
+      <Stack.Screen name="Labs">{() => <Lab Test />}</Stack.Screen>
+      <Stack.Screen
+        name="Symptoms"
+        options={{
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: Theme.covidscreen.info,
+          },
+          headerTintColor: Theme.text.heading,
+        }}
+        component={Symptom}
+      />
+      <Stack.Screen
+        name="Preventions"
+        options={{
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: Theme.covidscreen.info,
+          },
+          headerTintColor: Theme.text.heading,
+        }}
+        component={Preventions}
+      />
     </Stack.Navigator>
   );
 };

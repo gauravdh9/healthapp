@@ -14,10 +14,10 @@ const FlatView = styled.View`
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
   border-radius: ${heightToDp("3%")}px;
 `;
-const Lab = () => {
-  const { TestingData, lab } = useApi();
+const Lab = ({ Test }) => {
+  const { TestingData, lab, hospitaldata, hospital } = useApi();
   useEffect(() => {
-    TestingData();
+    !Test ? hospitaldata() : TestingData();
   }, []);
   return (
     <Screen>
@@ -27,10 +27,10 @@ const Lab = () => {
           <FlatList
             disableVirtualization
             contentContainerStyle={{ flexGrow: 1 }}
-            data={lab}
+            data={!Test ? hospital : lab}
             keyExtractor={(item) => item._id.toString()}
             renderItem={({ item }) => <TestingLab {...item} />}
-            initialNumToRender={3}
+            initialNumToRender={5}
           />
         </FlatView>
       </Container>
