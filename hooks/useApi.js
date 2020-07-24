@@ -1,5 +1,10 @@
-const { useState, useEffect } = require("react");
-
+const { useState } = require("react");
+const {
+  BEDS_DATA,
+  COVID_DATA,
+  HOSPITAL_DATA,
+  LABS_DATA,
+} = require("../utils/Url");
 export const useApi = () => {
   const [result, setResult] = useState();
   const [hospital, setHospital] = useState();
@@ -11,7 +16,7 @@ export const useApi = () => {
   const [lab, setLab] = useState();
 
   const getdata = () => {
-    fetch("http://healthx-api.herokuapp.com/getcoviddata")
+    fetch(COVID_DATA)
       .then((res) => res.json())
       .then((response) => {
         setResult(response);
@@ -21,7 +26,7 @@ export const useApi = () => {
       });
   };
   const hospitaldata = () => {
-    fetch("https://healthx-api.herokuapp.com/hospitaldata")
+    fetch(HOSPITAL_DATA)
       .then((res) => res.json())
       .then((response) => {
         setHospital(response);
@@ -31,7 +36,7 @@ export const useApi = () => {
       });
   };
   const covidhospitaldata = () => {
-    fetch("https://healthx-api.herokuapp.com/getbeds")
+    fetch(BEDS_DATA)
       .then((res) => res.json())
       .then((response) => {
         setCovidhos(response[0]);
@@ -41,7 +46,7 @@ export const useApi = () => {
       });
   };
   const TestingData = () => {
-    fetch("https://healthx-api.herokuapp.com/gettestlabs")
+    fetch(LABS_DATA)
       .then((res) => res.json())
       .then((response) => {
         setLab(response);

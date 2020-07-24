@@ -4,12 +4,17 @@ import Covidscreen from "../screens/Covidscreen";
 import Tabstack from "./Tabstack";
 import Lab from "../screens/Lab";
 import Symptom from "../screens/Symptom";
-import Preventions from "../screens/Preventions";
 import { useTheme } from "styled-components";
+import Listheader from "./listheader";
+import { SymptomData } from "./SymptomData";
+import { LottieData } from "./LottieData";
 const Stack = createStackNavigator();
 
 const Screenstack = () => {
   const { Theme } = useTheme();
+  const symptom = SymptomData();
+  const prevention = LottieData();
+
   const config = {
     animation: "spring",
     config: {
@@ -32,34 +37,63 @@ const Screenstack = () => {
           close: config,
         },
         headerShown: false,
+        header: ({ scene, previous, navigation }) => {
+          const { options } = scene.descriptor;
+          const title =
+            options.headerTitle !== undefined
+              ? options.headerTitle
+              : options.title !== undefined
+              ? options.title
+              : scene.route.name;
+
+          return (
+            <Listheader
+              title={title}
+              onPress={previous ? navigation.goBack : undefined}
+              style={options.headerStyle}
+              iconStyle={options.iconStyle}
+            />
+          );
+        },
       }}
       mode="modal"
     >
       <Stack.Screen name="Home" component={Covidscreen} />
-      <Stack.Screen name="Hospital" component={Tabstack} />
-      <Stack.Screen name="Labs">{() => <Lab Test />}</Stack.Screen>
+      <Stack.Screen
+        name="Hospital"
+        component={Tabstack}
+        options={{
+          headerShown: true,
+        }}
+      />
+      <Stack.Screen
+        name="Labs"
+        options={{
+          headerShown: true,
+        }}
+      >
+        {() => <Lab Test />}
+      </Stack.Screen>
       <Stack.Screen
         name="Symptoms"
         options={{
           headerShown: true,
-          headerStyle: {
-            backgroundColor: Theme.covidscreen.info,
-          },
-          headerTintColor: Theme.text.heading,
+          headerStyle: { backgroundColor: Theme.covidscreen.info },
+          iconStyle: { backgroundColor: Theme.covidscreen.vector },
         }}
-        component={Symptom}
-      />
+      >
+        {() => <Symptom data={symptom} />}
+      </Stack.Screen>
       <Stack.Screen
         name="Preventions"
         options={{
           headerShown: true,
-          headerStyle: {
-            backgroundColor: Theme.covidscreen.info,
-          },
-          headerTintColor: Theme.text.heading,
+          headerStyle: { backgroundColor: Theme.covidscreen.info },
+          iconStyle: { backgroundColor: Theme.covidscreen.vector },
         }}
-        component={Preventions}
-      />
+      >
+        {() => <Symptom data={prevention} />}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 };

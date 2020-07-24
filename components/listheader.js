@@ -12,6 +12,7 @@ const Container = styled.View`
   align-items: center;
   height: ${heightToDp("10%")}px;
   padding: 0px ${heightToDp("2%")}px;
+  background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
 `;
 const Heading = styled.Text`
   font-family: MyText;
@@ -23,15 +24,10 @@ const HeadView = styled.View`
   justify-content: center;
   align-items: center;
 `;
-export default function Listheader({ title }) {
-  const { goBack } = useNavigation();
+export default function Listheader({ title, onPress, style, iconStyle }) {
   return (
-    <Container>
-      <TouchableWithoutFeedback
-        onPress={() => {
-          goBack();
-        }}
-      >
+    <Container style={style}>
+      <TouchableWithoutFeedback onPress={onPress}>
         <Icon
           name="chevron-left"
           size={heightToDp("2.8%")}
@@ -41,6 +37,7 @@ export default function Listheader({ title }) {
             borderRadius: widthToDp("50%"),
             height: widthToDp("11%"),
             width: widthToDp("11%"),
+            ...iconStyle,
           }}
           color="white"
         />

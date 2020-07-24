@@ -3,7 +3,6 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import CovidHospital from "../screens/CovidHospital";
 import MyTabBar from "../components/MyTabBar2";
 import Screen from "../utils/Screen";
-import ListHeader from "./listheader";
 import { useApi } from "../hooks/useApi";
 import MaterialsIcon from "react-native-vector-icons/FontAwesome";
 import { Kohana } from "react-native-textinput-effects";
@@ -39,7 +38,6 @@ const Tabstack = () => {
 
   return (
     <Screen>
-      <ListHeader title="Covid Hospitals" />
       <InputView>
         <Kohana
           value={value}

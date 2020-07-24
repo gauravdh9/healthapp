@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import styled from "styled-components";
 import Screen from "../utils/Screen";
 import { heightToDp, widthToDp } from "../utils/Size";
@@ -38,10 +38,14 @@ const Card = styled.View`
   border-radius: ${heightToDp("5%")}px;
   margin: ${heightToDp("5%")}px;
 `;
-const Render = ({ Image, title, text }) => {
+const Render = ({ Graphics, title, text, symptom }) => {
   return (
     <View style={styles.slide}>
-      <Image height={heightToDp("25%")} width={widthToDp("90%")} />
+      {symptom ? (
+        <Graphics height={heightToDp("25%")} width={widthToDp("90%")} />
+      ) : (
+        <Image resizeMode="contain" style={styles.image} source={Graphics} />
+      )}
       <Card style={{ elevation: 15 }}>
         <Heading>{title}</Heading>
         <Description>{text}</Description>
@@ -54,6 +58,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
+  },
+  image: {
+    width: widthToDp("100%"),
+    height: heightToDp("25%"),
   },
 });
 const Arrow = styled(Icon).attrs(({ direction, theme }) => ({
@@ -79,10 +87,9 @@ const RenderNextButton = ({ direction, theme }) => {
   );
 };
 
-export default function Symptom() {
+export default function Symptom({ data }) {
   const { Theme } = useTheme();
   const Ref = useRef();
-  const slides = SymptomData();
 
   return (
     <Container>
@@ -106,7 +113,7 @@ export default function Symptom() {
             theme={Theme.covidscreen.vector}
           />
         )}
-        data={slides}
+        data={data}
         renderItem={({ item }) => <Render {...item} />}
         ref={Ref}
         onDone={() => Ref.current.goToSlide(0)}
