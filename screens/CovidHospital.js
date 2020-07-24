@@ -49,7 +49,6 @@ export default function CovidHospital({ data, value }) {
           boneColor={Theme.text.subheading}
           highlightColor="#e4eddb"
           animationType="pulse"
-          easing
           animationDirection="diagonalTopRight"
           containerStyle={{
             flex: 1,

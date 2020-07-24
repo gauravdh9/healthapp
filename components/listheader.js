@@ -1,10 +1,8 @@
 import React from "react";
 import { TouchableWithoutFeedback, View } from "react-native";
-import { Hospitalheader } from "../utils/Svg";
 import styled from "styled-components";
 import { widthToDp, heightToDp } from "../utils/Size";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { useNavigation } from "@react-navigation/native";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
 const Container = styled.View`
   flex-direction: row;

@@ -25,8 +25,8 @@ const Main = () => {
       />
       <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
         <Tab.Screen name="home" component={Screenstack} />
-        <Tab.Screen name="hospital-o" component={Lab} />
-        <Tab.Screen name="cogs" component={Hos} />
+        <Tab.Screen name="hospital" component={Lab} />
+        <Tab.Screen name="user-cog" component={Hos} />
       </Tab.Navigator>
     </ThemeProvider>
   );

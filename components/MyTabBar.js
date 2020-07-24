@@ -1,7 +1,7 @@
 import React from "react";
 import { View, TouchableOpacity } from "react-native";
 import { useTheme } from "styled-components";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Icon from "react-native-vector-icons/FontAwesome5";
 import { heightToDp, widthToDp } from "../utils/Size";
 
 export default function MyTabBar({ state, descriptors, navigation, iconname }) {
@@ -72,12 +72,26 @@ export default function MyTabBar({ state, descriptors, navigation, iconname }) {
                 justifyContent: "center",
               }}
             >
-              <Icon
-                name={icon}
-                raised
-                size={widthToDp("7%")}
-                color={isFocused ? Theme.tabBar.active : Theme.tabBar.inactive}
-              />
+              <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <Icon
+                  name={icon}
+                  size={widthToDp("5%")}
+                  color={
+                    isFocused ? Theme.tabBar.active : Theme.tabBar.inactive
+                  }
+                />
+                {isFocused ? (
+                  <View
+                    style={{
+                      backgroundColor: Theme.text.heading,
+                      marginTop: heightToDp("0.2%"),
+                      height: heightToDp("0.3%"),
+                      width: heightToDp("0.3%"),
+                      borderRadius: heightToDp("2%"),
+                    }}
+                  />
+                ) : null}
+              </View>
             </TouchableOpacity>
           );
         })}
