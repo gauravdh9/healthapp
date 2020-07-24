@@ -4,8 +4,8 @@ import styled from "styled-components";
 import Screen from "../utils/Screen";
 import { heightToDp, widthToDp } from "../utils/Size";
 import AppIntroSlider from "react-native-app-intro-slider";
-import { SymptomData } from "../components/SymptomData";
 import Icon from "react-native-vector-icons/FontAwesome";
+import SkeletonContent from "react-native-skeleton-content";
 import { useTheme } from "styled-components";
 const Container = styled(Screen)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
@@ -90,35 +90,71 @@ const RenderNextButton = ({ direction, theme }) => {
 export default function Symptom({ data }) {
   const { Theme } = useTheme();
   const Ref = useRef();
+  const [loading, setLoading] = useState(true);
 
   return (
-    <Container>
-      <AppIntroSlider
-        renderNextButton={() => (
-          <RenderNextButton
-            direction={"right"}
-            theme={Theme.covidscreen.vector}
-          />
-        )}
-        renderDoneButton={() => (
-          <RenderNextButton
-            direction={"right"}
-            theme={Theme.covidscreen.vector}
-          />
-        )}
-        showPrevButton
-        renderPrevButton={() => (
-          <RenderNextButton
-            direction={"left"}
-            theme={Theme.covidscreen.vector}
-          />
-        )}
-        data={data}
-        renderItem={({ item }) => <Render {...item} />}
-        ref={Ref}
-        onDone={() => Ref.current.goToSlide(0)}
-        dotStyle={{ backgroundColor: Theme.covidscreen.vector }}
-      />
-    </Container>
+    <SkeletonContent
+      style={{ borderRadius: 20 }}
+      boneColor={Theme.text.subheading}
+      highlightColor="#e4eddb"
+      animationType="shiver"
+      animationDirection="horizontalLeft"
+      containerStyle={{
+        flex: 1,
+        justifyContent: "flex-start",
+        alignItems: "center",
+        borderTopRightRadius: heightToDp("2%"),
+        borderTopLeftRadius: heightToDp("2%"),
+        backgroundColor: Theme.text.heading,
+      }}
+      isLoading={loading}
+      layout={[
+        {
+          key: "someId",
+          width: "80%",
+          height: heightToDp("20%"),
+          margin: heightToDp("3%"),
+          width: widthToDp("40%"),
+          borderRadius: widthToDp("100%"),
+        },
+        {
+          key: "someOtherId",
+          width: "80%",
+          height: heightToDp("40%"),
+          margin: heightToDp("3%"),
+          borderRadius: heightToDp("2%"),
+        },
+      ]}
+      duration={10000}
+    >
+      <Container>
+        <AppIntroSlider
+          renderNextButton={() => (
+            <RenderNextButton
+              direction={"right"}
+              theme={Theme.covidscreen.vector}
+            />
+          )}
+          renderDoneButton={() => (
+            <RenderNextButton
+              direction={"right"}
+              theme={Theme.covidscreen.vector}
+            />
+          )}
+          showPrevButton
+          renderPrevButton={() => (
+            <RenderNextButton
+              direction={"left"}
+              theme={Theme.covidscreen.vector}
+            />
+          )}
+          data={data}
+          renderItem={({ item }) => <Render {...item} />}
+          ref={Ref}
+          onDone={() => Ref.current.goToSlide(0)}
+          dotStyle={{ backgroundColor: Theme.covidscreen.vector }}
+        />
+      </Container>
+    </SkeletonContent>
   );
 }
