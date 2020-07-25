@@ -8,9 +8,12 @@ import MyTabBar from "./MyTabBar";
 import { useColorScheme } from "react-native-appearance";
 import { StatusBar } from "react-native";
 import Lab from "../screens/Lab";
+import { useApi } from "../hooks/useApi";
+import { Skeleton } from "./Tabstack";
 const Tab = createBottomTabNavigator();
 
 const Main = () => {
+  const { loading } = useApi();
   let colorScheme = useColorScheme();
 
   const [Theme, setTheme] = useState(Themes.colors[colorScheme]);
@@ -25,7 +28,9 @@ const Main = () => {
       />
       <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
         <Tab.Screen name="home" component={Screenstack} />
-        <Tab.Screen name="hospital" component={Lab} />
+        <Tab.Screen name="hospital">
+          {() => <Lab title="Hospitals" />}
+        </Tab.Screen>
         <Tab.Screen name="user-cog" component={Hos} />
       </Tab.Navigator>
     </ThemeProvider>

@@ -5,10 +5,12 @@ import { heightToDp, widthToDp } from "../utils/Size";
 import Separator from "../components/Separator";
 const Container = styled.View`
   position: relative;
-  justify-content: space-around;
+  justify-content: center;
   height: ${heightToDp("20%")}px;
   background-color: ${({ theme }) => theme.Theme.infocard.Cbackground};
-  margin: ${heightToDp("2%")}px;
+  margin: ${heightToDp("3.5%")}px;
+  margin-top: ${heightToDp("5.5%")}px;
+  margin-bottom: ${heightToDp("0.5%")}px;
   border-radius: ${heightToDp("2%")}px;
   overflow: hidden;
   border: 5px solid ${({ theme }) => theme.Theme.covidscreen.vector};

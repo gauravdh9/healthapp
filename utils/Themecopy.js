@@ -25,6 +25,7 @@ export default Themes = {
         home: require("../assets/homeLight.gif"),
         sanitizer: require("../assets/sani.gif"),
       },
+      highLight: "#f0f0f0",
     },
     dark: {
       infocard: {
@@ -51,6 +52,7 @@ export default Themes = {
         home: require("../assets/home.gif"),
         sanitizer: require("../assets/animation.gif"),
       },
+      highLight: "#5c5470",
     },
   },
 };

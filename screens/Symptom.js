@@ -25,7 +25,7 @@ const Description = styled.Text`
   color: ${({ theme }) => theme.Theme.text.heading};
   text-align: justify;
   font-family: MyText;
-  padding: ${heightToDp("2%")}px ${widthToDp("6%")}px;
+  padding: ${heightToDp("1.8%")}px ${widthToDp("5.8%")}px;
   line-height: ${heightToDp("4%")}px;
   font-size: ${heightToDp("2.2%")}px;
 `;
@@ -42,7 +42,7 @@ const Render = ({ Graphics, title, text, symptom }) => {
   return (
     <View style={styles.slide}>
       {symptom ? (
-        <Graphics height={heightToDp("25%")} width={widthToDp("90%")} />
+        <Graphics height={heightToDp("30%")} width={widthToDp("90%")} />
       ) : (
         <Image resizeMode="contain" style={styles.image} source={Graphics} />
       )}
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: widthToDp("100%"),
-    height: heightToDp("25%"),
+    height: heightToDp("20%"),
   },
 });
 const Arrow = styled(Icon).attrs(({ direction, theme }) => ({
@@ -90,71 +90,35 @@ const RenderNextButton = ({ direction, theme }) => {
 export default function Symptom({ data }) {
   const { Theme } = useTheme();
   const Ref = useRef();
-  const [loading, setLoading] = useState(true);
 
   return (
-    <SkeletonContent
-      style={{ borderRadius: 20 }}
-      boneColor={Theme.text.subheading}
-      highlightColor="#e4eddb"
-      animationType="shiver"
-      animationDirection="horizontalLeft"
-      containerStyle={{
-        flex: 1,
-        justifyContent: "flex-start",
-        alignItems: "center",
-        borderTopRightRadius: heightToDp("2%"),
-        borderTopLeftRadius: heightToDp("2%"),
-        backgroundColor: Theme.text.heading,
-      }}
-      isLoading={loading}
-      layout={[
-        {
-          key: "someId",
-          width: "80%",
-          height: heightToDp("20%"),
-          margin: heightToDp("3%"),
-          width: widthToDp("40%"),
-          borderRadius: widthToDp("100%"),
-        },
-        {
-          key: "someOtherId",
-          width: "80%",
-          height: heightToDp("40%"),
-          margin: heightToDp("3%"),
-          borderRadius: heightToDp("2%"),
-        },
-      ]}
-      duration={10000}
-    >
-      <Container>
-        <AppIntroSlider
-          renderNextButton={() => (
-            <RenderNextButton
-              direction={"right"}
-              theme={Theme.covidscreen.vector}
-            />
-          )}
-          renderDoneButton={() => (
-            <RenderNextButton
-              direction={"right"}
-              theme={Theme.covidscreen.vector}
-            />
-          )}
-          showPrevButton
-          renderPrevButton={() => (
-            <RenderNextButton
-              direction={"left"}
-              theme={Theme.covidscreen.vector}
-            />
-          )}
-          data={data}
-          renderItem={({ item }) => <Render {...item} />}
-          ref={Ref}
-          onDone={() => Ref.current.goToSlide(0)}
-          dotStyle={{ backgroundColor: Theme.covidscreen.vector }}
-        />
-      </Container>
-    </SkeletonContent>
+    <Container>
+      <AppIntroSlider
+        renderNextButton={() => (
+          <RenderNextButton
+            direction={"right"}
+            theme={Theme.covidscreen.vector}
+          />
+        )}
+        renderDoneButton={() => (
+          <RenderNextButton
+            direction={"right"}
+            theme={Theme.covidscreen.vector}
+          />
+        )}
+        showPrevButton
+        renderPrevButton={() => (
+          <RenderNextButton
+            direction={"left"}
+            theme={Theme.covidscreen.vector}
+          />
+        )}
+        data={data}
+        renderItem={({ item }) => <Render {...item} />}
+        ref={Ref}
+        onDone={() => Ref.current.goToSlide(0)}
+        dotStyle={{ backgroundColor: Theme.covidscreen.vector }}
+      />
+    </Container>
   );
 }

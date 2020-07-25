@@ -6,6 +6,7 @@ const {
   LABS_DATA,
 } = require("../utils/Url");
 export const useApi = () => {
+  const [loading, setLoading] = useState(true);
   const [result, setResult] = useState();
   const [hospital, setHospital] = useState();
   const [covidhos, setCovidhos] = useState({
@@ -30,6 +31,7 @@ export const useApi = () => {
       .then((res) => res.json())
       .then((response) => {
         setHospital(response);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -40,6 +42,7 @@ export const useApi = () => {
       .then((res) => res.json())
       .then((response) => {
         setCovidhos(response[0]);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -50,6 +53,7 @@ export const useApi = () => {
       .then((res) => res.json())
       .then((response) => {
         setLab(response);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -64,5 +68,7 @@ export const useApi = () => {
     covidhospitaldata,
     lab,
     TestingData,
+    loading,
+    setLoading,
   };
 };

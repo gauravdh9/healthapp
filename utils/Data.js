@@ -45,14 +45,14 @@ export const Data = () => {
         title: "Hospitals",
         Location: Hospital,
         color: "#ec5e5f",
-        onpress: () => navigate("Hospital"),
+        onpress: () => navigate("Covid Hospital"),
       },
       {
         id: "2",
         title: "Testing Labs",
         Location: Testing,
         color: "#007bff",
-        onpress: () => navigate("Labs"),
+        onpress: () => navigate("Testing Labs"),
       },
       {
         id: "3",

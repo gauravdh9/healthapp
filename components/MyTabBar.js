@@ -80,17 +80,6 @@ export default function MyTabBar({ state, descriptors, navigation, iconname }) {
                     isFocused ? Theme.tabBar.active : Theme.tabBar.inactive
                   }
                 />
-                {isFocused ? (
-                  <View
-                    style={{
-                      backgroundColor: Theme.text.heading,
-                      marginTop: heightToDp("0.2%"),
-                      height: heightToDp("0.3%"),
-                      width: heightToDp("0.3%"),
-                      borderRadius: heightToDp("2%"),
-                    }}
-                  />
-                ) : null}
               </View>
             </TouchableOpacity>
           );

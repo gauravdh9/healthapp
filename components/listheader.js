@@ -3,7 +3,7 @@ import { TouchableWithoutFeedback, View } from "react-native";
 import styled from "styled-components";
 import { widthToDp, heightToDp } from "../utils/Size";
 import Icon from "react-native-vector-icons/FontAwesome5";
-
+import { useTheme } from "styled-components";
 const Container = styled.View`
   flex-direction: row;
   justify-content: flex-start;
@@ -18,11 +18,12 @@ const Heading = styled.Text`
   color: ${({ theme }) => theme.Theme.text.heading};
 `;
 const HeadView = styled.View`
-  flex: 2;
+  flex: 0.9;
   justify-content: center;
   align-items: center;
 `;
 export default function Listheader({ title, onPress, style, iconStyle }) {
+  const { Theme } = useTheme();
   return (
     <Container style={style}>
       <TouchableWithoutFeedback onPress={onPress}>
@@ -30,14 +31,15 @@ export default function Listheader({ title, onPress, style, iconStyle }) {
           name="chevron-left"
           size={heightToDp("2.8%")}
           style={{
-            backgroundColor: "#12121d",
-            padding: 11,
+            backgroundColor: Theme.infocard.Cbackground,
+            paddingLeft: widthToDp("3%"),
+            paddingTop: widthToDp("2.2%"),
             borderRadius: widthToDp("50%"),
             height: widthToDp("11%"),
             width: widthToDp("11%"),
             ...iconStyle,
           }}
-          color="white"
+          color={Theme.text.heading}
         />
       </TouchableWithoutFeedback>
       <HeadView>

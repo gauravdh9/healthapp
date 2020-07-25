@@ -8,6 +8,7 @@ const Safe = styled.SafeAreaView`
 `;
 const VIEW = styled.View`
   flex: 1;
+  background: ${({ theme }) => theme.Theme.covidscreen.vector};
 `;
 function Screen({ children, style }) {
   return (

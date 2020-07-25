@@ -5,7 +5,7 @@ import Tabstack from "./Tabstack";
 import Lab from "../screens/Lab";
 import Symptom from "../screens/Symptom";
 import { useTheme } from "styled-components";
-import Listheader from "./listheader";
+import header from "./Header";
 import { SymptomData } from "./SymptomData";
 import { LottieData } from "./LottieData";
 const Stack = createStackNavigator();
@@ -37,37 +37,20 @@ const Screenstack = () => {
           close: config,
         },
         headerShown: false,
-        header: ({ scene, previous, navigation }) => {
-          const { options } = scene.descriptor;
-          const title =
-            options.headerTitle !== undefined
-              ? options.headerTitle
-              : options.title !== undefined
-              ? options.title
-              : scene.route.name;
-
-          return (
-            <Listheader
-              title={title}
-              onPress={previous ? navigation.goBack : undefined}
-              style={options.headerStyle}
-              iconStyle={options.iconStyle}
-            />
-          );
-        },
+        header,
       }}
       mode="modal"
     >
       <Stack.Screen name="Home" component={Covidscreen} />
       <Stack.Screen
-        name="Hospital"
+        name="Covid Hospital"
         component={Tabstack}
         options={{
           headerShown: true,
         }}
       />
       <Stack.Screen
-        name="Labs"
+        name="Testing Labs"
         options={{
           headerShown: true,
         }}
