@@ -5,8 +5,9 @@ import Screen from "../utils/Screen";
 import { heightToDp, widthToDp } from "../utils/Size";
 import AppIntroSlider from "react-native-app-intro-slider";
 import Icon from "react-native-vector-icons/FontAwesome";
-import SkeletonContent from "react-native-skeleton-content";
 import { useTheme } from "styled-components";
+import {LinearGradient} from "expo-linear-gradient"
+
 const Container = styled(Screen)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
   flex: 1;
@@ -46,10 +47,13 @@ const Render = ({ Graphics, title, text, symptom }) => {
       ) : (
         <Image resizeMode="contain" style={styles.image} source={Graphics} />
       )}
+      <LinearGradient colors={["red","yellow","green"]}>
+
       <Card style={{ elevation: 15 }}>
         <Heading>{title}</Heading>
         <Description>{text}</Description>
       </Card>
+      </LinearGradient>
     </View>
   );
 };

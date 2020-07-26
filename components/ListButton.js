@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { heightToDp, widthToDp } from "../utils/Size";
 
 const Title = styled.Text`
-  font-size: ${heightToDp("2.6%")}px;
+  font-size: ${heightToDp("2.4%")}px;
   color: ${({ theme }) => theme.Theme.text.heading};
 
   font-family: MyText;
@@ -25,7 +25,6 @@ const Container = styled.TouchableOpacity`
 `;
 const SvgView = styled.View`
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
-  height: ${heightToDp("100%")}px;
   justify-content: center;
   border-radius: ${heightToDp("1.5%")}px;
 `;
