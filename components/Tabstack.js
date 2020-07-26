@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useEffect, useState } from "react";
 import { View, Text } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
@@ -27,8 +29,8 @@ export const Skeleton = () => {
       style={{ borderRadius: 20, backgroundColor: "red" }}
       boneColor={Theme.covidscreen.vector}
       highlightColor={Theme.highLight}
-      animationType="shiver"
-      animationDirection="horizontalRight"
+      animationType='shiver'
+      animationDirection='horizontalRight'
       containerStyle={{
         flex: 1,
         justifyContent: "flex-start",
@@ -102,7 +104,7 @@ const Tabstack = () => {
           iconContainerStyle={{ padding: 10 }}
           useNativeDriver
           onChangeText={(param) => setValue(param)}
-          placeholder="Search..."
+          placeholder='Search...'
         />
       </InputView>
       <Tab.Navigator
@@ -114,13 +116,12 @@ const Tabstack = () => {
           marginTop: heightToDp("2%"),
           borderTopLeftRadius: heightToDp("3%"),
           borderTopRightRadius: heightToDp("3%"),
-        }}
-      >
-        <Tab.Screen name="Beds">
+        }}>
+        <Tab.Screen name='Beds'>
           {() => (loading ? <Skeleton /> : <Total />)}
         </Tab.Screen>
-        <Tab.Screen name="Ventilators">{withVentilators}</Tab.Screen>
-        <Tab.Screen name="Non-Ventilators">{withoutVentilators}</Tab.Screen>
+        <Tab.Screen name='Ventilators'>{withVentilators}</Tab.Screen>
+        <Tab.Screen name='Non-Ventilators'>{withoutVentilators}</Tab.Screen>
       </Tab.Navigator>
     </Screen>
   );

@@ -55,7 +55,7 @@ export default function MyTabBar({ state, descriptors, navigation, iconname }) {
             color: ${isFocused ? Theme.text.heading : Theme.text.subheading};
             margin-left: ${widthToDp("2%")}px;
             font-family: MyText;
-            font-size: ${heightToDp("2%")}px;
+            font-size: ${widthToDp("3.5%")}px;
           `;
           return (
             <TouchableOpacity

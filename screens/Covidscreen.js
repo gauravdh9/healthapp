@@ -75,7 +75,7 @@ export default function Covidscreen({ navigation }) {
             />
             <FlatList
               contentContainerStyle={{ flexGrow: 1 }}
-              style={{ top: heightToDp("-8%") }}
+              style={{ top: heightToDp("-10%") }}
               data={data1}
               keyExtractor={(item) => item.id.toString()}
               renderItem={({ item }) => <ListButton {...item} />}

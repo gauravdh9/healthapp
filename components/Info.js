@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from "react-native";
 import { CountUp } from "use-count-up";
 import Minigraph from "./minigraph";
 import { useApi } from "../hooks/useApi";
+import { heightToDp } from "../utils/Size";
+
 
 export default React.memo(function Info({ title, color }) {
   const { result, getdata } = useApi();
@@ -13,9 +15,8 @@ export default React.memo(function Info({ title, color }) {
     <>
       <Text
         style={{
-          position: "relative",
           color: color,
-          marginTop: 10,
+          marginTop: heightToDp("0.5%"),
           fontFamily: "MyText",
         }}
       >
