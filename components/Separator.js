@@ -1,6 +1,6 @@
 import React from "react";
 import { View, TouchableOpacity, Linking } from "react-native";
-import { Phone, Location } from "../utils/Svg";
+import { Phone, Address } from "../utils/Svg";
 import { heightToDp, widthToDp } from "../utils/Size";
 import styled from "styled-components";
 
@@ -45,7 +45,7 @@ const Separator = ({ location, number }) => {
               paddingBottom: heightToDp("0.5%"),
             }}
           >
-            <Location height="30" width="30" />
+            <Address height="30" width="30" />
           </TouchableOpacity>
         </View>
       </View>

@@ -14,41 +14,28 @@ const Container = styled(Screen)`
 `;
 const List = styled.FlatList`
   height: ${heightToDp("100%")}px;
-  /* margin-top: ${heightToDp("2%")}px; */
   padding-top: ${heightToDp("2%")}px;
   border-top-right-radius: ${heightToDp("3%")}px;
   border-top-left-radius: ${heightToDp("3%")}px;
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
 `;
 
-const Input = styled.TextInput`
-  border: none;
-  margin: 0px;
-  padding: 0px;
-  line-height: 10px;
-`;
-const SketView = styled.View`
-  background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
-  flex: 1;
-`;
+export const change = (data, value) => {
+  return data.filter((item) => {
+    const itemData = item.title.toUpperCase();
+    const textData = value.toUpperCase();
+    return itemData.indexOf(textData) > -1;
+  });
+};
 export default function CovidHospital({ data, value }) {
   const { Theme } = useTheme();
   var ITEM_HEIGHT = heightToDp("20%");
-  const { loading } = useApi();
-  // const [loading, setLoading] = useState(true);
 
-  const change = () => {
-    return data.filter((item) => {
-      const itemData = item.title.toUpperCase();
-      const textData = value.toUpperCase();
-      return itemData.indexOf(textData) > -1;
-    });
-  };
   return (
     <>
       <Container>
         <List
-          data={change()}
+          data={change(data, value)}
           keyExtractor={(item) => item.title}
           renderItem={({ item }) => <Listitem {...item} />}
           initialNumToRender={5}

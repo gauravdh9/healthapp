@@ -6,7 +6,7 @@ import { heightToDp, widthToDp } from "../utils/Size";
 import AppIntroSlider from "react-native-app-intro-slider";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useTheme } from "styled-components";
-import {LinearGradient} from "expo-linear-gradient"
+import { LinearGradient } from "expo-linear-gradient";
 
 const Container = styled(Screen)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
@@ -30,7 +30,9 @@ const Description = styled.Text`
   line-height: ${heightToDp("4%")}px;
   font-size: ${heightToDp("2.2%")}px;
 `;
-const Card = styled.View`
+const Card = styled(LinearGradient).attrs(({ theme }) => ({
+  colors: [theme.Theme.covidscreen.vector, theme.Theme.infocard.Cbackground],
+}))`
   justify-content: flex-start;
   align-items: center;
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
@@ -47,13 +49,11 @@ const Render = ({ Graphics, title, text, symptom }) => {
       ) : (
         <Image resizeMode="contain" style={styles.image} source={Graphics} />
       )}
-      <LinearGradient colors={["red","yellow","green"]}>
 
       <Card style={{ elevation: 15 }}>
         <Heading>{title}</Heading>
         <Description>{text}</Description>
       </Card>
-      </LinearGradient>
     </View>
   );
 };

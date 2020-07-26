@@ -9,11 +9,10 @@ const Header = ({ scene, previous, navigation }) => {
       : options.title !== undefined
       ? options.title
       : scene.route.name;
-
   return (
     <Listheader
       title={title}
-      onPress={previous ? navigation.goBack : undefined}
+      onPress={() => navigation.goBack()}
       style={options.headerStyle}
       iconStyle={options.iconStyle}
     />

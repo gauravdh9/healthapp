@@ -1,11 +1,15 @@
-import React, { useEffect } from "react";
-import { View, Text, FlatList } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import Screen from "../utils/Screen";
 import { useApi } from "../hooks/useApi";
 import styled from "styled-components";
 import { heightToDp, widthToDp } from "../utils/Size";
 import TestingLab from "../components/TestingLab";
 import { Skeleton } from "../components/Tabstack";
+import Input from "../components/Input";
+import { change } from "./CovidHospital";
+import { Address } from "../utils/Svg";
+
 const Container = styled(Screen)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
 `;
@@ -14,25 +18,9 @@ const FlatView = styled.View`
   border-top-right-radius: ${heightToDp("3%")}px;
   border-top-left-radius: ${heightToDp("3%")}px;
 `;
-const Contain = styled.View`
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  height: ${heightToDp("10%")}px;
-  padding: 0px ${heightToDp("2%")}px;
-  background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
-`;
-const Heading = styled.Text`
-  font-family: MyText;
-  font-size: ${heightToDp("3%")}px;
-  color: ${({ theme }) => theme.Theme.text.heading};
-`;
-const HeadView = styled.View`
-  flex: 2;
-  justify-content: center;
-  align-items: center;
-`;
+
 const Lab = ({ Test, title }) => {
+  const [value, setValue] = useState("");
   const { TestingData, lab, hospitaldata, hospital, loading } = useApi();
   useEffect(() => {
     !Test ? hospitaldata() : TestingData();
@@ -40,11 +28,18 @@ const Lab = ({ Test, title }) => {
   return (
     <Screen>
       {title ? (
-        <Contain>
-          <HeadView>
-            <Heading>{title}</Heading>
-          </HeadView>
-        </Contain>
+        <View style={{ justifyContent: "space-evenly", flexDirection: "row" }}>
+          <Input
+            value={value}
+            onChange={(params) => setValue(params)}
+            width={widthToDp("80%")}
+          />
+          <View style={{ justifyContent: "center", borderRadius: 20 }}>
+            <TouchableOpacity onPress={}>
+              <Location height="40" width="40" />
+            </TouchableOpacity>
+          </View>
+        </View>
       ) : null}
       {loading ? (
         <Skeleton />
@@ -54,7 +49,7 @@ const Lab = ({ Test, title }) => {
             <FlatList
               disableVirtualization
               contentContainerStyle={{ flexGrow: 1 }}
-              data={!Test ? hospital : lab}
+              data={!Test ? change(hospital, value) : lab}
               keyExtractor={(item) => item._id.toString()}
               renderItem={({ item }) => <TestingLab {...item} />}
               initialNumToRender={5}

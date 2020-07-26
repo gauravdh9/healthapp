@@ -11,7 +11,7 @@ import Prevention from "../assets/Prevention.svg";
 import Pin from "../assets/pin2.svg";
 import Next from "../assets/next.svg";
 import Phone from "../assets/phone.svg";
-import Location from "../assets/location.svg";
+import Address from "../assets/location.svg";
 import Congestion from "../assets/congestion.svg";
 import Headache from "../assets/headache.svg";
 import RunnyNose from "../assets/runnynose.svg";
@@ -31,7 +31,7 @@ export {
   Hospitalheader,
   Hospitals,
   Phone,
-  Location,
+  Address,
   Congestion,
   Headache,
   RunnyNose,

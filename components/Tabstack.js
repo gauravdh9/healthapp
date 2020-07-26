@@ -5,13 +5,12 @@ import CovidHospital from "../screens/CovidHospital";
 import MyTabBar from "../components/MyTabBar2";
 import Screen from "../utils/Screen";
 import { useApi } from "../hooks/useApi";
-import MaterialsIcon from "react-native-vector-icons/FontAwesome";
-import { Kohana } from "react-native-textinput-effects";
-import styled from "styled-components";
+import Input from "./Input";
 import { useTheme } from "styled-components";
 import { heightToDp, widthToDp } from "../utils/Size";
 import SkeletonContent from "react-native-skeleton-content";
-import Animated, { Easing } from "react-native-reanimated";
+import { Easing } from "react-native-reanimated";
+import styled from "styled-components";
 const InputView = styled.View`
   flex-direction: row;
   justify-content: center;
@@ -25,8 +24,8 @@ export const Skeleton = () => {
   return (
     <SkeletonContent
       style={{ borderRadius: 20, backgroundColor: "red" }}
-      boneColor={Theme.covidscreen.vector}
-      highlightColor={Theme.highLight}
+      boneColor={Theme.infocard.Cbackground}
+      highlightColor={Theme.covidscreen.vector}
       animationType="shiver"
       animationDirection="horizontalRight"
       containerStyle={{
@@ -87,24 +86,7 @@ const Tabstack = () => {
 
   return (
     <Screen>
-      <InputView>
-        <Kohana
-          value={value}
-          style={{
-            margin: heightToDp("2%"),
-            borderRadius: heightToDp("2%"),
-          }}
-          iconClass={MaterialsIcon}
-          iconName={"hospital-o"}
-          iconColor={Theme.tabBar.inactive}
-          inputPadding={5}
-          inputStyle={Theme.tabBar.inactive}
-          iconContainerStyle={{ padding: 10 }}
-          useNativeDriver
-          onChangeText={(param) => setValue(param)}
-          placeholder="Search..."
-        />
-      </InputView>
+      <Input value={value} onChange={(params) => setValue(params)} />
       <Tab.Navigator
         swipeEnabled={true}
         tabBar={(props) => <MyTabBar {...props} />}
