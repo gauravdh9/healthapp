@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Alert } from "react-native";
 import Screen from "../utils/Screen";
 import { useApi } from "../hooks/useApi";
 import styled from "styled-components";
@@ -9,7 +9,7 @@ import { Skeleton } from "../components/Tabstack";
 import Input from "../components/Input";
 import { change } from "./CovidHospital";
 import { Address } from "../utils/Svg";
-
+import * as Location from "expo-location";
 const Container = styled(Screen)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
 `;
@@ -20,10 +20,22 @@ const FlatView = styled.View`
 `;
 
 const Lab = ({ Test, title }) => {
+  const LoactionPermission = async () => {
+    const { status } = await Location.requestPermissionsAsync();
+    if (status !== "granted") Alert.alert(status);
+    else {
+      const {
+        coords: { latitude, longitude },
+      } = await Location.getLastKnownPositionAsync();
+      console.log(latitude, longitude);
+    }
+  };
+
   const [value, setValue] = useState("");
   const { TestingData, lab, hospitaldata, hospital, loading } = useApi();
   useEffect(() => {
     !Test ? hospitaldata() : TestingData();
+    LoactionPermission();
   }, []);
   return (
     <Screen>
@@ -35,8 +47,8 @@ const Lab = ({ Test, title }) => {
             width={widthToDp("80%")}
           />
           <View style={{ justifyContent: "center", borderRadius: 20 }}>
-            <TouchableOpacity onPress={}>
-              <Location height="40" width="40" />
+            <TouchableOpacity onPress={LoactionPermission}>
+              <Address height="40" width="40" />
             </TouchableOpacity>
           </View>
         </View>
