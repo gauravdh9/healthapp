@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState, useRef } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import styled from "styled-components";
@@ -28,7 +26,7 @@ const Description = styled.Text`
   text-align: justify;
   font-family: MyText;
   padding: ${heightToDp("1.8%")}px ${widthToDp("5.8%")}px;
-  line-height: ${heightToDp("3.8%")}px;
+  line-height: ${heightToDp("4%")}px;
   font-size: ${heightToDp("2.2%")}px;
 `;
 const Card = styled.View`
@@ -46,14 +44,11 @@ const Render = ({ Graphics, title, text, symptom }) => {
       {symptom ? (
         <Graphics height={heightToDp("30%")} width={widthToDp("90%")} />
       ) : (
-        <Image resizeMode='contain' style={styles.image} source={Graphics} />
+        <Image resizeMode="contain" style={styles.image} source={Graphics} />
       )}
-      <Card
-        style={{
-          elevation: 15,
-        }}>
-        <Heading> {title} </Heading>
-        <Description> {text} </Description>
+      <Card style={{ elevation: 15 }}>
+        <Heading>{title}</Heading>
+        <Description>{text}</Description>
       </Card>
     </View>
   );
@@ -85,7 +80,8 @@ const RenderNextButton = ({ direction, theme }) => {
         marginLeft: 10,
         padding: 12,
         backgroundColor: theme,
-      }}>
+      }}
+    >
       <Arrow direction={direction} />
     </View>
   );
@@ -121,9 +117,7 @@ export default function Symptom({ data }) {
         renderItem={({ item }) => <Render {...item} />}
         ref={Ref}
         onDone={() => Ref.current.goToSlide(0)}
-        dotStyle={{
-          backgroundColor: Theme.covidscreen.vector,
-        }}
+        dotStyle={{ backgroundColor: Theme.covidscreen.vector }}
       />
     </Container>
   );

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { heightToDp, widthToDp } from "../utils/Size";
 
 const Title = styled.Text`
-  font-size: ${heightToDp("2.4%")}px;
+  font-size: ${heightToDp("2.6%")}px;
   color: ${({ theme }) => theme.Theme.text.heading};
 
   font-family: MyText;
