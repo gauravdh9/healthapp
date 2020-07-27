@@ -51,7 +51,7 @@ function Listitem({ address, location, number, title, type, dis }) {
               marginBottom: heightToDp("1%"),
             }}
           >
-            <Type>Type:-{type} </Type>
+            <Type>Type&nbsp;:-{type} </Type>
             {dis ? <Type>{dis.toFixed(0)}KM</Type> : null}
           </View>
         </Details>

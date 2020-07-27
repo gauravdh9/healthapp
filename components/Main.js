@@ -9,7 +9,7 @@ import { useColorScheme } from "react-native-appearance";
 import { StatusBar } from "react-native";
 import Lab from "../screens/Lab";
 import { useApi } from "../hooks/useApi";
-import { Skeleton } from "./Tabstack";
+import LoginScreen from "../screens/LoginScreen";
 const Tab = createBottomTabNavigator();
 
 const Main = () => {
@@ -27,11 +27,24 @@ const Main = () => {
         barStyle={Theme.status}
       />
       <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
-        <Tab.Screen name="home" component={Screenstack} />
-        <Tab.Screen name="hospital">
+        <Tab.Screen
+          name="home"
+          options={{ name: "Home" }}
+          component={Screenstack}
+        />
+        <Tab.Screen name="hospital" options={{ name: "Hospitals" }}>
           {() => <Lab title="Hospitals" />}
         </Tab.Screen>
-        <Tab.Screen name="user-cog" component={Hos} />
+        <Tab.Screen
+          name="cogs"
+          component={LoginScreen}
+          options={{ name: "Blood" }}
+        />
+        <Tab.Screen
+          name="user-cog"
+          component={Hos}
+          options={{ name: "Settings" }}
+        />
       </Tab.Navigator>
     </ThemeProvider>
   );

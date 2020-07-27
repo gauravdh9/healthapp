@@ -17,6 +17,8 @@ import Headache from "../assets/headache.svg";
 import RunnyNose from "../assets/runnynose.svg";
 import Cough from "../assets/cough.svg";
 import Fever from "../assets/fever.svg";
+import Filter from "../assets/filter.svg";
+import FilterLight from "../assets/filterlight.svg";
 export {
   Confirmed,
   Recovered,
@@ -37,4 +39,6 @@ export {
   RunnyNose,
   Cough,
   Fever,
+  Filter,
+  FilterLight,
 };

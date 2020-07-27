@@ -8,10 +8,10 @@ import TestingLab from "../components/TestingLab";
 import { Skeleton } from "../components/Tabstack";
 import Input from "../components/Input";
 import { change } from "./CovidHospital";
-import { Address, Hospital } from "../utils/Svg";
+import { Address, Filter, FilterLight } from "../utils/Svg";
 import * as Location from "expo-location";
 import Getdistance from "../components/Distance";
-
+import { useTheme } from "styled-components";
 const Container = styled(Screen)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
 `;
@@ -23,6 +23,7 @@ const FlatView = styled.View`
 `;
 
 const Lab = ({ Test, title }) => {
+  const { Theme } = useTheme();
   const {
     TestingData,
     lab,
@@ -67,15 +68,36 @@ const Lab = ({ Test, title }) => {
   return (
     <Screen>
       {title ? (
-        <View style={{ justifyContent: "space-evenly", flexDirection: "row" }}>
+        <View
+          style={{
+            justifyContent: "flex-start",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
           <Input
             value={value}
             onChange={(params) => setValue(params)}
             width={widthToDp("80%")}
           />
-          <View style={{ justifyContent: "center", borderRadius: 20 }}>
+          <View
+            style={{
+              justifyContent: "center",
+              borderRadius: heightToDp("2%"),
+              alignItems: "center",
+              height: heightToDp("6.3%"),
+              width: widthToDp("12.6%"),
+            }}
+          >
             <TouchableOpacity onPress={LoactionPermission}>
-              <Address height="40" width="40" />
+              {Theme.covidscreen.vector === "#313250" ? (
+                <Filter height={heightToDp("10%")} width={widthToDp("10%")} />
+              ) : (
+                <FilterLight
+                  height={heightToDp("10%")}
+                  width={widthToDp("10%")}
+                />
+              )}
             </TouchableOpacity>
           </View>
         </View>

@@ -1,12 +1,20 @@
 import React from "react";
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import { useTheme } from "styled-components";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { heightToDp, widthToDp } from "../utils/Size";
+import styled from "styled-components";
 
-export default function MyTabBar({ state, descriptors, navigation, iconname }) {
+const Name = styled.Text`
+  font-family: MyText;
+  font-size: ${heightToDp("1.3s%")}px;
+  color: ${({ theme }) => theme.Theme.text.heading};
+`;
+
+export default function MyTabBar({ state, descriptors, navigation, options }) {
   const { Theme } = useTheme();
   const focusedOptions = descriptors[state.routes[state.index].key].options;
+  console.log(descriptors);
   if (focusedOptions.tabBarVisible === false) {
     return null;
   }
@@ -80,6 +88,7 @@ export default function MyTabBar({ state, descriptors, navigation, iconname }) {
                     isFocused ? Theme.tabBar.active : Theme.tabBar.inactive
                   }
                 />
+                <Name>{options.name}</Name>
               </View>
             </TouchableOpacity>
           );
