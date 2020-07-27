@@ -36,7 +36,7 @@ const Name = styled.Text`
   font-size: ${heightToDp("2.8%")}px;
 `;
 
-function Listitem({ address, location, number, title, type }) {
+function Listitem({ address, location, number, title, type, dis }) {
   return (
     <>
       <Container style={styles.container}>
@@ -51,7 +51,8 @@ function Listitem({ address, location, number, title, type }) {
               marginBottom: heightToDp("1%"),
             }}
           >
-            <Type>Type:-{type}</Type>
+            <Type>Type:-{type} </Type>
+            {dis ? <Type>{dis.toFixed(0)}KM</Type> : null}
           </View>
         </Details>
         <Separator location={location} number={number} />

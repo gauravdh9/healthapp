@@ -8,18 +8,30 @@ import TestingLab from "../components/TestingLab";
 import { Skeleton } from "../components/Tabstack";
 import Input from "../components/Input";
 import { change } from "./CovidHospital";
-import { Address } from "../utils/Svg";
+import { Address, Hospital } from "../utils/Svg";
 import * as Location from "expo-location";
+import Getdistance from "../components/Distance";
+
 const Container = styled(Screen)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
 `;
 const FlatView = styled.View`
+  flex-grow: 1;
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
   border-top-right-radius: ${heightToDp("3%")}px;
   border-top-left-radius: ${heightToDp("3%")}px;
 `;
 
 const Lab = ({ Test, title }) => {
+  const {
+    TestingData,
+    lab,
+    hospitaldata,
+    hospital,
+    setHospital,
+    loading,
+  } = useApi();
+
   const LoactionPermission = async () => {
     const { status } = await Location.requestPermissionsAsync();
     if (status !== "granted") Alert.alert(status);
@@ -27,15 +39,30 @@ const Lab = ({ Test, title }) => {
       const {
         coords: { latitude, longitude },
       } = await Location.getLastKnownPositionAsync();
-      console.log(latitude, longitude);
+      let Datalist = [];
+      hospital
+        ? hospital.map((item) => {
+            let dis = Getdistance(
+              latitude,
+              longitude,
+              Number(item.loc.lat),
+              Number(item.loc.long)
+            );
+            Datalist.push({ ...item, dis });
+          })
+        : null;
+
+      Datalist.sort((a, b) => (a.dis > b.dis ? 1 : -1));
+      setHospital(Datalist);
     }
   };
 
   const [value, setValue] = useState("");
-  const { TestingData, lab, hospitaldata, hospital, loading } = useApi();
   useEffect(() => {
     !Test ? hospitaldata() : TestingData();
-    LoactionPermission();
+    if (title) {
+      LoactionPermission();
+    }
   }, []);
   return (
     <Screen>

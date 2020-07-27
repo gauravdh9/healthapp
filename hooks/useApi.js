@@ -64,6 +64,7 @@ export const useApi = () => {
     getdata,
     hospital,
     hospitaldata,
+    setHospital,
     covidhos,
     covidhospitaldata,
     lab,
