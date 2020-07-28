@@ -11,11 +11,8 @@ import { change } from "./CovidHospital";
 import { Address, Filter, FilterLight } from "../utils/Svg";
 import * as Location from "expo-location";
 import Getdistance from "../components/Distance";
-import * as IntentLauncherAndroid from "expo-intent-launcher";
 import { useTheme } from "styled-components";
-
-import RNAndroidLocationEnabler from "react-native-android-location-enabler";
-
+import * as IntentLauncherAndroid from "expo-intent-launcher";
 const Container = styled(Screen)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
 `;
@@ -37,48 +34,48 @@ const Lab = ({ Test, title }) => {
     loading,
   } = useApi();
 
+  async function distancecal() {
+    const {
+      coords: { latitude, longitude },
+    } = await Location.getCurrentPositionAsync({
+      enableHighAccuracy: true,
+    });
+    var Datalist = [];
+    hospital
+      ? hospital.map((item) => {
+          let dis = Getdistance(
+            latitude,
+            longitude,
+            Number(item.loc.lat),
+            Number(item.loc.long)
+          );
+          Datalist.push({ ...item, dis });
+        })
+      : null;
+
+    Datalist.sort((a, b) => (a.dis > b.dis ? 1 : -1));
+    setHospital(Datalist);
+  }
+
   const LoactionPermission = async () => {
-    let { status } = await Location.requestPermissionsAsync();
+    const { status } = await Location.requestPermissionsAsync();
+    const valueO = await Location.hasServicesEnabledAsync();
+
     if (status !== "granted") Alert.alert(status);
     else {
-      Location.hasServicesEnabledAsync().then(async (values) => {
-        if (values === true) {
-          try {
-            const {
-              coords: { latitude, longitude },
-            } = await Location.getLastKnownPositionAsync();
-            let Datalist = [];
-            hospital
-              ? hospital.map((item) => {
-                  let dis = Getdistance(
-                    latitude,
-                    longitude,
-                    Number(item.loc.lat),
-                    Number(item.loc.long)
-                  );
-                  Datalist.push({ ...item, dis });
-                })
-              : null;
-
-            Datalist.sort((a, b) => (a.dis > b.dis ? 1 : -1));
-            setHospital(Datalist);
-            console.log(hospital);
-          } catch (e) {}
-        } else {
-          IntentLauncherAndroid.startActivityAsync(
-            IntentLauncherAndroid.ACTION_LOCATION_SOURCE_SETTINGS
-          );
-        }
-      });
+      if (valueO) {
+        await distancecal();
+      } else {
+        IntentLauncherAndroid.startActivityAsync(
+          IntentLauncherAndroid.ACTION_LOCATION_SOURCE_SETTINGS
+        );
+      }
     }
   };
 
   const [value, setValue] = useState("");
   useEffect(() => {
     !Test ? hospitaldata() : TestingData();
-    if (title) {
-      LoactionPermission();
-    }
   }, []);
   return (
     <Screen>
