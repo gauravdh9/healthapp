@@ -14,7 +14,6 @@ const Name = styled.Text`
 export default function MyTabBar({ state, descriptors, navigation, options }) {
   const { Theme } = useTheme();
   const focusedOptions = descriptors[state.routes[state.index].key].options;
-  console.log(descriptors);
   if (focusedOptions.tabBarVisible === false) {
     return null;
   }
