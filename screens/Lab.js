@@ -8,7 +8,7 @@ import TestingLab from "../components/TestingLab";
 import { Skeleton } from "../components/Tabstack";
 import Input from "../components/Input";
 import { change } from "./CovidHospital";
-import { Address, Filter, FilterLight } from "../utils/Svg";
+import { Filter, FilterLight } from "../utils/Svg";
 import * as Location from "expo-location";
 import Getdistance from "../components/Distance";
 import { useTheme } from "styled-components";
@@ -64,7 +64,7 @@ const Lab = ({ Test, title }) => {
     if (status !== "granted") Alert.alert(status);
     else {
       if (valueO) {
-        await distancecal();
+        distancecal();
       } else {
         IntentLauncherAndroid.startActivityAsync(
           IntentLauncherAndroid.ACTION_LOCATION_SOURCE_SETTINGS

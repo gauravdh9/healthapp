@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Screenstack from "./Screenstack";
 import Hos from "../screens/Hos";
 import MyTabBar from "./MyTabBar";
-import { useColorScheme } from "react-native-appearance";
+import { useColorScheme } from "react-native";
 import { StatusBar } from "react-native";
 import Lab from "../screens/Lab";
 import { useApi } from "../hooks/useApi";
@@ -13,7 +13,6 @@ import LoginScreen from "../screens/LoginScreen";
 const Tab = createBottomTabNavigator();
 
 const Main = () => {
-  const { loading } = useApi();
   let colorScheme = useColorScheme();
 
   const [Theme, setTheme] = useState(Themes.colors[colorScheme]);

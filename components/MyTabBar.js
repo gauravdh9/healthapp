@@ -22,7 +22,6 @@ export default function MyTabBar({ state, descriptors, navigation, options }) {
     <View
       style={{
         backgroundColor: Theme.covidscreen.info,
-        elevation: 5,
         height: heightToDp("6%"),
       }}
     >
