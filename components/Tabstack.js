@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import CovidHospital from "../screens/CovidHospital";
 import MyTabBar from "../components/MyTabBar2";
@@ -10,13 +9,6 @@ import { useTheme } from "styled-components";
 import { heightToDp, widthToDp } from "../utils/Size";
 import SkeletonContent from "react-native-skeleton-content";
 import { Easing } from "react-native-reanimated";
-import styled from "styled-components";
-const InputView = styled.View`
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
-`;
 
 const Tab = createMaterialTopTabNavigator();
 export const Skeleton = () => {

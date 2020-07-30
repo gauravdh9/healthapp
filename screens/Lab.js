@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, TouchableOpacity, Alert } from "react-native";
+import { View, FlatList, TouchableOpacity, Alert } from "react-native";
 import Screen from "../utils/Screen";
 import { useApi } from "../hooks/useApi";
 import styled from "styled-components";

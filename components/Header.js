@@ -1,5 +1,4 @@
 import React from "react";
-import { View, Text } from "react-native";
 import Listheader from "./listheader";
 const Header = ({ scene, previous, navigation }) => {
   const { options } = scene.descriptor;

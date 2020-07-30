@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import styled from "styled-components";
 import { heightToDp, widthToDp } from "../utils/Size";
 import Separator from "../components/Separator";

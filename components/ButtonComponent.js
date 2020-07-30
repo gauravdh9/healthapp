@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import AwesomeButton from "react-native-really-awesome-button";
 import { useTheme } from "styled-components";
-import styled from "styled-components";
+
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { heightToDp, widthToDp } from "../utils/Size";
 const ButtonComponent = ({ name, style, outerStyle, blood }) => {
@@ -10,7 +10,7 @@ const ButtonComponent = ({ name, style, outerStyle, blood }) => {
   return (
     <View style={outerStyle}>
       <AwesomeButton
-        backgroundColor={Theme.infocard.Cbackground}
+        backgroundColor={Theme.covidscreen.vector}
         backgroundDarker={Theme.covidscreen.vector}
         {...style}
       >

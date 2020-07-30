@@ -1,11 +1,11 @@
 import React from "react";
-import { View, Text, Modal, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, Modal, TouchableOpacity } from "react-native";
 import Screen from "../utils/Screen";
 import ButtonComponent from "./ButtonComponent";
 import { useTheme } from "styled-components";
 import { heightToDp, widthToDp } from "../utils/Size";
-import { useFormikContext } from "formik";
-const ModalContent = ({
+
+export const ModalContent = ({
   label,
   backgroundColor,
   setVisible,
@@ -39,7 +39,7 @@ const ModalContent = ({
   );
 };
 
-const data = [
+export const data = [
   {
     backgroundColor: "#fc5c65",
     label: "A+",
@@ -82,7 +82,7 @@ const data = [
   },
 ];
 
-const ModalView = ({ visible, setVisible, setFieldValue }) => {
+const ModalView = ({ visible, setVisible, children }) => {
   return (
     <Modal
       visible={visible}
@@ -96,18 +96,7 @@ const ModalView = ({ visible, setVisible, setFieldValue }) => {
           height: heightToDp("50%"),
         }}
       >
-        <FlatList
-          data={data}
-          numColumns={2}
-          keyExtractor={(item) => item.value.toString()}
-          renderItem={({ item }) => (
-            <ModalContent
-              {...item}
-              setVisible={setVisible}
-              setFieldValue={setFieldValue}
-            />
-          )}
-        />
+        {children}
         <ButtonComponent
           name={"Close"}
           style={{

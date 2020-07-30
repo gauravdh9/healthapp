@@ -8,8 +8,7 @@ import MyTabBar from "./MyTabBar";
 import { useColorScheme } from "react-native";
 import { StatusBar } from "react-native";
 import Lab from "../screens/Lab";
-import { useApi } from "../hooks/useApi";
-import LoginScreen from "../screens/LoginScreen";
+import BloodStack from "./BloodStack";
 const Tab = createBottomTabNavigator();
 
 const Main = () => {
@@ -36,7 +35,7 @@ const Main = () => {
         </Tab.Screen>
         <Tab.Screen
           name="cogs"
-          component={LoginScreen}
+          component={BloodStack}
           options={{ name: "Blood" }}
         />
         <Tab.Screen

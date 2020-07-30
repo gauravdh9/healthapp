@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   View,
   Text,
-  TextInput,
-  Button,
   KeyboardAvoidingView,
-  Modal,
+  Alert,
+  FlatList,
 } from "react-native";
 import Screen from "../utils/Screen";
 import { useFormik } from "formik";
@@ -18,9 +17,18 @@ import Listheader from "../components/listheader";
 import { Blood } from "../utils/Svg";
 import ModalView from "../components/ModalView";
 import * as Yup from "yup";
-
-const LoginScreen = () => {
+import { useApi } from "../hooks/useApi";
+import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
+import { ModalContent, data } from "../components/ModalView";
+const LoginScreen = ({ navigation }) => {
+  const { Login } = useApi();
   const [visible, setVisible] = useState(false);
+  const [code, setCode] = useState("");
+  const [verificationId, setVerificationId] = useState();
+  const firebaseConfig = firebase.apps.length
+    ? firebase.app().options
+    : undefined;
+  const recaptchaVerifier = useRef(null);
   const { Theme } = useTheme();
   const {
     handleChange,
@@ -32,39 +40,47 @@ const LoginScreen = () => {
     setFieldValue,
   } = useFormik({
     initialValues: {
-      phone: "",
-      code: "",
+      phone: "+91",
       name: "",
       bloodGroup: "Blood Group",
     },
     validationSchema: Yup.object({
       phone: Yup.string()
         .matches(
-          /(([+][9][1]|[0])+\d{10})|[6789]+\d{9}/,
-          "Please Enter a 10 digit Mobile Number"
+          /(([+][9][1]|[0])+\d{10})/,
+          "Please Enter a 10 digit Mobile Number "
         )
         .required("This is a Required field to Continue"),
-      code: Yup.string()
-        .matches(/\d{6}/, "Code Must be 6 digit Long")
-        .required("Enter a Valid Code"),
       name: Yup.string()
         .matches(
           /(-?([A-Z].\s)?([A-Z][a-z]+)\s?)+([A-Z]'([A-Z][a-z]+))?/,
           "Enter a Valid Name"
         )
         .required("A name is required to Contine"),
-      bloodGroup: Yup.string()
-        .min(2)
-        .max(3, "Blood Group can't be larger than 3 characters"),
+      bloodGroup: Yup.string().min(2).max(3, "Select a Blood group"),
     }),
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        const phoneProvider = new firebase.auth.PhoneAuthProvider();
+        const verificationId = await phoneProvider.verifyPhoneNumber(
+          values.phone,
+          recaptchaVerifier.current
+        );
+        setVerificationId(verificationId);
+        Alert.alert("Otp Successfully Sent");
+      } catch (err) {
+        console.log(err);
+      }
     },
   });
 
   return (
     <Screen style={{ justifyContent: "space-between" }}>
       <Listheader icon title={"Become A Donor or Reciepent"} />
+      <FirebaseRecaptchaVerifierModal
+        ref={recaptchaVerifier}
+        firebaseConfig={firebaseConfig}
+      />
       <KeyboardAvoidingView
         style={{
           justifyContent: "flex-start",
@@ -90,7 +106,7 @@ const LoginScreen = () => {
               onChangeText={handleChange("name")}
               value={values.name}
               iconName={"user"}
-              placeholder="Enter Name"
+              placeholder=" Name"
               style={{
                 width: widthToDp("55%"),
                 height: heightToDp("10%"),
@@ -99,6 +115,7 @@ const LoginScreen = () => {
               touched={touched.name}
               onBlur={handleBlur("name")}
             />
+
             <ButtonComponent
               name={values.bloodGroup}
               style={{
@@ -109,12 +126,25 @@ const LoginScreen = () => {
               outerStyle={{ justifyContent: "center", alignItems: "center" }}
               blood
             />
-            <ModalView
-              visible={visible}
-              setVisible={setVisible}
-              setFieldValue={setFieldValue}
-            />
+
+            <ModalView visible={visible} setVisible={setVisible}>
+              <FlatList
+                data={data}
+                numColumns={2}
+                keyExtractor={(item) => item.value.toString()}
+                renderItem={({ item }) => (
+                  <ModalContent
+                    {...item}
+                    setVisible={setVisible}
+                    setFieldValue={setFieldValue}
+                  />
+                )}
+              />
+            </ModalView>
           </View>
+          {touched.bloodGroup && errors.bloodGroup && (
+            <Text>{errors.bloodGroup}</Text>
+          )}
           <View
             style={{
               flexDirection: "row",
@@ -126,7 +156,7 @@ const LoginScreen = () => {
               onChangeText={handleChange("phone")}
               value={values.phone}
               iconName={"phone"}
-              placeholder="Enter Phone Number"
+              placeholder=" Phone Number"
               style={{ width: widthToDp("60%"), height: heightToDp("10%") }}
               error={errors.phone}
               touched={touched.phone}
@@ -150,21 +180,29 @@ const LoginScreen = () => {
             }}
           >
             <InputComponent
-              onChangeText={handleChange("code")}
-              value={values.code}
+              onChangeText={(text) => setCode(text)}
+              value={code}
               iconName={"user-secret"}
-              placeholder="Enter Code"
+              placeholder=" Code"
               style={{ width: widthToDp("45%"), height: heightToDp("10%") }}
-              error={errors.code}
-              touched={touched.code}
-              onBlur={handleBlur("code")}
             />
             <ButtonComponent
               name={"Verify OTP"}
-              onPress={handleSubmit}
               style={{
                 width: widthToDp("30%"),
                 borderRadius: heightToDp("20%"),
+                onPress: async () => {
+                  try {
+                    const credential = firebase.auth.PhoneAuthProvider.credential(
+                      verificationId,
+                      code
+                    );
+                    await firebase.auth().signInWithCredential(credential);
+                    Login(values.name, values.phone, values.bloodGroup);
+                  } catch (err) {
+                    console.log(err);
+                  }
+                },
               }}
               outerStyle={{ justifyContent: "center", alignItems: "center" }}
             />
