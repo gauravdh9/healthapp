@@ -20,6 +20,7 @@ import Fever from "../assets/fever.svg";
 import Filter from "../assets/filter.svg";
 import FilterLight from "../assets/filterlight.svg";
 import Blood from "../assets/Blood.svg";
+import Whatsapp from "../assets/whatsapp.svg";
 export {
   Confirmed,
   Recovered,
@@ -43,4 +44,5 @@ export {
   Filter,
   FilterLight,
   Blood,
+  Whatsapp,
 };

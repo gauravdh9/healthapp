@@ -36,13 +36,22 @@ const Name = styled.Text`
   font-size: ${heightToDp("2.8%")}px;
 `;
 
-function Listitem({ address, location, number, title, type, dis }) {
+function Listitem({
+  address,
+  location,
+  number,
+  title,
+  type,
+  dis,
+  whatsapp,
+  date,
+}) {
   return (
     <>
       <Container style={styles.container}>
         <Details>
-          <Name style={styles.name}>{title?.slice(0, 30)}...</Name>
-          <Address>{address?.slice(0, 50)}...</Address>
+          <Name style={styles.name}>{title?.slice(0, 30)}</Name>
+          <Address>{address?.slice(0, 50)}</Address>
           <View
             style={{
               flexDirection: "row",
@@ -51,11 +60,12 @@ function Listitem({ address, location, number, title, type, dis }) {
               marginBottom: heightToDp("1%"),
             }}
           >
-            <Type>Type&nbsp;:-{type} </Type>
-            {dis ? <Type>{dis.toFixed(0)}KM</Type> : null}
+            <Type>Type&nbsp;:-{type}</Type>
+            {dis ? <Type>{dis.toFixed(2)}KM</Type> : null}
+            {date ? <Type>{date.slice(0, 10)}</Type> : null}
           </View>
         </Details>
-        <Separator location={location} number={number} />
+        <Separator location={location} number={number} whatsapp={whatsapp} />
       </Container>
     </>
   );

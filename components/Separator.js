@@ -1,6 +1,6 @@
 import React from "react";
 import { View, TouchableOpacity, Linking } from "react-native";
-import { Phone, Address } from "../utils/Svg";
+import { Phone, Address, Whatsapp } from "../utils/Svg";
 import { heightToDp, widthToDp } from "../utils/Size";
 import styled from "styled-components";
 
@@ -13,7 +13,7 @@ const Separate = styled.View`
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
   height: ${heightToDp("0.5%")}px;
 `;
-const Separator = ({ location, number }) => {
+const Separator = ({ location, number, whatsapp }) => {
   return (
     <>
       <Separate />
@@ -45,7 +45,11 @@ const Separator = ({ location, number }) => {
               paddingBottom: heightToDp("0.5%"),
             }}
           >
-            <Address height="30" width="30" />
+            {whatsapp ? (
+              <Whatsapp height="30" width="30" />
+            ) : (
+              <Address height="30" width="30" />
+            )}
           </TouchableOpacity>
         </View>
       </View>

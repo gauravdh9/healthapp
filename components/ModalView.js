@@ -4,7 +4,7 @@ import Screen from "../utils/Screen";
 import ButtonComponent from "./ButtonComponent";
 import { useTheme } from "styled-components";
 import { heightToDp, widthToDp } from "../utils/Size";
-
+import Listheader from "../components/listheader";
 export const ModalContent = ({
   label,
   backgroundColor,
@@ -41,7 +41,7 @@ export const ModalContent = ({
 
 export const data = [
   {
-    backgroundColor: "#fc5c65",
+    backgroundColor: "tomato",
     label: "A+",
     value: 1,
   },
@@ -82,31 +82,44 @@ export const data = [
   },
 ];
 
-const ModalView = ({ visible, setVisible, children }) => {
+const ModalView = ({ visible, setVisible, children, user, name }) => {
+  let title;
+  if (name) {
+    title = name;
+  } else {
+    title = `${user ? user.name : ""}'s Blood Request`;
+  }
+  const { Theme } = useTheme();
   return (
     <Modal
       visible={visible}
       animationType="fade"
       onRequestClose={() => setVisible(false)}
     >
-      <Screen
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          height: heightToDp("50%"),
-        }}
-      >
-        {children}
-        <ButtonComponent
-          name={"Close"}
+      <Listheader icon title={title} />
+      <View style={{ backgroundColor: Theme.covidscreen.vector, flex: 1 }}>
+        <Screen
           style={{
-            width: widthToDp("20%"),
-            borderRadius: heightToDp("20%"),
-            onPress: () => setVisible(false),
+            justifyContent: "space-evenly",
+            alignItems: "center",
+            height: heightToDp("50%"),
+            backgroundColor: Theme.infocard.Cbackground,
+            borderTopLeftRadius: widthToDp("10%"),
+            borderTopRightRadius: widthToDp("10%"),
           }}
-          outerStyle={{ justifyContent: "center", alignItems: "center" }}
-        />
-      </Screen>
+        >
+          {children}
+          <ButtonComponent
+            name={"Close"}
+            style={{
+              width: widthToDp("20%"),
+              borderRadius: heightToDp("20%"),
+              onPress: () => setVisible(false),
+            }}
+            outerStyle={{ justifyContent: "center", alignItems: "center" }}
+          />
+        </Screen>
+      </View>
     </Modal>
   );
 };

@@ -6,6 +6,8 @@ const {
   LABS_DATA,
   REQUESTS,
   LOGIN,
+  POST,
+  DELETE,
 } = require("../utils/Url");
 import AsyncStorage from "@react-native-community/async-storage";
 import { UserContext } from "../App";
@@ -20,12 +22,14 @@ const storeData = async (value) => {
 };
 
 export const useApi = () => {
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
+  const [button, setButton] = useState();
+  const [load, setLoad] = useState(true);
   const [result, setResult] = useState();
   const [query, setQuery] = useState();
   const [hospital, setHospital] = useState();
-  const [screen, setScreen] = useState({});
+  const [refresh, setRefresh] = useState(false);
   const [covidhos, setCovidhos] = useState({
     total: [],
     withVentilators: [],
@@ -78,10 +82,18 @@ export const useApi = () => {
   };
 
   const Requests = () => {
+    setRefresh(true);
     fetch(REQUESTS)
       .then((res) => res.json())
       .then((response) => {
+        response.map((item) => {
+          if (user.phone == item.phone) {
+            setButton(item);
+          }
+        });
         setQuery(response);
+        setRefresh(false);
+        setLoad(false);
       })
       .catch((err) => {
         console.log(err);
@@ -99,6 +111,39 @@ export const useApi = () => {
       storeData(Data);
     } catch (error) {}
   };
+
+  const PostRequest = (hospital, requestBloodGroup) => {
+    fetch(POST, {
+      method: "post",
+      headers: {
+        Authorization: `Bearer ` + user.token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ hospital, requestBloodGroup }),
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        return response;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const DeleteRequest = () => {
+    fetch(DELETE, {
+      method: "delete",
+      headers: { Authorization: "Bearer " + user.token },
+    })
+      .then((res) => {
+        res.json();
+      })
+      .then((response) => {
+        setButton();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return {
     result,
     getdata,
@@ -115,7 +160,11 @@ export const useApi = () => {
     setQuery,
     Login,
     Requests,
-
-    setScreen,
+    PostRequest,
+    refresh,
+    load,
+    setLoad,
+    button,
+    DeleteRequest,
   };
 };

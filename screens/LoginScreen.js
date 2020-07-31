@@ -56,7 +56,7 @@ const LoginScreen = ({ navigation }) => {
           /(-?([A-Z].\s)?([A-Z][a-z]+)\s?)+([A-Z]'([A-Z][a-z]+))?/,
           "Enter a Valid Name"
         )
-        .required("A name is required to Contine"),
+        .required("A name is required to Continue"),
       bloodGroup: Yup.string().min(2).max(3, "Select a Blood group"),
     }),
     onSubmit: async (values) => {
@@ -114,6 +114,7 @@ const LoginScreen = ({ navigation }) => {
               error={errors.name}
               touched={touched.name}
               onBlur={handleBlur("name")}
+              editable={!verificationId}
             />
 
             <ButtonComponent
@@ -122,12 +123,17 @@ const LoginScreen = ({ navigation }) => {
                 width: widthToDp("25%"),
                 borderRadius: heightToDp("20%"),
                 onPress: () => setVisible(true),
+                disabled: !!verificationId,
               }}
               outerStyle={{ justifyContent: "center", alignItems: "center" }}
               blood
             />
 
-            <ModalView visible={visible} setVisible={setVisible}>
+            <ModalView
+              visible={visible}
+              setVisible={setVisible}
+              name={"Blood groups"}
+            >
               <FlatList
                 data={data}
                 numColumns={2}
@@ -143,7 +149,15 @@ const LoginScreen = ({ navigation }) => {
             </ModalView>
           </View>
           {touched.bloodGroup && errors.bloodGroup && (
-            <Text>{errors.bloodGroup}</Text>
+            <Text
+              style={{
+                color: Theme.text.subheading,
+                textAlign: "right",
+                fontFamily: "MyText",
+              }}
+            >
+              {errors.bloodGroup}
+            </Text>
           )}
           <View
             style={{
@@ -161,6 +175,8 @@ const LoginScreen = ({ navigation }) => {
               error={errors.phone}
               touched={touched.phone}
               onBlur={handleBlur("phone")}
+              keyboardType="numeric"
+              editable={!verificationId}
             />
             <ButtonComponent
               name={"Get OTP"}
@@ -200,7 +216,10 @@ const LoginScreen = ({ navigation }) => {
                     await firebase.auth().signInWithCredential(credential);
                     Login(values.name, values.phone, values.bloodGroup);
                   } catch (err) {
-                    console.log(err);
+                    Alert.alert(
+                      "Error",
+                      "The Verification Code You entered is Inavlid Please get a new one to continue"
+                    );
                   }
                 },
               }}

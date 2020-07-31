@@ -13,12 +13,15 @@ const InputComponent = ({
   touched,
   onBlur,
   error,
+  editable,
+  keyboardType = "default",
 }) => {
   const { Theme } = useTheme();
   return (
     <View>
       <View style={style}>
         <Fumi
+          editable={editable}
           value={value}
           style={{
             margin: heightToDp("2%"),
@@ -33,10 +36,17 @@ const InputComponent = ({
           iconWidth={30}
           iconSize={15}
           onBlur={onBlur}
+          keyboardType={keyboardType}
         />
       </View>
       {touched && error && (
-        <Text style={{ color: Theme.text.subheading, fontFamily: "MyText" }}>
+        <Text
+          style={{
+            color: Theme.text.subheading,
+            textAlign: "center",
+            fontFamily: "MyText",
+          }}
+        >
           *{error}
         </Text>
       )}

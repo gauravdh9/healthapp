@@ -40,6 +40,7 @@
     "react-native-skeleton-content": "^1.0.18",
     "react-native-svg": "^12.1.0",
     "react-native-svg-charts": "^5.4.0",
+    "react-native-tab-view": "^2.15.0",
     "react-native-textinput-effects": "^0.6.1",
     "react-native-toggle-element": "^1.0.0",
     "react-native-vector-icons": "^7.0.0",

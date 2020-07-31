@@ -5,4 +5,6 @@ module.exports = {
   LABS_DATA: "https://healthx-api.herokuapp.com/gettestlabs",
   REQUESTS: "https://healthx-api.herokuapp.com/getallreq",
   LOGIN: "https://healthx-api.herokuapp.com/login",
+  POST: "https://healthx-api.herokuapp.com/newrequest",
+  DELETE: "https://healthx-api.herokuapp.com/delreq",
 };
