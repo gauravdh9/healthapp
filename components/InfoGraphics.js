@@ -1,5 +1,12 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Linking,
+} from "react-native";
 import styled from "styled-components";
 import { heightToDp, widthToDp } from "../utils/Size";
 
@@ -9,35 +16,63 @@ const Title = styled.Text`
   font-size: ${heightToDp("3")}px;
   color: ${({ theme }) => theme.Theme.text.heading};
   font-family: MyText;
+  align-self: ${({ account }) => (account ? "center" : "auto")};
 `;
 const Container = styled.View`
-  align-items: flex-start;
+  align-items: ${({ account }) => (account ? "center" : "flex-start")};
   height: auto;
-  width: ${widthToDp("40%")}px;
+  width: ${({ account }) => (account ? widthToDp("25%") : widthToDp("40%"))}px;
   background-color: ${({ theme }) => theme.Theme.infocard.Cbackground};
-  margin: ${heightToDp("1.5%")}px auto;
+  margin: ${heightToDp("1.5%")}px
+    ${({ account }) => (account ? widthToDp("2%") + "px" : "auto")};
+
   margin-bottom: ${heightToDp("3%")}px;
   border-radius: ${heightToDp("3%")}px;
   overflow: hidden;
   position: relative;
   flex-direction: column;
-  padding: ${heightToDp("2%")}px;
+  padding: ${({ account }) => (account ? widthToDp("3%") : heightToDp("2%"))}px;
   border: ${heightToDp("0.5")}px solid
     ${({ theme }) => theme.Theme.covidscreen.vector};
-  padding-bottom: 0px;
+  padding-bottom: ${({ account }) => (account ? widthToDp("3.5") : 0)}px;
 `;
-export default function InfoGraphics({ title, Location, color }) {
+
+export default function InfoGraphics({
+  title,
+  Location,
+  color,
+  image,
+  profile,
+  account,
+}) {
   return (
-    <Container style={styles.shadow}>
-      <Title>{title}</Title>
+    <Container style={styles.shadow} account={account}>
+      <Title account={account}>{title}</Title>
 
-      <Info title={title} color={color} />
+      {profile ? null : <Info title={title} color={color} />}
 
-      <Location
-        style={styles.svg}
-        width={widthToDp("12%")}
-        height={heightToDp("6%")}
-      />
+      {image ? (
+        <TouchableOpacity onPress={() => Linking.openURL(profile)}>
+          <Image
+            source={image}
+            style={{
+              borderRadius: widthToDp("50%"),
+              height: widthToDp("16%"),
+              width: widthToDp("16%"),
+              marginTop: heightToDp("3%"),
+              alignSelf: "center",
+              borderWidth: widthToDp("0.4%"),
+              borderColor: "#c9c9c9",
+            }}
+          />
+        </TouchableOpacity>
+      ) : (
+        <Location
+          style={styles.svg}
+          width={widthToDp("12%")}
+          height={heightToDp("6%")}
+        />
+      )}
     </Container>
   );
 }

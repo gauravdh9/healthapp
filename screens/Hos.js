@@ -1,18 +1,59 @@
-import React, { useEffect, useContext, useRef } from "react";
-import { View, Text } from "react-native";
+import React, { useContext, useState } from "react";
+import { View, Text, TouchableOpacity, Alert, FlatList } from "react-native";
 import Screen from "../utils/Screen";
 import Toggle from "../components/Toggle";
 import AsyncStorage from "@react-native-community/async-storage";
 import { useNavigation } from "@react-navigation/native";
-import ButtonComponent from "../components/ButtonComponent";
 import { heightToDp, widthToDp } from "../utils/Size";
-import { UserContext } from "../App";
+import { UserContext } from "../utils/Context";
 import { useTheme } from "styled-components";
+import { LinearGradient } from "expo-linear-gradient";
+import styled from "styled-components";
+import Icon from "react-native-vector-icons/FontAwesome5";
+import Infographics from "../components/InfoGraphics";
+import { Card, Heading, Description } from "../screens/Symptom";
+
+const Info = styled(LinearGradient).attrs(({ theme }) => ({
+  colors: [theme.Theme.covidscreen.vector, theme.Theme.infocard.Cbackground],
+}))`
+  height: ${heightToDp("20%")}px;
+  width: ${widthToDp("60%")}px;
+  justify-content: space-around;
+  align-items: center;
+  background-color: ${({ theme }) => theme.Theme.infocard.Cbackground};
+  border-radius: ${widthToDp("10%")}px;
+  border: ${heightToDp("0.5%")}px solid
+    ${({ theme }) => theme.Theme.text.subheading};
+`;
+const About = styled(Card)`
+  margin: ${heightToDp("2%")}px ${widthToDp("5%")}px;
+`;
 const ClearData = async () => {
   try {
     await AsyncStorage.removeItem("@storage_Key");
   } catch (error) {}
 };
+
+const data = [
+  {
+    id: "1",
+    title: "Soham",
+    image: require("../assets/soham.jpg"),
+    profile: "https://github.com/sohamsingh29",
+  },
+  {
+    id: "2",
+    title: "Gaurav",
+    image: require("../assets/gaurav.jpg"),
+    profile: "https://github.com/gauravdh9",
+  },
+  {
+    id: "3",
+    title: "Ayush",
+    image: require("../assets/ayush.jpg"),
+    profile: "https://github.com/routayush1",
+  },
+];
 
 const Hospital = () => {
   const { navigate } = useNavigation();
@@ -28,15 +69,72 @@ const Hospital = () => {
           justifyContent: "flex-start",
         }}
       >
-        <View style={{ padding: heightToDp("5%") }}>
-          <Toggle />
-        </View>
-
         <View
           style={{
-            justifyContent: "space-around",
-            flex: 1,
+            padding: widthToDp("7%"),
+            justifyContent: "space-between",
+            flexDirection: "row",
+          }}
+        >
+          <Toggle />
+          {user ? (
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                flex: 0.3,
+              }}
+            >
+              <Text
+                style={{
+                  color: Theme.text.heading,
+                  fontFamily: "MyText",
+                  fontSize: heightToDp("2%"),
+                }}
+              >
+                Log Out :-
+              </Text>
+              <TouchableOpacity
+                onPress={() => {
+                  Alert.alert(
+                    "Log Out",
+                    "Do you want to Log-Out of your account? ",
+                    [
+                      {
+                        text: "Cancel",
+                        onPress: () => console.log("Cancel Pressed"),
+                        style: "cancel",
+                      },
+                      {
+                        text: "OK",
+                        onPress: () => {
+                          ClearData();
+                          setUser();
+                          navigate("home");
+                        },
+                      },
+                    ],
+                    { cancelable: false }
+                  );
+                }}
+              >
+                <Icon
+                  name={"door-open"}
+                  size={widthToDp("5%")}
+                  color={Theme.text.heading}
+                />
+              </TouchableOpacity>
+            </View>
+          ) : null}
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
             alignItems: "center",
+            justifyContent: "space-between",
+            padding: widthToDp("4%"),
+            paddingTop: 0,
           }}
         >
           <View
@@ -44,40 +142,46 @@ const Hospital = () => {
               height: widthToDp("25%"),
               width: widthToDp("25%"),
               borderRadius: widthToDp("20%"),
-              backgroundColor: "red",
               justifyContent: "center",
               alignItems: "center",
               backgroundColor: Theme.infocard.Cbackground,
+              borderWidth: widthToDp("0.4%"),
+              borderColor: Theme.text.subheading,
             }}
           >
-            <Text
-              style={{
-                fontSize: heightToDp("13%"),
-                fontFamily: "MyText",
-                color: Theme.text.heading,
-              }}
-            >
-              {user ? user.name[0] : "?"}
-            </Text>
+            {user ? (
+              <Icon
+                name={"user"}
+                size={widthToDp("13%")}
+                color={Theme.text.heading}
+              />
+            ) : (
+              <Text
+                style={{
+                  fontSize: heightToDp("13%"),
+                  fontFamily: "MyText",
+                  color: Theme.text.heading,
+                }}
+              >
+                ?
+              </Text>
+            )}
           </View>
-          <View
-            style={{
-              flexGrow: 1,
-              backgroundColor: Theme.covidscreen.info,
-              borderTopRightRadius: heightToDp("3%"),
-              borderTopLeftRadius: heightToDp("3%"),
-              width: "100%",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            }}
-          >
+          <Info>
+            {user ? (
+              <Text
+                style={{
+                  color: Theme.text.heading,
+                  fontFamily: "MyText",
+                  fontSize: heightToDp("3%"),
+                }}
+              >
+                My Info
+              </Text>
+            ) : null}
             <View
               style={{
-                width: "100%",
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: Theme.infocard.Cbackground,
-                borderRadius: widthToDp("10%"),
+                width: "80%",
               }}
             >
               <View
@@ -85,15 +189,14 @@ const Hospital = () => {
                   flexDirection: "row",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  padding: widthToDp("5%"),
-                  width: "80%",
+                  width: "100%",
                 }}
               >
                 <Text
                   style={{
                     color: Theme.text.subheading,
                     fontFamily: "MyText",
-                    fontSize: heightToDp("3%"),
+                    fontSize: heightToDp("2.5%"),
                   }}
                 >
                   Phone:-
@@ -105,7 +208,7 @@ const Hospital = () => {
                     fontSize: heightToDp("2%"),
                   }}
                 >
-                  {user ? user.phone : "NA"}
+                  {user ? user.phone.toString().slice(2, 12) : "NA"}
                 </Text>
               </View>
               <View
@@ -113,15 +216,14 @@ const Hospital = () => {
                   flexDirection: "row",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  padding: widthToDp("5%"),
-                  width: "80%",
+                  width: "100%",
                 }}
               >
                 <Text
                   style={{
                     color: Theme.text.subheading,
                     fontFamily: "MyText",
-                    fontSize: heightToDp("3%"),
+                    fontSize: heightToDp("2.5%"),
                   }}
                 >
                   BloodGroup:-
@@ -137,27 +239,46 @@ const Hospital = () => {
                 </Text>
               </View>
             </View>
-            {user ? (
-              <ButtonComponent
-                name={"Log-Out"}
-                style={{
-                  width: widthToDp("25%"),
-                  borderRadius: heightToDp("20%"),
-                  onPress: () => {
-                    ClearData();
-                    setUser();
-                    alert("logged out");
-                    navigate("home");
-                  },
-                }}
-                outerStyle={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginBottom: heightToDp("5%"),
-                }}
-              />
-            ) : null}
-          </View>
+          </Info>
+        </View>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: Theme.covidscreen.info,
+            borderTopLeftRadius: widthToDp("10%"),
+            borderTopRightRadius: widthToDp("10%"),
+          }}
+        >
+          <About>
+            <Heading>What is HealthCare ?</Heading>
+            <Description>
+              HealthCare is a combination of blood donation and a DELHI based
+              covid tracker that also provides testing labs information and
+              symptom and preventions related to COVID-19.
+            </Description>
+          </About>
+          <Text
+            style={{
+              color: Theme.text.heading,
+              fontSize: heightToDp("3.5%"),
+              fontFamily: "MyText",
+              alignSelf: "center",
+              marginTop: heightToDp("1%"),
+            }}
+          >
+            Developers
+          </Text>
+          <FlatList
+            contentContainerStyle={{
+              justifyContent: "space-around",
+              flexDirection: "row",
+            }}
+            data={data}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => <Infographics graph {...item} account />}
+            numColumns={3}
+            scrollEnabled={false}
+          />
         </View>
       </View>
     </Screen>

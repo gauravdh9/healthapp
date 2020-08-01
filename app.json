@@ -1,20 +1,17 @@
 {
   "expo": {
-    "name": "healthapp",
-    "slug": "healthapp",
+    "name": "Healthcare",
+    "slug": "healthcare",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/pin.png",
-    "splash": {
-      "image": "./assets/02.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
+    "icon": "./assets/doctor.png",
     "userInterfaceStyle": "automatic",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -36,6 +33,7 @@
         "wasm",
         "svg"
       ]
-    }
+    },
+    "description": ""
   }
 }

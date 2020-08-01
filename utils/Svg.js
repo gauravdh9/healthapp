@@ -17,8 +17,8 @@ import Headache from "../assets/headache.svg";
 import RunnyNose from "../assets/runnynose.svg";
 import Cough from "../assets/cough.svg";
 import Fever from "../assets/fever.svg";
-import Filter from "../assets/filter.svg";
-import FilterLight from "../assets/filterlight.svg";
+import Filter from "../assets/filterlight.svg";
+import FilterLight from "../assets/filter.svg";
 import Blood from "../assets/Blood.svg";
 import Whatsapp from "../assets/whatsapp.svg";
 export {

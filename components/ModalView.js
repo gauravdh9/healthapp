@@ -22,7 +22,7 @@ export const ModalContent = ({
         style={{
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor,
+          backgroundColor: Theme.covidscreen.vector,
           padding: widthToDp("3%"),
           width: widthToDp("20%"),
           height: heightToDp("10%"),
@@ -31,7 +31,13 @@ export const ModalContent = ({
           elevation: 5,
         }}
       >
-        <Text style={{ color: Theme.text.heading, fontFamily: "MyText" }}>
+        <Text
+          style={{
+            color: Theme.text.heading,
+            fontFamily: "MyText",
+            fontSize: heightToDp("3.8%"),
+          }}
+        >
           {label}
         </Text>
       </View>
@@ -41,42 +47,34 @@ export const ModalContent = ({
 
 export const data = [
   {
-    backgroundColor: "tomato",
     label: "A+",
     value: 1,
   },
   {
-    backgroundColor: "#fd9644",
     label: "A-",
     value: 2,
   },
   {
-    backgroundColor: "#fed330",
     label: "B+",
     value: 3,
   },
   {
-    backgroundColor: "#26de81",
     label: "B-",
     value: 4,
   },
   {
-    backgroundColor: "#2bcbba",
     label: "AB+",
     value: 5,
   },
   {
-    backgroundColor: "#45aaf2",
     label: "Ab-",
     value: 6,
   },
   {
-    backgroundColor: "#4b7bec",
     label: "O+",
     value: 7,
   },
   {
-    backgroundColor: "#a55eea",
     label: "O-",
     value: 8,
   },
@@ -116,7 +114,11 @@ const ModalView = ({ visible, setVisible, children, user, name }) => {
               borderRadius: heightToDp("20%"),
               onPress: () => setVisible(false),
             }}
-            outerStyle={{ justifyContent: "center", alignItems: "center" }}
+            outerStyle={{
+              justifyContent: "center",
+              alignItems: "center",
+              marginBottom: heightToDp("5%"),
+            }}
           />
         </Screen>
       </View>

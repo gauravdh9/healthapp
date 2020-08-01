@@ -14,7 +14,7 @@ const Container = styled(Screen)`
   font-size: 200px;
 `;
 
-const Heading = styled.Text`
+export const Heading = styled.Text`
   color: ${({ theme }) => theme.Theme.text.heading};
   text-align: center;
   font-family: MyText;
@@ -22,7 +22,7 @@ const Heading = styled.Text`
   padding: ${heightToDp("2%")}px;
   text-decoration: underline;
 `;
-const Description = styled.Text`
+export const Description = styled.Text`
   color: ${({ theme }) => theme.Theme.text.heading};
   text-align: justify;
   font-family: MyText;
@@ -30,7 +30,7 @@ const Description = styled.Text`
   line-height: ${heightToDp("4%")}px;
   font-size: ${heightToDp("2.2%")}px;
 `;
-const Card = styled(LinearGradient).attrs(({ theme }) => ({
+export const Card = styled(LinearGradient).attrs(({ theme }) => ({
   colors: [theme.Theme.covidscreen.vector, theme.Theme.infocard.Cbackground],
 }))`
   justify-content: flex-start;
@@ -38,21 +38,21 @@ const Card = styled(LinearGradient).attrs(({ theme }) => ({
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
   border: ${heightToDp("0.5%")}px solid
     ${({ theme }) => theme.Theme.text.subheading};
-  border-radius: ${heightToDp("5%")}px;
+  border-radius: ${widthToDp("10%")}px;
   margin: ${heightToDp("5%")}px;
 `;
 const Render = ({ Graphics, title, text, symptom }) => {
   return (
     <View style={styles.slide}>
       {symptom ? (
-        <Graphics height={heightToDp("30%")} width={widthToDp("90%")} />
+        <Graphics height={heightToDp("50%")} width={widthToDp("90%")} />
       ) : (
         <Image resizeMode="contain" style={styles.image} source={Graphics} />
       )}
 
       <Card style={{ elevation: 15 }}>
         <Heading>{title}</Heading>
-        <Description>{text}</Description>
+        {text ? <Description>{text}</Description> : null}
       </Card>
     </View>
   );

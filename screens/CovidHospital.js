@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Screen from "../utils/Screen";
 import Listitem from "../components/listitem";
-import { AfterInteractions } from "react-native-interactions";
 import { widthToDp, heightToDp } from "../utils/Size";
-import SkeletonContent from "react-native-skeleton-content";
 import { View } from "react-native";
 import { useTheme } from "styled-components";
-import { useApi } from "../hooks/useApi";
 const Container = styled(Screen)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
   font-size: 200px;

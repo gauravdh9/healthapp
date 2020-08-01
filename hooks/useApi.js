@@ -10,7 +10,7 @@ const {
   DELETE,
 } = require("../utils/Url");
 import AsyncStorage from "@react-native-community/async-storage";
-import { UserContext } from "../App";
+import { UserContext } from "../utils/Context";
 
 const storeData = async (value) => {
   try {

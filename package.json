@@ -28,6 +28,7 @@
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.0.tar.gz",
+    "react-native-animated-splash-screen": "^2.0.5",
     "react-native-app-intro-slider": "^4.0.4",
     "react-native-appearance": "^0.3.4",
     "react-native-fab": "^1.0.17",
