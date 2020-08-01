@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from "react";
-import { View, TouchableOpacity, Linking, Text } from "react-native";
+import { View, TouchableOpacity, Linking, Text, Alert } from "react-native";
 import { Phone, Address, Whatsapp } from "../utils/Svg";
 import { heightToDp, widthToDp } from "../utils/Size";
 import styled from "styled-components";
@@ -23,7 +23,7 @@ const Head = styled.Text`
 `;
 
 const Separator = ({ location, number, whatsapp }) => {
-  const { user } = useContext(UserContext);
+  const { user, button } = useContext(UserContext);
   const { DeleteRequest, Requests } = useApi();
   return (
     <>

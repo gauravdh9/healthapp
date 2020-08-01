@@ -22,9 +22,8 @@ const storeData = async (value) => {
 };
 
 export const useApi = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, button, setButton } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
-  const [button, setButton] = useState();
   const [load, setLoad] = useState(true);
   const [result, setResult] = useState();
   const [query, setQuery] = useState();
@@ -139,6 +138,7 @@ export const useApi = () => {
       })
       .then((response) => {
         setButton();
+        Requests();
       })
       .catch((err) => {
         console.log(err);

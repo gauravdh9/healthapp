@@ -26,7 +26,8 @@ const FlatView = styled.View`
 `;
 
 const Hospital = () => {
-  const { query, Requests, load, button, DeleteRequest } = useApi();
+  const { button } = useContext(UserContext);
+  const { query, Requests, load, DeleteRequest } = useApi();
   const [visible, setVisible] = useState(false);
   const List = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
   const { PostRequest, refresh } = useApi();

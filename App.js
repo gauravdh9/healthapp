@@ -11,6 +11,7 @@ enableScreens();
 
 const Usercontext = ({ children }) => {
   const [user, setUser] = useState({});
+  const [button, setButton] = useState();
   useEffect(() => {
     let x;
     try {
@@ -24,7 +25,7 @@ const Usercontext = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, button, setButton }}>
       {children}
     </UserContext.Provider>
   );
