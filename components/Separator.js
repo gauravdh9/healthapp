@@ -29,7 +29,7 @@ const Separator = ({ location, number, whatsapp }) => {
     <>
       <Separate />
       <View>
-        {user.phone == number ? (
+        {user?.phone == number ? (
           <TouchableOpacity
             onPress={() => {
               Alert.alert(
