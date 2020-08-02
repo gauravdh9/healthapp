@@ -134,4 +134,4 @@ const Lab = ({ Test, title }) => {
   );
 };
 
-export default Lab;
+export default React.memo(Lab);

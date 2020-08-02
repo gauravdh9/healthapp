@@ -22,7 +22,13 @@ const HeadView = styled.View`
   justify-content: center;
   align-items: center;
 `;
-export default function Listheader({ title, onPress, style, iconStyle, icon }) {
+export default React.memo(function Listheader({
+  title,
+  onPress,
+  style,
+  iconStyle,
+  icon,
+}) {
   const { Theme } = useTheme();
   return (
     <Container style={style}>
@@ -49,4 +55,4 @@ export default function Listheader({ title, onPress, style, iconStyle, icon }) {
       </HeadView>
     </Container>
   );
-}
+});

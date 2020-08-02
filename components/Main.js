@@ -55,7 +55,7 @@ const Main = () => {
             options={{ name: user ? user.name : "Sign In" }}
           />
           <Tab.Screen
-            name="user-cog"
+            name={user ? "user-cog" : "cog"}
             component={User}
             options={{ name: "Settings" }}
           />

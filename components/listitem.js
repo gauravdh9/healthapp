@@ -5,7 +5,7 @@ import { heightToDp, widthToDp } from "../utils/Size";
 import Separator from "../components/Separator";
 const Container = styled.View`
   justify-content: space-around;
-  height: ${heightToDp("20%")}px;
+  height: ${heightToDp("22%")}px;
   background-color: ${({ theme }) => theme.Theme.infocard.Cbackground};
   margin: ${heightToDp("3%")}px;
   border-radius: ${heightToDp("2%")}px;
@@ -59,8 +59,9 @@ function Listitem({
           <Name style={styles.name}>
             {title
               .replace(/ *\([^)]*\) */g, " ")
-              ?.split(",")
-              .slice(0, 20)}
+              .split(" ")
+              .slice(0, 5)
+              .join(" ")}
           </Name>
           <Address>{address?.slice(0, 30)}...</Address>
           <View

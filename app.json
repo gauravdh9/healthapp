@@ -5,6 +5,10 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/doctor.png",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#313250"
+    },
     "userInterfaceStyle": "automatic",
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -34,6 +38,9 @@
         "svg"
       ]
     },
-    "description": ""
+    "description": "",
+    "android": {
+      "package": "com.routayush1.healthcare"
+    }
   }
 }

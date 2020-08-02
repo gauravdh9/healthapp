@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, memo } from "react";
 import {
   View,
   Text,
@@ -229,10 +229,9 @@ const LoginScreen = ({ navigation }) => {
             outerStyle={{ justifyContent: "center", alignItems: "center" }}
           />
         </View>
-        {/* </View> */}
       </KeyboardAvoidingView>
     </Screen>
   );
 };
 
-export default LoginScreen;
+export default React.memo(LoginScreen);

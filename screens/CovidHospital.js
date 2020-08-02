@@ -23,7 +23,7 @@ export const change = (data, value) => {
   });
 };
 export default function CovidHospital({ data, value }) {
-  var ITEM_HEIGHT = heightToDp("20%");
+  var ITEM_HEIGHT = heightToDp("22%");
 
   return (
     <>

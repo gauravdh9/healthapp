@@ -36,7 +36,7 @@ const Container = styled.TouchableOpacity`
   padding-bottom: ${({ account }) => (account ? widthToDp("3.5") : 0)}px;
 `;
 
-export default function InfoGraphics({
+export default React.memo(function InfoGraphics({
   title,
   Location,
   color,
@@ -74,7 +74,7 @@ export default function InfoGraphics({
       )}
     </Container>
   );
-}
+});
 
 const styles = StyleSheet.create({
   view: {

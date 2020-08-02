@@ -34,21 +34,21 @@ export const Skeleton = () => {
         {
           key: "someId",
           width: widthToDp("88%"),
-          height: heightToDp("20%"),
+          height: heightToDp("21%"),
           margin: heightToDp("3%"),
           borderRadius: heightToDp("2%"),
         },
         {
           key: "someOtherId",
           width: widthToDp("88%"),
-          height: heightToDp("20%"),
+          height: heightToDp("21%"),
           margin: heightToDp("3%"),
           borderRadius: heightToDp("2%"),
         },
         {
           key: "Id",
           width: widthToDp("88%"),
-          height: heightToDp("20%"),
+          height: heightToDp("21%"),
           margin: heightToDp("3%"),
           borderRadius: heightToDp("2%"),
         },
@@ -99,4 +99,4 @@ const Tabstack = () => {
     </Screen>
   );
 };
-export default Tabstack;
+export default React.memo(Tabstack);

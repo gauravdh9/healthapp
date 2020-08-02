@@ -4,6 +4,7 @@ import { Phone, Address, Whatsapp } from "../utils/Svg";
 import { heightToDp, widthToDp } from "../utils/Size";
 import styled from "styled-components";
 import { UserContext } from "../utils/Context";
+import { array } from "prop-types";
 
 const Line = styled.View`
   height: 100%;
@@ -41,8 +42,7 @@ const Separator = ({ location, number, whatsapp }) => {
           >
             <Head>Delete This to post a new Request</Head>
           </View>
-        ) : null}
-        {number.length > 0 ? (
+        ) : number?.length > 0 ? (
           <View
             style={{ flexDirection: "row", justifyContent: "space-around" }}
           >
@@ -79,6 +79,21 @@ const Separator = ({ location, number, whatsapp }) => {
               )}
             </TouchableOpacity>
           </View>
+        ) : location?.length > 0 ? (
+          <TouchableOpacity
+            onPress={() => Linking.openURL(`${location}`)}
+            style={{
+              justifyContent: "center",
+              height: heightToDp("4.8%"),
+
+              alignItems: "center",
+              backgroundColor: "#deecfc",
+              paddingTop: heightToDp("0.5%"),
+              paddingBottom: heightToDp("0.5%"),
+            }}
+          >
+            <Address height="30" width="30" />
+          </TouchableOpacity>
         ) : (
           <View
             style={{
@@ -99,4 +114,4 @@ const Separator = ({ location, number, whatsapp }) => {
   );
 };
 
-export default Separator;
+export default React.memo(Separator);

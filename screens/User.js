@@ -27,6 +27,7 @@ const Info = styled(LinearGradient).attrs(({ theme }) => ({
 `;
 const About = styled(Card)`
   margin: ${heightToDp("3%")}px ${widthToDp("4%")}px;
+  margin-bottom: 0;
 `;
 const Head = styled(Heading)`
   padding: ${heightToDp("1%")}px;
@@ -106,7 +107,6 @@ const User = () => {
                     [
                       {
                         text: "Cancel",
-                        onPress: () => console.log("Cancel Pressed"),
                         style: "cancel",
                       },
                       {
