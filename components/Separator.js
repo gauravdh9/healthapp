@@ -22,7 +22,6 @@ const Head = styled.Text`
 `;
 
 const Separator = ({ location, number, whatsapp }) => {
-  console.log(number);
   const { user } = useContext(UserContext);
   return (
     <>
