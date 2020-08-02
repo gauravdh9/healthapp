@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import React, { useRef } from "react";
+import { View, StyleSheet, Image } from "react-native";
 import styled from "styled-components";
 import Screen from "../utils/Screen";
 import { heightToDp, widthToDp } from "../utils/Size";
@@ -18,7 +18,7 @@ export const Heading = styled.Text`
   color: ${({ theme }) => theme.Theme.text.heading};
   text-align: center;
   font-family: MyText;
-  font-size: ${heightToDp("3.5%")}px;
+  font-size: ${heightToDp("3%")}px;
   padding: ${heightToDp("2%")}px;
   text-decoration: underline;
 `;
@@ -27,7 +27,7 @@ export const Description = styled.Text`
   text-align: justify;
   font-family: MyText;
   padding: ${heightToDp("1.8%")}px ${widthToDp("5.8%")}px;
-  line-height: ${heightToDp("4%")}px;
+  line-height: ${heightToDp("3.8%")}px;
   font-size: ${heightToDp("2.2%")}px;
 `;
 export const Card = styled(LinearGradient).attrs(({ theme }) => ({

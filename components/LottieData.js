@@ -25,7 +25,7 @@ export const LottieData = () => {
     },
     {
       key: "four",
-      title: "Sanitizer Yourself Regularly",
+      title: "Sanitize Yourself Regularly",
       text:
         "To protect yourself and others against COVID-19, clean your hands frequently and thoroughly. Use alcohol-based hand sanitizer or wash your hands with soap and water. If you use an alcohol-based hand sanitizer, make sure you use and store it carefully.",
       Graphics: Theme.gif.sanitizer,

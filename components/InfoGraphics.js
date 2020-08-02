@@ -11,7 +11,7 @@ import { heightToDp, widthToDp } from "../utils/Size";
 
 import Info from "./Info";
 const Title = styled.Text`
-  flex-grow: 1;
+  flex-grow: ${({ account }) => (account ? 0.3 : 1)};
   font-size: ${heightToDp("3%")}px;
   color: ${({ theme }) => theme.Theme.text.heading};
   font-family: MyText;
@@ -19,7 +19,8 @@ const Title = styled.Text`
 `;
 const Container = styled.TouchableOpacity`
   align-items: ${({ account }) => (account ? "center" : "flex-start")};
-  height: ${heightToDp("22%")}px;
+  height: ${({ account }) =>
+    account ? heightToDp("17%") + "px" : heightToDp("22%") + "px"};
   width: ${({ account }) => (account ? widthToDp("25%") : widthToDp("40%"))}px;
   background-color: ${({ theme }) => theme.Theme.infocard.Cbackground};
   margin: ${heightToDp("2.5%")}px
@@ -60,8 +61,6 @@ export default function InfoGraphics({
             borderRadius: widthToDp("50%"),
             height: widthToDp("16%"),
             width: widthToDp("16%"),
-            marginTop: heightToDp("3%"),
-            alignSelf: "center",
             borderWidth: widthToDp("0.4%"),
             borderColor: "#c9c9c9",
           }}

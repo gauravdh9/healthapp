@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Screen from "../utils/Screen";
 import Listitem from "../components/listitem";
 import { widthToDp, heightToDp } from "../utils/Size";
-import { View } from "react-native";
-import { useTheme } from "styled-components";
 const Container = styled(Screen)`
   background-color: ${({ theme }) => theme.Theme.covidscreen.vector};
   font-size: 200px;
@@ -25,7 +23,6 @@ export const change = (data, value) => {
   });
 };
 export default function CovidHospital({ data, value }) {
-  const { Theme } = useTheme();
   var ITEM_HEIGHT = heightToDp("20%");
 
   return (

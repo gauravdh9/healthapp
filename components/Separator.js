@@ -1,10 +1,9 @@
-import React, { useContext, useRef } from "react";
-import { View, TouchableOpacity, Linking, Text, Alert } from "react-native";
+import React, { useContext } from "react";
+import { View, TouchableOpacity, Linking } from "react-native";
 import { Phone, Address, Whatsapp } from "../utils/Svg";
 import { heightToDp, widthToDp } from "../utils/Size";
 import styled from "styled-components";
 import { UserContext } from "../utils/Context";
-import { useApi } from "../hooks/useApi";
 
 const Line = styled.View`
   height: 100%;
@@ -23,6 +22,7 @@ const Head = styled.Text`
 `;
 
 const Separator = ({ location, number, whatsapp }) => {
+  console.log(number);
   const { user } = useContext(UserContext);
   return (
     <>
@@ -42,7 +42,8 @@ const Separator = ({ location, number, whatsapp }) => {
           >
             <Head>Delete This to post a new Request</Head>
           </View>
-        ) : (
+        ) : null}
+        {number.length > 0 ? (
           <View
             style={{ flexDirection: "row", justifyContent: "space-around" }}
           >
@@ -78,6 +79,20 @@ const Separator = ({ location, number, whatsapp }) => {
                 <Address height="30" width="30" />
               )}
             </TouchableOpacity>
+          </View>
+        ) : (
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              alignItems: "center",
+              height: heightToDp("4.8%"),
+              backgroundColor: "gray",
+              paddingTop: heightToDp("0.3%"),
+              paddingBottom: heightToDp("0.3%"),
+            }}
+          >
+            <Head>No Contact Provided</Head>
           </View>
         )}
       </View>

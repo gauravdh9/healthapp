@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { View, Text, TouchableOpacity, Alert, FlatList } from "react-native";
 import Screen from "../utils/Screen";
 import Toggle from "../components/Toggle";
@@ -11,7 +11,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import styled from "styled-components";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import Infographics from "../components/InfoGraphics";
-import { Card, Heading, Description } from "../screens/Symptom";
+import { Card, Heading, Description } from "./Symptom";
 
 const Info = styled(LinearGradient).attrs(({ theme }) => ({
   colors: [theme.Theme.covidscreen.vector, theme.Theme.infocard.Cbackground],
@@ -26,7 +26,10 @@ const Info = styled(LinearGradient).attrs(({ theme }) => ({
     ${({ theme }) => theme.Theme.text.subheading};
 `;
 const About = styled(Card)`
-  margin: ${heightToDp("2%")}px ${widthToDp("5%")}px;
+  margin: ${heightToDp("3%")}px ${widthToDp("4%")}px;
+`;
+const Head = styled(Heading)`
+  padding: ${heightToDp("1%")}px;
 `;
 const ClearData = async () => {
   try {
@@ -55,7 +58,7 @@ const data = [
   },
 ];
 
-const Hospital = () => {
+const User = () => {
   const { navigate } = useNavigation();
   const { user, setUser } = useContext(UserContext);
   const { Theme } = useTheme();
@@ -250,20 +253,20 @@ const Hospital = () => {
           }}
         >
           <About>
-            <Heading>What is HealthCare ?</Heading>
+            <Head>What is HealthCare ?</Head>
             <Description>
-              HealthCare is a combination of blood donation and a DELHI based
-              covid tracker that also provides testing labs information and
-              symptom and preventions related to COVID-19.
+              HealthCare lets you find blood donation requests and comes with a
+              Delhi based COVID tracker that gives you all related information
+              on hospitals, testing labs, symptoms and prevention tips for the
+              disease.
             </Description>
           </About>
           <Text
             style={{
               color: Theme.text.heading,
-              fontSize: heightToDp("3.5%"),
+              fontSize: heightToDp("3.3%"),
               fontFamily: "MyText",
               alignSelf: "center",
-              marginTop: heightToDp("1%"),
             }}
           >
             Developers
@@ -285,4 +288,4 @@ const Hospital = () => {
   );
 };
 
-export default Hospital;
+export default User;

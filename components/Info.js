@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Text } from "react-native";
 import { CountUp } from "use-count-up";
 import Minigraph from "./minigraph";
 import { useApi } from "../hooks/useApi";
-import { heightToDp } from "../utils/Size";
 
 export default React.memo(function Info({ title, color }) {
   const { result, getdata } = useApi();

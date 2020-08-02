@@ -40,7 +40,7 @@ export default React.memo(function ListButton({
     height: heightToDp("6%"),
     width: widthToDp("6%"),
   }))`
-    margin: 0px 10px;
+    margin: 0px ${widthToDp("2.5%")}px;
   `;
 
   return (

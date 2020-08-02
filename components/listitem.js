@@ -60,10 +60,9 @@ function Listitem({
             {title
               .replace(/ *\([^)]*\) */g, " ")
               ?.split(",")
-              .slice(0, 30)}
-            ...
+              .slice(0, 20)}
           </Name>
-          <Address>{address?.slice(0, 50)}...</Address>
+          <Address>{address?.slice(0, 30)}...</Address>
           <View
             style={{
               flexDirection: "row",
@@ -85,13 +84,6 @@ function Listitem({
 
 const styles = StyleSheet.create({
   container: {
-    shadowColor: "black",
-    shadowOffset: {
-      width: 0,
-      height: 8,
-    },
-    shadowOpacity: 0.44,
-    shadowRadius: 10.32,
     elevation: 16,
   },
 });

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, FlatList } from "react-native";
 import Screen from "../utils/Screen";
 import InfoGraphics from "../components/InfoGraphics";

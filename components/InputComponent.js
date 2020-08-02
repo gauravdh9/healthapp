@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { Sae, Fumi } from "react-native-textinput-effects";
+import { Fumi } from "react-native-textinput-effects";
 import MaterialsIcon from "react-native-vector-icons/FontAwesome";
 import { heightToDp, widthToDp } from "../utils/Size";
 import { useTheme } from "styled-components";
