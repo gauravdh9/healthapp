@@ -1,5 +1,4 @@
 import React from "react";
-import Constants from "expo-constants";
 import styled from "styled-components";
 
 const Safe = styled.SafeAreaView`

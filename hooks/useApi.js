@@ -82,6 +82,7 @@ export const useApi = () => {
 
   const Requests = () => {
     setRefresh(true);
+    setButton();
     fetch(REQUESTS)
       .then((res) => res.json())
       .then((response) => {
@@ -90,6 +91,7 @@ export const useApi = () => {
             setButton(item);
           }
         });
+
         setQuery(response);
         setRefresh(false);
         setLoad(false);
@@ -138,7 +140,6 @@ export const useApi = () => {
       })
       .then((response) => {
         setButton();
-        Requests();
       })
       .catch((err) => {
         console.log(err);

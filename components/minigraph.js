@@ -1,11 +1,12 @@
 import { AreaChart, LineChart } from "react-native-svg-charts";
 import React from "react";
 import { curveBasis } from "d3-shape";
+import { heightToDp } from "../utils/Size";
 
 export default function Minigraph({ data, color }) {
   const propData = {
     animated: { usenativedriver: true },
-    style: { height: 50, width: "100%" },
+    style: { height: heightToDp("7%"), width: "100%" },
     data,
     animate: true,
     animationDuration: 2000,

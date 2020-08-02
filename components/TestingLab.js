@@ -1,8 +1,9 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
+import React, { useContext } from "react";
+import { StyleSheet, View, Button } from "react-native";
 import styled from "styled-components";
 import { heightToDp, widthToDp } from "../utils/Size";
 import Separator from "../components/Separator";
+import { useApi } from "../hooks/useApi";
 const Container = styled.View`
   position: relative;
   justify-content: center;
@@ -51,6 +52,7 @@ function Listitem({
       <Container style={styles.container}>
         <Details>
           <Name style={styles.name}>{title?.slice(0, 30)}</Name>
+
           <Address>{address?.slice(0, 50)}</Address>
           <View
             style={{
@@ -73,13 +75,6 @@ function Listitem({
 
 const styles = StyleSheet.create({
   container: {
-    shadowColor: "black",
-    shadowOffset: {
-      width: 0,
-      height: 8,
-    },
-    shadowOpacity: 0.44,
-    shadowRadius: 10.32,
     elevation: 16,
   },
 });

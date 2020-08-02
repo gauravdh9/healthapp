@@ -45,10 +45,29 @@ const Hospital = () => {
     }),
     initialValues: { requestBloodGroup: "", hospital: "" },
     onSubmit: (values, { resetForm }) => {
-      PostRequest(values.hospital, values.requestBloodGroup);
-      resetForm({ values: "" });
-      setVisible(false);
-      Requests();
+      {
+        Alert.alert(
+          "Info.",
+          `Until your request is fulfilled your data will be visible to all users so they may contact you for your request  !!!`,
+          [
+            {
+              text: "Cancel",
+              onPress: () => console.log("Cancel Pressed"),
+              style: "cancel",
+            },
+            {
+              text: "OK",
+              onPress: () => {
+                PostRequest(values.hospital, values.requestBloodGroup);
+                resetForm({ values: "" });
+                setVisible(false);
+                Requests();
+              },
+            },
+          ],
+          { cancelable: false }
+        );
+      }
     },
   });
 
@@ -134,11 +153,7 @@ const Hospital = () => {
               buttonColor={Theme.covidscreen.vector}
               iconTextColor={Theme.text.heading}
               iconTextComponent={
-                <Icon
-                  name="trash"
-                  size={heightToDp("2.8%")}
-                  color={Theme.text.heading}
-                />
+                <Icon name="trash" size={heightToDp("2.8%")} color="red" />
               }
               onClickAction={() => {
                 Alert.alert(

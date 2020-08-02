@@ -1,11 +1,10 @@
 import React from "react";
 import {
-  Text,
-  View,
   StyleSheet,
   Image,
   TouchableOpacity,
   Linking,
+  Alert,
 } from "react-native";
 import styled from "styled-components";
 import { heightToDp, widthToDp } from "../utils/Size";
@@ -13,20 +12,19 @@ import { heightToDp, widthToDp } from "../utils/Size";
 import Info from "./Info";
 const Title = styled.Text`
   flex-grow: 1;
-  font-size: ${heightToDp("3")}px;
+  font-size: ${heightToDp("3%")}px;
   color: ${({ theme }) => theme.Theme.text.heading};
   font-family: MyText;
   align-self: ${({ account }) => (account ? "center" : "auto")};
 `;
-const Container = styled.View`
+const Container = styled.TouchableOpacity`
   align-items: ${({ account }) => (account ? "center" : "flex-start")};
-  height: auto;
+  height: ${heightToDp("22%")}px;
   width: ${({ account }) => (account ? widthToDp("25%") : widthToDp("40%"))}px;
   background-color: ${({ theme }) => theme.Theme.infocard.Cbackground};
-  margin: ${heightToDp("1.5%")}px
+  margin: ${heightToDp("2.5%")}px
     ${({ account }) => (account ? widthToDp("2%") + "px" : "auto")};
 
-  margin-bottom: ${heightToDp("3%")}px;
   border-radius: ${heightToDp("3%")}px;
   overflow: hidden;
   position: relative;
@@ -46,26 +44,28 @@ export default function InfoGraphics({
   account,
 }) {
   return (
-    <Container style={styles.shadow} account={account}>
+    <Container
+      style={styles.shadow}
+      account={account}
+      onPress={profile ? () => Linking.openURL(profile) : null}
+    >
       <Title account={account}>{title}</Title>
 
       {profile ? null : <Info title={title} color={color} />}
 
       {image ? (
-        <TouchableOpacity onPress={() => Linking.openURL(profile)}>
-          <Image
-            source={image}
-            style={{
-              borderRadius: widthToDp("50%"),
-              height: widthToDp("16%"),
-              width: widthToDp("16%"),
-              marginTop: heightToDp("3%"),
-              alignSelf: "center",
-              borderWidth: widthToDp("0.4%"),
-              borderColor: "#c9c9c9",
-            }}
-          />
-        </TouchableOpacity>
+        <Image
+          source={image}
+          style={{
+            borderRadius: widthToDp("50%"),
+            height: widthToDp("16%"),
+            width: widthToDp("16%"),
+            marginTop: heightToDp("3%"),
+            alignSelf: "center",
+            borderWidth: widthToDp("0.4%"),
+            borderColor: "#c9c9c9",
+          }}
+        />
       ) : (
         <Location
           style={styles.svg}

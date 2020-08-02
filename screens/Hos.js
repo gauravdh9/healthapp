@@ -120,7 +120,7 @@ const Hospital = () => {
                 }}
               >
                 <Icon
-                  name={"door-open"}
+                  name={"sign-out-alt"}
                   size={widthToDp("5%")}
                   color={Theme.text.heading}
                 />

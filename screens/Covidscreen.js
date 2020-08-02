@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { View, FlatList } from "react-native";
-import { AfterInteractions } from "react-native-interactions";
 import Screen from "../utils/Screen";
 import InfoGraphics from "../components/InfoGraphics";
 import ListButton from "../components/ListButton";
@@ -21,7 +20,7 @@ const Styledview = styled.View`
 `;
 const Info = styled.View`
   position: relative;
-  flex-grow: 1;
+  height: ${heightToDp("70%")}px;
   justify-content: space-evenly;
   background-color: ${({ theme }) => theme.Theme.covidscreen.info};
   border-top-left-radius: ${heightToDp("3%")}px;
@@ -42,48 +41,52 @@ const HeadingText2 = styled.Text`
 export default function Covidscreen({ navigation }) {
   const [data0, data1] = Data();
   return (
-    <AfterInteractions>
-      <Screen>
-        <Styledview>
-          <View
-            style={{
-              flexDirection: "row",
-              width: "100%",
-              justifyContent: "space-between",
-              alignItems: "center",
-              paddingRight: 20,
-              paddingLeft: 20,
-            }}
-          >
-            <View>
-              <HeadingText>Stay Home</HeadingText>
-              <HeadingText2>Stay Safe</HeadingText2>
-            </View>
+    <Screen>
+      <Styledview>
+        <View
+          style={{
+            flexDirection: "row",
+            width: "100%",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingRight: 20,
+            paddingLeft: 20,
+          }}
+        >
+          <View>
+            <HeadingText>Stay Home</HeadingText>
+            <HeadingText2>Stay Safe</HeadingText2>
+          </View>
 
-            <Virus height={heightToDp("19")} width={heightToDp("19")} />
-          </View>
-        </Styledview>
-        <Info>
-          <View style={{ top: heightToDp("-4%") }}>
-            <FlatList
-              style={{ top: heightToDp("-8%") }}
-              contentContainerStyle={{ flexGrow: 1 }}
-              data={data0}
-              keyExtractor={(item) => item.id.toString()}
-              renderItem={({ item }) => <InfoGraphics {...item} />}
-              numColumns={2}
-            />
-            <FlatList
-              contentContainerStyle={{ flexGrow: 1 }}
-              style={{ top: heightToDp("-9%") }}
-              data={data1}
-              keyExtractor={(item) => item.id.toString()}
-              renderItem={({ item }) => <ListButton {...item} />}
-              numColumns={2}
-            />
-          </View>
-        </Info>
-      </Screen>
-    </AfterInteractions>
+          <Virus height={heightToDp("19")} width={heightToDp("19")} />
+        </View>
+      </Styledview>
+      <Info>
+        <View
+          style={{
+            bottom: heightToDp("7.5%"),
+          }}
+        >
+          <FlatList
+            style={{ bottom: heightToDp("5%") }}
+            contentContainerStyle={{ flexGrow: 1 }}
+            data={data0}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => <InfoGraphics {...item} />}
+            numColumns={2}
+          />
+          <FlatList
+            contentContainerStyle={{
+              flexGrow: 1,
+            }}
+            style={{ bottom: heightToDp("5%") }}
+            data={data1}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => <ListButton {...item} />}
+            numColumns={2}
+          />
+        </View>
+      </Info>
+    </Screen>
   );
 }

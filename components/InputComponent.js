@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { Kohana, Fumi } from "react-native-textinput-effects";
+import { Sae, Fumi } from "react-native-textinput-effects";
 import MaterialsIcon from "react-native-vector-icons/FontAwesome";
 import { heightToDp, widthToDp } from "../utils/Size";
 import { useTheme } from "styled-components";
@@ -24,9 +24,8 @@ const InputComponent = ({
           editable={editable}
           value={value}
           style={{
-            margin: heightToDp("2%"),
+            marginTop: heightToDp("2%"),
             borderRadius: heightToDp("2%"),
-            flex: 1,
           }}
           iconClass={MaterialsIcon}
           iconName={iconName}
@@ -38,18 +37,18 @@ const InputComponent = ({
           onBlur={onBlur}
           keyboardType={keyboardType}
         />
+        {touched && error && (
+          <Text
+            style={{
+              color: Theme.text.subheading,
+              textAlign: "center",
+              fontFamily: "MyText",
+            }}
+          >
+            *{error}
+          </Text>
+        )}
       </View>
-      {touched && error && (
-        <Text
-          style={{
-            color: Theme.text.subheading,
-            textAlign: "center",
-            fontFamily: "MyText",
-          }}
-        >
-          *{error}
-        </Text>
-      )}
     </View>
   );
 };

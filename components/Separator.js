@@ -23,55 +23,25 @@ const Head = styled.Text`
 `;
 
 const Separator = ({ location, number, whatsapp }) => {
-  const { user, button } = useContext(UserContext);
-  const { DeleteRequest, Requests } = useApi();
+  const { user } = useContext(UserContext);
   return (
     <>
       <Separate />
       <View>
         {user?.phone == number ? (
-          <TouchableOpacity
-            onPress={() => {
-              Alert.alert(
-                "Delete",
-                `Do you want to delete the request of Blood Group ${
-                  button.requestBloodGroup
-                } requested on ${button.createdAt.slice(0, 10)}?`,
-                [
-                  {
-                    text: "Cancel",
-                    onPress: () => console.log("Cancel Pressed"),
-                    style: "cancel",
-                  },
-                  {
-                    text: "OK",
-                    onPress: () => {
-                      DeleteRequest();
-                      Requests();
-                    },
-                  },
-                ],
-                { cancelable: false }
-              );
-            }}
+          <View
             style={{
               justifyContent: "center",
               alignItems: "center",
+              alignItems: "center",
               height: heightToDp("4.8%"),
-              backgroundColor: "tomato",
+              backgroundColor: "gray",
               paddingTop: heightToDp("0.3%"),
               paddingBottom: heightToDp("0.3%"),
             }}
           >
-            <View
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Head>Delete</Head>
-            </View>
-          </TouchableOpacity>
+            <Head>Delete This to post a new Request</Head>
+          </View>
         ) : (
           <View
             style={{ flexDirection: "row", justifyContent: "space-around" }}
