@@ -15,8 +15,6 @@ _____
 [![](https://img.shields.io/badge/Download-1.0.0-green)](https://github.com/gauravdh9/healthapp/releases/download/Healthcare/healthcare.apk)
 ![version1](https://img.shields.io/badge/Status-Stable-blue?logoColor=white)
 
-_____
-
 ## Screenshots 📷
 
 <p align="center">
@@ -29,4 +27,37 @@ _____
 <img src="readmeAssets/8.jpeg" width="20%" hspace="2">
 <img src="readmeAssets/9.jpeg" width="20%" hspace="2">
 </p>
+
+## TechStack 🔧
+
+- [ReactJs](https://reactjs.org/)
+- [React Native](https://reactnative.dev/)
+- [Expo](https://expo.io/)
+- [React Navigation](https://reactnavigation.org/)
+- [D3](https://d3js.org/)
+- [Styled-Components](https://styled-components.com/)
+- [Font Awesome](https://fontawesome.com/v4.7.0/icons/)
+- [LottieFiles](https://lottiefiles.com/popular)
+- [Flaticons](https://www.flaticon.com/)
+- [Formik](https://formik.org/)
+- [Yup](https://github.com/jquense/yup)
+- [MongoDB](https://www.mongodb.com/)
+- [Mongoose](https://mongoosejs.com/)
+- [ExpressJS](https://expressjs.com/)
+
+## Usage :guardsman:
+
+`
+Make sure Node Environment is setup.
+Expo CLI is installed.
+`
+`
+npm i
+expo start
+`
+#### To create standalone apk
+
+`
+expo build:android -t apk
+`
 
