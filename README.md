@@ -13,10 +13,9 @@ _____
 ## Release
 
 [![](https://img.shields.io/badge/Download-1.0.0-green)](https://github.com/gauravdh9/healthapp/releases/download/Healthcare/healthcare.apk)
-_____
-
 ![version1](https://img.shields.io/badge/Status-Stable-blue?logoColor=white)
 
+_____
 
 ## Screenshots 📷
 
