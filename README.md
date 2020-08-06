@@ -47,17 +47,18 @@ _____
 
 ## Usage :guardsman:
 
-`
+```
 Make sure Node Environment is setup.
 Expo CLI is installed.
-`
-`
+```
+```
+clone repository
 npm i
 expo start
-`
+```
 #### To create standalone apk
 
-`
+```
 expo build:android -t apk
-`
+```
 
