@@ -9,12 +9,12 @@ from the disease.*
 ## Screenshots 📷
 
 <div style="">
-<img src="readmeAssets/1.jpeg" width="15%" hspace="5">
-<img src="readmeAssets/7.jpeg" width="15%" hspace="5">
-<img src="readmeAssets/8.jpeg" width="15%" hspace="5">
-<img src="readmeAssets/9.jpeg" width="15%" hspace="5">
-<img src="readmeAssets/6.jpeg" width="15%" hspace="5">
-<img src="readmeAssets/2.jpeg" width="15%" hspace="5">
-<img src="readmeAssets/4.jpeg" width="15%" hspace="5">
-<img src="readmeAssets/5.jpeg" width="15%" hspace="5">
+<img src="readmeAssets/1.jpeg" width="20%" hspace="2">
+<img src="readmeAssets/7.jpeg" width="20%" hspace="2">
+<img src="readmeAssets/8.jpeg" width="20%" hspace="2">
+<img src="readmeAssets/9.jpeg" width="20%" hspace="2">
+<img src="readmeAssets/6.jpeg" width="20%" hspace="2">
+<img src="readmeAssets/2.jpeg" width="20%" hspace="2">
+<img src="readmeAssets/4.jpeg" width="20%" hspace="2">
+<img src="readmeAssets/5.jpeg" width="20%" hspace="2">
 </div>
