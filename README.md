@@ -11,8 +11,7 @@ from the disease.*
 _____
 
 ## Release
-
-[![](https://img.shields.io/badge/Download-1.0.0-green)](https://github.com/gauravdh9/healthapp/releases/download/Healthcare/healthcare.apk)
+[![]()](https://github.com/gauravdh9/healthapp/releases/download/Healthcare/healthcare.apk)
 ![version1](https://img.shields.io/badge/Status-Stable-blue?logoColor=white)
 
 ## Screenshots 📷
@@ -51,8 +50,8 @@ _____
 Make sure Node Environment is setup.
 Expo CLI is installed.
 ```
+#### Clone this repository and run these commands
 ```
-clone repository
 npm i
 expo start
 ```
@@ -61,4 +60,20 @@ expo start
 ```
 expo build:android -t apk
 ```
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## Authors
+
+- **Gaurav** - _Development_ - [Gaurav](https://github.com/gauravdh9)
+- **Ayush kumar Rout** - _Development_ - [AyushRout](https://github.com/routayush1)
+- **Soham Singh Yadav** - _Development_ - [SohamSingh](https://github.com/sohamsingh29)
+- **Prakhar Sharma** - _Development_ - [prkhrshrmaaaa](https://github.com/prkhrshrmaaaa)
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
 
