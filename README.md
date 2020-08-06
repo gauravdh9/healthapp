@@ -11,7 +11,7 @@ from the disease.*
 _____
 
 ## Release
-[![]()](https://github.com/gauravdh9/healthapp/releases/download/Healthcare/healthcare.apk)
+<a href="https://github.com/gauravdh9/healthapp/releases/download/Healthcare/healthcare.apk"><img src="readmeAssets/download.png" width="100" ></a>
 ![version1](https://img.shields.io/badge/Status-Stable-blue?logoColor=white)
 
 ## Screenshots 📷
@@ -70,8 +70,8 @@ Please make sure to update tests as appropriate.
 ## Authors
 
 - **Gaurav** - _Development_ - [Gaurav](https://github.com/gauravdh9)
-- **Ayush kumar Rout** - _Development_ - [AyushRout](https://github.com/routayush1)
 - **Soham Singh Yadav** - _Development_ - [SohamSingh](https://github.com/sohamsingh29)
+- **Ayush kumar Rout** - _Development_ - [AyushRout](https://github.com/routayush1)
 - **Prakhar Sharma** - _Development_ - [prkhrshrmaaaa](https://github.com/prkhrshrmaaaa)
 
 ## License
