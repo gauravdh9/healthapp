@@ -5,27 +5,28 @@ that gives you all related information on hospitals, testing labs, symptoms and 
 from the disease.*
 
 <p align="center">
-<img src="readmeAssets/GIF.gif" width="30%" hspace="-10">
+<img src="https://user-images.githubusercontent.com/40962136/232330055-7a88bca8-8eb1-408b-84d1-4079977152be.gif" width="30%" hspace="-10">
 </p>
 
 _____
 
 ## Release
-<a href="https://github.com/gauravdh9/healthapp/releases/download/Healthcare/healthcare.apk"><img src="readmeAssets/download.png" width="100" ></a>
+<a href="https://github.com/gauravdh9/healthapp/releases/tag/Healthcare"><img src="https://user-images.githubusercontent.com/40962136/232328549-cff098bf-81b8-48e2-a54c-9e43224abeb4.png" width="100" ></a>
 ![version1](https://img.shields.io/badge/Status-Stable-blue?logoColor=white)
 
 ## Screenshots 📷
 
 <p align="center">
-<img src="readmeAssets/6.jpeg" width="20%" hspace="2">
-<img src="readmeAssets/2.jpeg" width="20%" hspace="2">
-<img src="readmeAssets/4.jpeg" width="20%" hspace="2">
-<img src="readmeAssets/5.jpeg" width="20%" hspace="2">
-<img src="readmeAssets/1.jpeg" width="20%" hspace="2">
-<img src="readmeAssets/7.jpeg" width="20%" hspace="2">
-<img src="readmeAssets/8.jpeg" width="20%" hspace="2">
-<img src="readmeAssets/9.jpeg" width="20%" hspace="2">
+<img src="https://user-images.githubusercontent.com/40962136/232329170-7709e8f6-5297-47d4-9208-6c11dbdcc5d8.jpeg" width="20%" hspace="2">
+<img src="https://user-images.githubusercontent.com/40962136/232329176-46287005-cf36-4328-9d75-e9b981a5ede8.jpeg" width="20%" hspace="2">
+<img src="https://user-images.githubusercontent.com/40962136/232329172-4f72269a-f739-473d-a298-6fa17c148f7c.jpeg" width="20%" hspace="2">
+<img src="https://user-images.githubusercontent.com/40962136/232329171-3db991ff-e2a6-475f-ad6f-8a76f3cc3248.jpeg" width="20%" hspace="2">
+<img src="https://user-images.githubusercontent.com/40962136/232329163-5aff8c21-9fb7-4efa-8aed-4c6ff81817fc.jpeg" width="20%" hspace="2">
+<img src="https://user-images.githubusercontent.com/40962136/232329169-ce3adc95-ec82-4667-b766-9ef2a207fb13.jpeg" width="20%" hspace="2">
+<img src="https://user-images.githubusercontent.com/40962136/232329168-4e3a821e-7a01-48f5-aa4d-df1350df6568.jpeg" width="20%" hspace="2">
+<img src="https://user-images.githubusercontent.com/40962136/232329167-6a673bc7-efe7-482b-8d61-741cbfbc8934.jpeg" width="20%" hspace="2">
 </p>
+
 
 ## TechStack 🔧
 
